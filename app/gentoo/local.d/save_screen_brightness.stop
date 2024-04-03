@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat /sys/class/backlight/intel_backlight/brightness > /etc/local.d/prev_brightness

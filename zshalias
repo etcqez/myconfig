@@ -1,0 +1,454 @@
+# git
+# alias gi="git init -b main"
+alias gi="git init;gam"
+alias gam="git add * .*;git commit -am '更新配置文件'"
+# alias grr="git remove origin"
+alias gs="git status"
+alias gcl="git clone --depth 1"
+alias ga="git add"
+alias gc="git commit"
+alias push="git push"
+alias pull="git pull"
+alias gl="git log"
+alias gg="gam;gp"
+
+#同步文件系统
+# ext4: resize2fs /dev/lvm
+# xfs: xfs_growfs /mountpoint
+# btrfs: sudo btrfs filesystem resize max /
+#lvm
+# lvcreate -n lv1 -l 100%vg vg0 (100%vg: 卷组的百分比)
+# lvextend -l +100%free /dev/mapper/vg1-lv1 (100%free: 剩于的百分比)
+# lvextend -r -l +100%free /dev/mapper/vg1-lv1 #  -r: 既扩展空间又扩展文件系统
+# 缩减逻辑卷 (ext4)
+# umount /dev/VG_NAME/LV_NAME
+# fsck -f /dev/VG_NAME/LV_NAME
+# resize2fs /dev/VG_NAME/LV_NAME 1G
+# lvreduce -L 1G /dev/VG_NAME/LV_NAME
+# mount
+
+export TERM=xterm-256color
+export COLORTERM=truecolor
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv virtualenv-init -)"
+
+#必须放最前面 (gentoo命令补全)
+#autoload -U compinit promptinit
+#compinit
+#promptinit; prompt gentoo
+
+# emacs verm
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
+function help(){
+    bash -c "help $@"
+}
+#vim 编辑二进制: vim -b /bin/ls -> :%!xxd -> :%!xxd -r
+
+# 静态链接: 把库和程序本身打包在一起成一个文件    动态链接: 程序和库分离
+# 查看程序需要的库: ldd /bin/ls
+# 查看已经加载的库: ldconfig -p
+
+#压缩: zip -r dir dir  解压: unzip dir.zip -d /opt
+#打包: tar cvf dir.tar *  预览: tar tvf dir.tar  解压到当前目录: tar xvf ../dir/dir.tar  解压到指定目录: tar xvf dir.tar -C ../桌面
+#打包压缩: z: gz  j: bz2  J: xz
+#          sudo tar zcf etc.tar.gz /etc  
+#          sudo tar jcf etc.tar.bz2 /etc  
+#          sudo tar Jcf etc.tar.xz /etc  
+#          sudo zip -r etc.zip /etc
+#解压: sudo tar xf etc.tar.xz -C /tmp (xf通用)
+#不包含目录本身,只打包目录内的文件和子目录: cd /etc -> sudo tar Jcf /home/f/etc.xz *
+#tar实现快速复制: time tar c /boot | tar x -C ./    real	0m0.733s
+#                 time cp -a /boot /opt/    real	0m0.093s
+# --exclude: 排除文件   -T /root/includefilelist: 包含文件列表  -X /root/excludefilelist: 排除的文件列表 (TX后接的是文件)
+# split (分割文件): split -b 1M -d etc.xz t/etc_xz (-d: 后缀为数字)   合并: cat etc_xz* > etc.xz
+# cpio: find /etc | cpio -ov > etc.cpio (-o: output) 同: tar cvf etc.tar /etc
+#       预览: cpio -tv < etc.cpio 同: tar tvf etc.tar   find的查找的目录带有/etc这样的绝对路径,直接解压会覆盖/etc cp -r /etc .  (复制要打包的文件夹) -> find ./etc | cpio -ov > etc2.cpio (重新打包,发现路径带点) -> cpio -idv < /home/f/etc2.cpio (-d: 自动创建文件夹. 将标准输入解压至当前目录)
+#查看linux源代码行数: tar xvf linux.tar.xz -> cat `find -name "*.c"` |wc -l
+
+# 搜索: locate (updated) -i (不区分大小写) -n (只列前几个) -r (使用正则表达式)
+# find -maxdepth -mindepth -depth (先处理目录内的文件,再处理目录本身) -name -iname -inum (节点编号相同,不同分区的文件节点可能相同) -ls -samefile (节点编号相同且在同一分区) -links -regex -type -empty -a (与条件,默认) -o -not (同!)
+#     eg: find /misc/cd -name "tree*" -> rpm -ivh /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm (tree没有信赖包,直接yum安装)
+# -size [+,-][k,M,G,c(byte)]: 根据大小来查找 -atime [+,-]: 天 -amin (分钟)
+# -perm [/|-] (/: 或 -: 并) eg: 1. -perm /444 (所有者或者所属组或者other有4有权限就可以) 2. -perm -444 (所有者并且所属组并且other有4有权限就可以) 3. perm -044 (不关心所有者) 4. find /bin/ -perm /7000 (只要有一个特殊权限) 5.find /bin/ -perm -7000 (需要3个特殊权限)
+alias finds="sudo find /bin/ -perm /7000 | xargs ls --color=tty -lh --time=ctime -t"
+# 查找并移动,删除,拷贝(rm,cp,mv)文件: -ok 命令 {} \; (固定格式: {}\;) (将找到的每个文件执行一个命令,交互式的)  -exec 命令 {} \; (没有交互)
+# xargs: 将标准输入传给下一个命令,作为其的参数  查找并按大小排序: find -name "*.txt" | xargs ls -Sl
+#        -n: 每行的参数个数
+# 如果文件名包含空格: find -print0 | xargs -0 ls -Sl (-print0: 在标准输出中打印完整的文件名，后面跟一个空字符（而不是 -print 使用的换行符）。这样，包含换行符或其他类型空白的文件名就能被处理find输出的程序正确理解。该选项对应于 xargs 的 -0 选项)
+alias findall="sudo find / \( -path '/sys' -o -path '/proc' -o -path '/run' -o -path '/.snapshots' -o -path '/tmp' \) -a -prune -o" # 1. -a -prune -o 必须成对出现 2. \(\) 前后必须留空
+alias shx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod +x {} \;"
+alias shrx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod -x {} \;"
+
+#shell脚本
+#bash -n (语法检查) bash -x (调试代码)
+#声明常量: readonly
+#$_: (前一个命令最后一个参数) $SHLVL (shell嵌套层数) $- (关键字) h hash (set +h 禁用hash) H 历史 B 花括号
+#set -e (当一个命令出错,及时止损,不继续执行) set -u (禁止使用未定义的变量)
+#man 1p test
+#read -p (提示) -s (静默输入) -n (指定输入字符长度) -t (超时时间)
+
+#grep -m (最多匹配) -v (反转) -i (忽略大小写) -n -c -o -A -B -C -f (匹配文件每行的内容)
+#正则表达式: . (匹配单个字符) [^] [.] (.在中括号里和在外面不一样,在中括号里表示.本身,在外面表示任意的一个字符) \? \+ \{n\} (匹配前面的字符出现n次) \{3,5\} (3到5) \<\> (单词的边界) \(\)  \|
+#表示0到100: [1-9]\?[0-9]|100
+#排除空行和#开头的行: grep '^[^#]' ([^#]: 不以#开头的一个字符)
+#sed -n '/root/!p' /etc/passwd (不打印包括root的行,//中表示正则表达式)
+
+# 阻止文件被修改
+# sudo chattr +i f.txt -> lsattr f.txt -> sudo chattr -i f.txt (另-a只能追加内容)
+#特殊权限
+# suid: s -> owner
+# sgid: s -> group
+#       继承组: 如果s设置在文件夹的所属组权限,那么里面新建的文件不管谁创建的文件将继承此文件夹的所属组
+# sticky: t -> other
+alias mods="sudo chmod u+s,u-x"
+alias modx="sudo chmod u-s,u+x"
+# umask 002
+#( umask 666; touch ) 一次性改文件权限
+
+#facl (tar打包不会保留facl权限,需要单独备份)
+#给某人指定一个权限: setfacl -m u:user:- -> getfacl
+#setfacl -x u:user (删除) setfacl -b (全部删除)
+alias facl="sudo setfacl -m u:f:rwx"
+#递归添加acl权限: setfacl -Rm u:user:rwx dir/ -> setfacl -Rb /dir (删除,比起chmod -R安全得多)
+#                 给数据库加权限: setfacl -Rm u:mysql:rwx /usr/local/mysql/ -> Rb /usr/local/mysql/
+#mask只影响除所有者和other的之外的人和组的最大权限
+#如果chmod没有执行权限: sudo setfacl -m u:f:rwx /bin/chmod -> sudo chmod a+x /bin/chmod -> sudo setfacl -b /bin/chmod -> sudo chmod a+x /bin/chmod
+
+#权限
+#chmod -R a+X (递归的只给文件夹添加执行权限,而不给文件添加执行权限)
+#如果拥有一个文件夹写权限,就可以删除文件,而和被删除的文件无关
+
+#用户
+#sudo getent passwd f 
+#创建系统账号: useradd -r -u -g -s -d -c (r:uid低于1000且不创建家目录)
+#组: gruops  f (查看用户的组) sudo groupmems -l -g f (查看组包含的用户, g: 指定用户替换当前用户)
+#参考某个文件来修改文件的所有者: chown --reference=
+#更改文件所属组: chgrp
+
+#自动设置密码
+#passwd --stdin <
+
+#tr 
+#小写转大写: tr 'a-z' 'A-Z'
+#            tr '[:lower:]' '[:upper:]'
+#生成随机密码: tr -dc '[:alnum:]' < /dev/urandom (d: 删除 c: 补集 urandom: 随机字符,包括可见的和不可见的)
+#              openssl rand -base64 12
+#去重: df | tr -s ' '
+
+#程序生成
+#seq -s+ 1 100 | bc (1到100相加) echo {1..100} | tr ' ' + | bc
+#管道符后面必须支持标准输入, 每个命令在管道里面作为独立的进程(子进程) (在shell中子父进程互不共享变量,所以管道里的变量不能在父进程中使用)
+#单行重定向: cat > cat.log (每回车一次追加一行)
+#多行重定向: cat > cat.log <<EOF
+#多行重定向并打印: cat <<EOF | tee cat.log (tee接在管道后打印并输出到文件)
+
+#proc里存的是进程编号
+#查看进程的路径: tail -f -> ps aux | grep tail -> ll /proc/20759/cmd
+# $$:当前shell进程编号 (ll /proc/$$)
+# self:当前命令的进程编号 (ll /proc/self)
+# 0 1 2 : 输入,输出,错误重定向
+
+#硬链接
+#本质上是同一文件,inode,链接数相同,只要链接数不为0,删除文件不会有影响
+#在删除数据库时可以先建个硬链接,减少磁盘IO
+
+#批量改名
+#rename conf conf.bak * (将conf变成conf.bak)
+#rename .bak '' * (删除.bak)
+
+#删除大文件的正确方式
+#1.大文件被使用时删除不会立即释放空间
+#solusion: lsof | grep delete (找到已删除但还在用的文件) -> 关掉软件
+#          fuser -v   将使用此文件的进程全杀死: fuser -km
+#2.如何正确删除大文件
+#solusion: cat /dev/null > big (将文件清零)
+
+#通配符
+#0个或者多个: *
+#一个: ? (ls ??.py)
+#前一个工作目录: ~- (cat ~-/排序.py)
+#查看上个目录: echo $OLDPWD
+#[0-9]: 从0-9的一个数字 (ll file[0-9].txt)
+
+#格式转换
+#文本
+#文件转换换行:dos2unix unix2dos (unix和win使用的换行不同)
+#转换编码:iconv -f GB2312 win.txt -o unix.txt (将gb2312转换为utf8)
+#iconv -f UTF8 -t GB2312 unix.txt -o win.txt (反之. from...to...output) 
+
+#常用命令
+#date +"%F %T"
+#touch `date +%F_%H-%M-%S`.log
+#date -d "2 day"; date  +%s; (seconds since the Epoch) date -d @`date  +%s`; date -s "-1 year"; (设置时间为1年前) date -d "-2 day" +%w (前天星期几,w: week)
+#ll --time=ctime anaconda-ks.cfg (查看属性修改时间) stat anaconda-ks.cfg (查看所有时间)
+#cat -A (显示隐藏) -b -n (加行号) -s (压缩重复行)
+#用cat实现文件复制: cat > dest < souce
+#tac: 从尾到头 rev: 行逆序
+# less, more, head -n3 (n可省略) -c3 (前3个字节) , head -2 < file(可以接收标准输入,显示文件前两行), tail -f, tail -F (文件被删重试) tail -fn0 -0f (指定查看后0行的内容) ifconfig | head -2 | tail -1 (显示第2行) seq 10 | tail -n +3 (跳过2行从3行开始打印)
+#cut -d: -f1,3-5 /etc/passwd (取出1,3,4,5列) df | cut -c43-45     paste 两个文件横向合并
+#sort /etc/passwd (字母排序) sort -nrt: -k3 /etc/passwd (-n: 数字排序)
+#文件去重: uniq -u 打印不重复的行 -d 重复的行 -c 重复出现的次数
+#diff -u;      cmp (比较二进制): cmp /bin/{dir,ls} -> hexdump -s 24 -Cn 7 /bin/ls; hexdump -s 24 -Cn 7 /bin/dir (-s: 跳过24字节)
+
+#############################################################################
+
+#查看帮助
+#whatis = man -f (mandb)
+#内部命令:help history,man bash
+#配置文件:whatis passwd -> man 5 passwd
+#passwd	whatis issue -> man 5 issue -> man 8 agetty (SEE ALSO)
+
+#二进制
+#echo a | hexdump -C
+#man ascii
+#screen
+#建立:screen -S help
+#查看:screen -list
+#连接:screen -x help
+#detach:ctrl a d
+
+#w(uptime) who whoami tty
+#w,who:查看谁登录了系统 
+
+#杳看硬件.操作系统信息 	id	lsblk
+alias fr="free -h"
+alias uname="uname -r"
+alias release="cat /etc/*-release"
+alias cpu="cat /proc/cpuinfo"
+alias part"cat /proc/partitions"
+alias swap="cat /proc/swaps"
+alias version="cat /proc/version"
+alias cmdline="cat /proc/cmdline"
+alias timezone="sudo timedatectl set-timezone"
+alias cal="cal -y"
+alias zh="LANG=zh_CN.UTF-8"
+alias en="LANG=en_US.UTF-8"
+alias lang="echo $LANG"
+alias loc="locale"
+alias rs="echo \$?"
+alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
+alias mt="mount | column -t"
+alias halt="poweroff"
+alias blk="lsblk -f"
+
+# 磁盘管理
+# 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
+# 测试硬盘速度: dd if=/dev/nvme0n1 of=/dev/null bs=1M count=1024
+# 扫描磁盘 alias scandisk="eecho - - - > /sys/class/scsi_host/host0/scan;echo - - - > /sys/class/scsi_host/host1/scan;echo - - - > /sys/class/scsi_host/host2/scan;"
+# 备份还原分区表: dd if=/dev/sda of=/data/dpt.img bs=1 count=64 skip=446 (备份) -> dd if=/dev/zero of=/dev/sda bs=1 count=64 seek=446 (破坏,seek: 跳过目标) -> dd if=dpt.img of=/dev/sda bs=1 seek=446
+# 添加ip: ip a a 10.0.0.8/24 dev ens33
+# 打印分区: sudo parted /dev/nvme0n1 print    分区: parted /dev/sdb mkpart primary 1 200    删除分区: parted /dev/sdb rm 1
+
+# 转二进制
+# bc -> obase=2 (out)
+# 显示路径
+# type which where whereis(包括帮助文件目录)
+
+# history 
+# !! !:n !n !-n !string !?string !?string:p
+# !* !^ !$ !-4:*:p
+
+#############################################################################
+
+# android
+alias an="screen waydroid show-full-ui"
+alias anstop="waydroid session stop"
+
+#cd
+alias cf="cd ~/.config" 
+alias cl="cd ~/.local/share" 
+
+#type
+alias tp="type -a" #同where
+alias which="which -a"
+
+#windows
+alias win="sudo ntfsfix /dev/nvme0n1p3;sudo mount -o rw /dev/nvme0n1p3 /mnt"
+
+#system
+alias enable="sudo systemctl enable --now"
+alias disable="sudo systemctl disable"
+alias sus="systemctl suspend"
+alias status="sudo systemctl status"
+alias stop="sudo systemctl stop"
+alias start="sudo systemctl start"
+alias restart="sudo systemctl restart"
+
+# nvim emacs
+alias e="emacs"
+alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
+alias ec="emacsclient -t"
+alias daemon="emacs --daemon"
+alias zs="nvim ~/myconfig/zshalias"
+alias v="nvim"
+alias sv="sudo nvim"
+
+
+#docker
+#
+#docker run -it --name emacs silex/emacs bash
+#docker update --restart=always emacs
+#
+alias d="docker"
+alias dup="docker update"
+alias oneemacs="docker run -it --rm silex/emacs"
+alias dex="docker exec -it"
+alias dat="docker attach"
+alias dim="docker images"
+alias dsp="docker stop"
+alias dst="docker start"
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias dre="docker restart"
+alias ddf="docker system df"
+alias drm="docker rm"
+alias dri="docker rmi"
+
+# snapper
+alias list="sudo snapper list"
+# pre
+alias pre="sudo snapper -c root create -t pre -p"
+# post 1
+alias post="sudo snapper -c root create -t post --pre-number"
+# status 1..2
+alias status12="sudo snapper -c root status"
+# status 1 2
+alias delete="sudo snapper -c root delete"
+# undo 0..1
+alias undo="sudo snapper -c root undochange"
+
+# arch
+alias s="sudo pacman -S --need"
+alias srf="sudo pacman -S"
+alias sy="sudo pacman -Sy"
+alias syyu="sudo pacman -Syyu"
+alias rc="sudo pacman -Rc"
+alias y="yay -S"
+
+# hugo
+alias hs="hugo server"
+alias hn="hugo new "
+alias hc="hugo --cleanDestinationDir"
+
+# python
+alias p="python"
+alias pydoc="sudo pydoc -p 80"
+
+# proxy
+alias proxy="env all_proxy=socks://127.0.0.1:20170"
+
+#single
+alias lg="lazygit"
+alias du="sudo du -sh"
+alias df="df -hTP"
+alias mkdir="mkdir -pv"
+alias h="history -50"
+alias nf="neofetch"
+
+#mysql
+alias my='mysql -uroot -pf'
+alias sql='mysql -uroot -pf mysql'
+
+#less
+alias m=less
+
+#cp
+alias cp="cp -aiv"
+#同名文件只覆盖旧的
+alias cpuv="\cp -auv"
+#同名文件先备份再覆盖
+alias cpb="\cp -av --backup=numbered"
+alias mv="mv -iv"
+
+#rm
+alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
+alias t="tree -cr /tmp"
+alias t2="tree -L 2"
+#alias rmall="\rm -rf *;\rm -rf .[^.]*"
+#cp /etc/skel/. (复制全部文件)
+alias cpall="cp ."
+
+#network
+alias pw="cat /etc/passwd | awk -F: '{printf \"%-15s%s\n\",\$1,\$NF}'"
+alias ii="iwctl station wlan1 get-networks"
+
+# ls
+#alias .file="ls -d .*"
+#alias .dir="ls -d .*/"
+#alias onlydir="ls -d */"
+#alias onlyfile=""
+alias sl="sudo ls --color=tty -lhAt"
+
+# sudo
+alias shecho="sudo sh -c"
+alias tees="sudo tee -a"
+
+##gentoo
+#alias sr="emerge --search"
+#alias vj="sudo emerge -vj"
+#alias vp="sudo emerge -vjp"
+#alias ac="sudo emerge -ac"
+#alias cu="sudo emerge -vj --changed-use --deep @world"
+#alias esync="sudo emerge --sync"
+#alias ewrld="sudo emerge --keep-going  -avjuDN @world" --exclude="nvim* vscodium"
+#alias erbld="sudo emerge --ask @module-rebuild"
+#alias ra="sudo rc-update add"
+#alias rd="sudo rc-update del"
+#alias rs="sudo rc-service"
+
+##nvidia
+#alias nviglx="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep 'OpenGL renderer'"
+#alias glx="glxinfo | grep 'OpenGL renderer'"
+#alias nvi="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
+
+# rpm (/var/lib/rpm: rpm数据库)
+# 解包(恢复删除文件): rpm2cpio /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm | cpio -tv -> rpm2cpio /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm | cpio -idv ./usr/bin/tree (只解压一个文件)
+# 查:rpm -qa "*http*" 同: rpm -qa | grep http (通配符必须加双引号)  rpm -qi tree (包信息)  同: rpm -qpi /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm  rpm -qpl /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm (列出包含文件) 同: rpm -ql tree
+#    查看文件来自那个包: rpm -qf /usr/bin/tree      --replacepkgs|force (强制安装)   rpm -q --whatrequires bash (查询依赖的包)  -qc: 配置文件 -qd: 文档   -q --changelog (查询changelog)  -q --scripts
+# 检验包: rpm -K /misc/cd/Packages/httpd-2.4.51-20.oe2203sp3.x86_64.rpm 有时需要导入: rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-openEuler 查询密钥: rpm -qa "gpg-pubkey" -> rpm -qi "gpg-pubkey" (查询密钥内容)
+#     rpm软件包安装时,会将包里的每个文件元数据记录,可以用来检查包中的文件是否和当初安装时有所改变: rpm -V openEuler-release 所有包: rpm -Va
+# 安装软件到指定目录: rpm -ivh rpm.rpm --root=/mnt/sysimage/
+# yum
+# 查看历史: yum history 撤销: yum history undo 8 重做: yum history redo 5
+# 添加本地源: baseurl=file///misc/cd/
+# 禁用源: yum-config-manager --disable 临时禁用: yum --disablerepo=* --enablerep=update list available  列出所有版本: yum info samba --showduplicates
+# 查看某个命令,文件来自于哪个包: yum provides 文件的绝对路径
+# 清理绶存: yum clean all
+
+#文件系统
+# 修复: fsck.ext4 (一定不要在挂载状态下执行命令修复)
+# 只读挂载: mount -r LABEL=test /mnt/sdb2
+# 重新挂载: mount -o remount.rw /mnt/sdb2
+# 挂载文件夹: mount -B /etc/ /mnt/etc/
+    #/etc/fstab /etc/ /mnt/etc/ none bind 0 0
+# 挂载文件(文件模拟分区): dd if=/dev/zero of=/disk.img bs=1M count=100 -> mkfs.ext4 /disk.img(给文件创建文件系统) -> blkid /disk.img -> mkdir /mnt/disk;mount /disk.img /mnt/loop -> losetup -a #查看关联
+    #/etc/fstab /disk.img /data/disk xfs defaults 0 0
+# swap
+# swap分区: 分区类型选择swap -> mkswap ->  分区查看: swapon -s ->  挂载: swapon -a
+# 清除mbr分区表: dd if=/dev/zero of=/dev/sdc bs=1 count=66 seek=446
+# swap文件: dd if=/dev/zero of=/swapfile bs=1M count=1024 -> mkswap /swapfile -> fstab: /swapfile swap swap defaults 0 0 -> swapon -a
+# 光盘制作iso: cp /dev/sr0 /data/centos8.iso 文件夹制作iso: mkisofs -r -o /root/etc.iso /etc
+
+# 网络 (改网卡名: net.ifnames=0)
+# 判断网络是否连接: 1. mii-tool eth0 2. ethtool eth0
+# 本地端口范围: cat /proc/sys/net/ipv4/ip_local_port_range
+# 查看被占用的端口号: less /etc/services
+# alias ss="sudo ss -ntlp"
+# 查看端口被那个进程使用: sudo lsof -i :20170
