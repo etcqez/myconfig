@@ -1,3 +1,5 @@
+# 备忘录
+# sudo sysctl --system
 # git
 # alias gi="git init -b main"
 alias gi="git init;gam"
@@ -29,8 +31,6 @@ alias gg="gam;gp"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
 
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init --path)"
@@ -232,7 +232,7 @@ alias fr="free -h"
 alias uname="uname -r"
 alias release="cat /etc/*-release"
 alias cpu="cat /proc/cpuinfo"
-alias part"cat /proc/partitions"
+alias part="cat /proc/partitions"
 alias swap="cat /proc/swaps"
 alias version="cat /proc/version"
 alias cmdline="cat /proc/cmdline"
@@ -390,6 +390,8 @@ alias pw="cat /etc/passwd | awk -F: '{printf \"%-15s%s\n\",\$1,\$NF}'"
 alias ii="iwctl station wlan1 get-networks"
 
 # ls
+alias la="ls -lAh"
+alias ll="ls -lh"
 #alias .file="ls -d .*"
 #alias .dir="ls -d .*/"
 #alias onlydir="ls -d */"
@@ -452,3 +454,7 @@ alias tees="sudo tee -a"
 # 查看被占用的端口号: less /etc/services
 # alias ss="sudo ss -ntlp"
 # 查看端口被那个进程使用: sudo lsof -i :20170
+
+# zsh
+bindkey "^P" up-line-or-search 2>> /dev/null
+bindkey "^N" down-line-or-searc 2>> /dev/null
