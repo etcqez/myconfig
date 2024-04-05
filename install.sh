@@ -1,5 +1,8 @@
 set -u
 
+# hypr
+ln -sf ~/myconfig/appdate/userprefs.conf ~/.config/hypr/userprefs.conf
+
 # zsh
 ln -s ~/myconfig/_zprofile ~/.zprofile
 
