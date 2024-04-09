@@ -247,6 +247,7 @@ alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
 alias mt="mount | column -t"
 alias halt="poweroff"
 alias blk="lsblk -f"
+alias route="route -n"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -274,6 +275,7 @@ alias anstop="waydroid session stop"
 #cd
 alias cf="cd ~/.config" 
 alias cl="cd ~/.local/share" 
+alias cm="cd ~/myconfig" 
 
 #type
 alias tp="type -a" #同where
@@ -399,7 +401,10 @@ alias ll="ls -lh"
 alias sl="sudo ls --color=tty -lhAt"
 
 # sudo
-alias shecho="sudo sh -c"
+alias shsh="sudo sh -c"
+alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 20 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 20 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+
 alias tees="sudo tee -a"
 
 ##gentoo
@@ -454,7 +459,17 @@ alias tees="sudo tee -a"
 # 查看被占用的端口号: less /etc/services
 # alias ss="sudo ss -ntlp"
 # 查看端口被那个进程使用: sudo lsof -i :20170
+# man tcp
+# 抓包: sudo tcpdump -i wlan0 port 80
+# sudo ping -s 1230 www.baidu.com -f
+# arp缓存: arp -n   arp绑定: arp -s
+# 检查地址冲突: arping 
+# 查看网卡驱动: ethtool -i wlan0
 
 # zsh
 bindkey "^P" up-line-or-search 2>> /dev/null
 bindkey "^N" down-line-or-searc 2>> /dev/null
+
+# 有意思的写法
+# 叛断端口号是否打开< /dev/tcp/127.0.0.1/2017
+# ping 十进制数字 (ip地址转化的十进制)
