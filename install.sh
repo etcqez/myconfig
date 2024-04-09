@@ -10,7 +10,7 @@ ln -s ~/myconfig/_zprofile ~/.zprofile
 sudo sh -c "cat /home/f/myconfig/zshalias > /root/.bashrc"
 
 # sysctl
-sudo ln -s ~/myconfig/sysctl.conf /etc/sysctl.d/99-sysctl.conf
+sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
 # keyd
 sudo pacman -S --need --noconfirm keyd
