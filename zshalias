@@ -6,7 +6,7 @@ alias gi="git init;gam"
 alias gam="git add * .*;git commit -am '更新配置文件'"
 # alias grr="git remove origin"
 alias gs="git status"
-alias gcl="git clone --depth 1"
+alias gcl="proxy git clone --depth 1"
 alias ga="git add"
 alias gc="git commit"
 alias push="git push"
@@ -342,7 +342,7 @@ alias srf="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rc"
-alias y="yay -S"
+alias y="proxy yay -S"
 
 # hugo
 alias hs="hugo server"
@@ -465,6 +465,9 @@ alias tees="sudo tee -a"
 # arp缓存: arp -n   arp绑定: arp -s
 # 检查地址冲突: arping 
 # 查看网卡驱动: ethtool -i wlan0
+alias re="nmcli device wifi rescan"
+alias hotspot="nmcli device wifi hotspot"
+alias offhotspot="nmcli connection down Hotspot"
 
 # zsh
 bindkey "^P" up-line-or-search 2>> /dev/null
