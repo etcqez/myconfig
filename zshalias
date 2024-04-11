@@ -13,6 +13,7 @@ alias push="git push"
 alias pull="git pull"
 alias gl="git log"
 alias gg="gam;gp"
+alias gurl="git remote get-url origin"
 
 #同步文件系统
 # ext4: resize2fs /dev/lvm
