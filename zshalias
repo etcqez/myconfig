@@ -2,6 +2,7 @@
 # sudo sysctl --system
 # git
 # alias gi="git init -b main"
+# sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
 alias gi="git init;gam"
 alias gam="git add * .*;git commit -am '更新配置文件'"
 # alias grr="git remove origin"
