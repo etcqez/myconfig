@@ -4,6 +4,7 @@
 #git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 #sed -Ei '/^plugins=/s/\)$/ zsh-autosuggestions zsh-syntax-highlighting\)/' ~/.zshrc
 
+sed -Ei '/^plugins=/s/\)$/ sudo\)/' ~/.zshrc
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting
 cat >> ~/.zshrc <<EOF
 # myconf########################################################################

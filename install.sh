@@ -1,5 +1,8 @@
 set -u
 
+git config --global user.name etcqez
+git config --global user.email etcqez@outlook.com
+
 # hypr
 mv ~/.config/hypr/userprefs.conf{,.bak}
 ln -sf ~/myconfig/appdate/userprefs.conf ~/.config/hypr/userprefs.conf
@@ -7,8 +10,8 @@ ln -sf ~/myconfig/appdate/userprefs.conf ~/.config/hypr/userprefs.conf
 # zsh
 ln -s ~/myconfig/_zprofile ~/.zprofile
 
-# rootbash
-sudo sh -c "cat /home/f/myconfig/zshalias > /root/.bashrc"
+# bash
+sudo sh -c "cat /home/f/myconfig/zshalias >> /etc/bash.bashrc"
 
 # sysctl
 sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf

@@ -301,6 +301,7 @@ alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias ec="emacsclient -t"
 alias daemon="emacs --daemon"
 alias zs="nvim ~/myconfig/zshalias"
+alias sf="nvim ~/myconfig/soft.sh"
 alias v="nvim"
 alias sv="sudo nvim"
 
