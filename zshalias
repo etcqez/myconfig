@@ -242,7 +242,7 @@ alias timezone="sudo timedatectl set-timezone"
 alias cal="cal -y"
 alias zh="LANG=zh_CN.UTF-8"
 alias en="LANG=en_US.UTF-8"
-alias lang="echo $LANG"
+alias lang="echo \$LANG"
 alias loc="locale"
 alias rs="echo \$?"
 alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
@@ -250,6 +250,7 @@ alias mt="mount | column -t"
 alias halt="poweroff"
 alias blk="lsblk -f"
 alias route="route -n"
+alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -395,13 +396,40 @@ alias pw="cat /etc/passwd | awk -F: '{printf \"%-15s%s\n\",\$1,\$NF}'"
 alias ii="iwctl station wlan1 get-networks"
 
 # ls
-alias la="ls -lAh"
-alias ll="ls -lh"
+alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias a="eza -ha --sort=name --group-directories-first"
 #alias .file="ls -d .*"
 #alias .dir="ls -d .*/"
 #alias onlydir="ls -d */"
 #alias onlyfile=""
 alias sl="sudo ls --color=tty -lhAt"
+
+# Helpful aliases
+alias  c='clear' # clear terminal
+alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias un='$aurhelper -Rns' # uninstall package
+alias up='$aurhelper -Syu' # update system/package/aur
+alias pl='$aurhelper -Qs' # list installed package
+alias pa='$aurhelper -Ss' # list availabe package
+alias pc='$aurhelper -Sc' # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias vc='code' # gui code editor
+
+# Handy change dir shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
+
+# Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
+alias ssh='kitten ssh'
 
 # sudo
 alias shsh="sudo sh -c"

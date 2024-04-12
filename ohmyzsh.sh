@@ -6,9 +6,9 @@
 
 sed -Ei '/^plugins=/s/\)$/ sudo\)/' ~/.zshrc
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting
-cat >> ~/.zshrc <<EOF
+cat >>~/.zshrc <<EOF
 # myconf########################################################################
-echo source ~/myconfig/zshalias >> ~/.zshrc
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/myconfig/zshalias >> ~/.zshrc
 EOF
