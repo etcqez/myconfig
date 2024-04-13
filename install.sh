@@ -33,5 +33,9 @@ sudo pacman -S --need --noconfirm reflector
 sudo ln -sf /home/f/myconfig/appdate/reflector.conf /etc/xdg/reflector/reflector.conf
 sudo systemctl enable --now reflector.timer
 
+# sysrq
+sudo sh -c "echo 'kernel.sysrq = 1
+vm.swappiness = 1' > /etc/sysctl.d/99-sysctl.conf"
+
 # fonts
 #ln -sf /home/f/myconfig/appdate/fonts /home/f/.local/share/fonts
