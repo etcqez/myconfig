@@ -28,5 +28,10 @@ sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup
 mkdir /home/f/.local/share/fcitx5
 ln -s /home/f/myconfig/appdate/rime /home/f/.local/share/fcitx5
 
+# reflector
+sudo pacman -S --need --noconfirm reflector
+sudo ln -sf /home/f/myconfig/appdate/reflector.conf /etc/xdg/reflector/reflector.conf
+sudo systemctl enable --now reflector.timer
+
 # fonts
 #ln -sf /home/f/myconfig/appdate/fonts /home/f/.local/share/fonts

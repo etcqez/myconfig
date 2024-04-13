@@ -7,7 +7,7 @@ __build_info:
     key_bindings.custom: 0
     punctuation: 1712838132
     punctuation.custom: 0
-    wubi_pinyin.custom: 1712838132
+    wubi_pinyin.custom: 1712929652
     wubi_pinyin.schema: 1712838132
 abc_segmentor:
   extra_tags:
@@ -169,7 +169,7 @@ speller:
   delimiter: " ;'"
 switches:
   - name: ascii_mode
-    reset: 1
+    reset: 0
     states: ["中文", "西文"]
   - name: full_shape
     states: ["半角", "全角"]

@@ -298,20 +298,23 @@ alias restart="sudo systemctl restart"
 
 # nvim emacs
 alias e="emacs"
-alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias ec="emacsclient -t"
 alias daemon="emacs --daemon"
 alias zs="nvim ~/myconfig/zshalias"
 alias sf="nvim ~/myconfig/soft.sh"
+alias aur="nvim ~/myconfig/aur.sh"
 alias v="nvim"
 alias sv="sudo nvim"
 
 
-#docker
+# docker
 #
-#docker run -it --name emacs silex/emacs bash
-#docker update --restart=always emacs
+# docker run -it --restart=always --name emacs silex/emacs bash
+# docker update --restart=always emacs
+# docker update --restart=no
+# sudo docker info
 #
+alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias d="docker"
 alias dup="docker update"
 alias oneemacs="docker run -it --rm silex/emacs"
@@ -328,24 +331,32 @@ alias drm="docker rm"
 alias dri="docker rmi"
 
 # snapper
-alias list="sudo snapper list"
-# pre
-alias pre="sudo snapper -c root create -t pre -p"
-# post 1
-alias post="sudo snapper -c root create -t post --pre-number"
-# status 1..2
-alias status12="sudo snapper -c root status"
-# status 1 2
-alias delete="sudo snapper -c root delete"
-# undo 0..1
-alias undo="sudo snapper -c root undochange"
+# snapper -c root status 0..2
+# snapper -c root list
+# snapper -c root create -t single
+# sudo snapper create-config -f btrfs /
+# sudo snapper -c home create-config -f btrfs /home
+# sudo snapper list-configs
+# 删除配置: snapper -c root delete-config
+alias ro="sudo snapper -c root"
+alias ho="sudo snapper -c home"
+alias li="sudo snapper list;echo;sudo snapper -c home list"
+alias rl="sudo snapper list"
+alias hl="sudo snapper -c home list"
+alias rd="sudo snapper delete"
+alias hd="sudo snapper -c home delete"
+alias pre="sudo snapper -c root create -t pre -p;sudo snapper -c home create -t pre -p"
+alias rpre="sudo snapper -c root create -t pre -p"
+alias hpre="sudo snapper -c home create -t pre -p"
+alias rp="sudo snapper -c root create -t post -p --pre-number"
+alias hp="sudo snapper -c home create -t post -p --pre-number"
 
 # arch
 alias s="sudo pacman -S --need"
 alias srf="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
-alias rc="sudo pacman -Rc"
+alias rc="sudo pacman -Rcn"
 alias y="proxy yay -S"
 
 # hugo
@@ -433,8 +444,8 @@ alias ssh='kitten ssh'
 
 # sudo
 alias shsh="sudo sh -c"
-alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 20 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
-alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 20 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 
 alias tees="sudo tee -a"
 
