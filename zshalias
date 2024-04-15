@@ -507,6 +507,13 @@ alias tees="sudo tee -a"
 # arp缓存: arp -n   arp绑定: arp -s
 # 检查地址冲突: arping 
 # 查看网卡驱动: ethtool -i wlan0
+# 修改ip地址: nmcli connection  modify rtl ipv4.address 192.168.43.200/24 ipv4.gateway 192.168.43.1 ipv4.dns 223.6.6.6 ipv4.method manual   生效: sudo nmcli connection  reload; nmcli connection  up rtl
+#             /etc/NetworkManager/system-connections/CMCC-dZk1.nmconnection
+#             为wifi指定网卡: nmcli connection modify CMCC-dZk1 connection.interface-name wlan0
+#             为wifi起别名: nmcli connection modify CMCC-dZk1 con-name rtl; nmcli connection modify CMCC-dZk1\ 1 con-name rt; nmcli connection
+# team: nmcli connection add con-name myteam0 ifname team0 type team config '{"runner":{"name":"roundrobin"}}'; nmcli connection modify wlan0 team0; sudo teamdctl team0 state
+# 网桥(同交换机): brctl addbr/addif/show; brctl showmacs virbr0 (查看端口对应的mac,同交换机的mac表)
+#     生成树协议(stp: spanning tree): 防止广播风暴    启用: brctl stp br0 on
 alias re="nmcli device wifi rescan"
 alias hotspot="nmcli device wifi hotspot"
 alias offhotspot="nmcli connection down Hotspot"

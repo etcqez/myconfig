@@ -1,17 +1,24 @@
 __build_info:
   rime_version: 1.10.0
   timestamps:
+    cangjie5.custom: 0
+    cangjie5.schema: 1702580968
     default: 1713172319
-    default.custom: 1713172800
+    default.custom: 0
     key_bindings: 1712984625
     key_bindings.custom: 0
-    pinyin_simp.custom: 0
-    pinyin_simp.schema: 1712984625
     punctuation: 1712984625
     punctuation.custom: 0
     symbols: 1712984625
     symbols.custom: 0
+abc_segmentor:
+  extra_tags:
+    - reverse_lookup
 engine:
+  filters:
+    - simplifier
+    - uniquifier
+    - single_char_filter
   processors:
     - ascii_composer
     - recognizer
@@ -29,8 +36,8 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - script_translator
     - reverse_lookup_translator
+    - table_translator
 key_binder:
   bindings:
     - {accept: "Control+p", send: Up, when: composing}
@@ -66,7 +73,7 @@ key_binder:
     - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
   import_preset: default
 menu:
-  page_size: 10
+  page_size: 5
 punctuator:
   full_shape:
     " ": {commit: "　"}
@@ -342,60 +349,64 @@ recognizer:
   import_preset: default
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
-    punct: "^/([0-9]+[a-z]*|[a-z]+)$"
-    reverse_lookup: "`[a-z]*'?$"
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
+    reverse_lookup: "`[a-z]*'?$|[a-z]+'$"
     uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 reverse_lookup:
-  dictionary: stroke
-  enable_completion: true
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  dictionary: luna_pinyin
   preedit_format:
-    - "xlit/hspnz/一丨丿丶乙/"
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
   prefix: "`"
+  prism: luna_quanpin
   suffix: "'"
-  tips: "〔笔画〕"
+  tips: "〔拼音〕"
 schema:
   author:
-    - "佚名"
+    - "發明人 朱邦復先生"
   dependencies:
-    - stroke
+    - luna_quanpin
   description: |
-    源自 Android 拼音
+    第五代倉頡輸入法
+    碼表源自倉頡之友發佈的《五倉世紀版》
+    www.chinesecj.com
 
-  name: "袖珍简化字拼音"
-  schema_id: pinyin_simp
-  version: 0.9
+  name: "倉頡五代"
+  schema_id: cangjie5
+  version: 0.30
+simplifier:
+  tips: all
 speller:
-  algebra:
-    - "erase/^hm$/"
-    - "erase/^m$/"
-    - "erase/^n$/"
-    - "erase/^ng$/"
-    - "abbrev/^([a-z]).+$/$1/"
-    - "abbrev/^([zcs]h).+$/$1/"
-    - "derive/^([nl])ue$/$1ve/"
-    - "derive/^([jqxy])u/$1v/"
-    - "derive/un$/uen/"
-    - "derive/ui$/uei/"
-    - "derive/iu$/iou/"
-    - "derive/([aeiou])ng$/$1gn/"
-    - "derive/([dtngkhrzcs])o(u|ng)$/$1o/"
-    - "derive/ong$/on/"
-    - "derive/ao$/oa/"
-    - "derive/([iu])a(o|ng?)$/a$1$2/"
   alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " '"
+  delimiter: " ;"
 switches:
   - name: ascii_mode
     reset: 0
     states: ["中文", "西文"]
   - name: full_shape
     states: ["半角", "全角"]
+  - name: simplification
+    states: ["漢字", "汉字"]
+  - name: extended_charset
+    states: ["常用", "增廣"]
   - name: ascii_punct
     states: ["。，", "．，"]
 translator:
-  dictionary: pinyin_simp
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
+  dictionary: cangjie5
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+    - "^yyy.*$"
+  enable_charset_filter: true
+  enable_encoder: true
+  enable_sentence: true
+  encode_commit_history: true
+  max_phrase_length: 5
   preedit_format:
-    - "xform/([nl])v/$1ü/"
-    - "xform/([nl])ue/$1üe/"
-    - "xform/([jqxy])v/$1u/"
+    - "xform/^([a-z]*)$/$1\\t（\\U$1\\E）/"
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
