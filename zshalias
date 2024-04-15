@@ -238,6 +238,7 @@ alias part="cat /proc/partitions"
 alias swap="cat /proc/swaps"
 alias version="cat /proc/version"
 alias cmdline="cat /proc/cmdline"
+alias sysrq="sudo sh -c 'echo 1 > /proc/sys/kernel/sysrq'"
 alias timezone="sudo timedatectl set-timezone"
 alias cal="cal -y"
 alias zh="LANG=zh_CN.UTF-8"
@@ -502,7 +503,11 @@ alias tees="sudo tee -a"
 # alias ss="sudo ss -ntlp"
 # 查看端口被那个进程使用: sudo lsof -i :20170
 # man tcp
-# 抓包: sudo tcpdump -i wlan0 port 80
+# 抓包: sudo tcpdump -i wlan0 -nn icmp -w ./target.cap (-nn: 以数字显示 -w: 写入文件,可以使用wireshark打开)
+#                    src/dst host
+#                    host
+#                    post ! 22
+#                    tcp
 # sudo ping -s 1230 www.baidu.com -f
 # arp缓存: arp -n   arp绑定: arp -s
 # 检查地址冲突: arping 
