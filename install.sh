@@ -37,5 +37,9 @@ sudo systemctl enable --now reflector.timer
 sudo sh -c "echo 'kernel.sysrq = 1
 vm.swappiness = 1' > /etc/sysctl.d/99-sysctl.conf"
 
+# vlc
+[[ -d ~/.config/vlc ]] && rm ~/.config/vlc
+ln -s ~/myconfig/appdate/vlc ~/.config/
+
 # fonts
 #ln -sf /home/f/myconfig/appdate/fonts /home/f/.local/share/fonts

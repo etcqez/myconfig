@@ -286,7 +286,9 @@ alias tp="type -a" #同where
 alias which="which -a"
 
 #windows
-alias win="sudo ntfsfix /dev/nvme0n1p3;sudo mount -o rw /dev/nvme0n1p3 /mnt"
+alias win="sudo ntfsfix /dev/nvme0n1p4;sudo mount -o rw /dev/nvme0n1p4 /mnt"
+alias winiso="sudo woeusb --device *.iso /dev/sda --target-filesystem ntfs"
+alias umn="cd; sudo umount -R /mnt"
 
 #system
 alias enable="sudo systemctl enable --now"
@@ -503,11 +505,12 @@ alias tees="sudo tee -a"
 # alias ss="sudo ss -ntlp"
 # 查看端口被那个进程使用: sudo lsof -i :20170
 # man tcp
-# 抓包: sudo tcpdump -i wlan0 -nn icmp -w ./target.cap (-nn: 以数字显示 -w: 写入文件,可以使用wireshark打开)
+# 抓包: sudo tcpdump -i wlan0 -nn icmp and (每个条件用and分割)    eg: tcpdump -i eth0 -nn icmp and src host 10.0.0.6 and dst host 10.0.0.7
 #                    src/dst host
 #                    host
 #                    post ! 22
 #                    tcp
+#                    -w ./target.cap (-nn: 以数字显示 -w: 写入文件,可以使用wireshark打开)
 # sudo ping -s 1230 www.baidu.com -f
 # arp缓存: arp -n   arp绑定: arp -s
 # 检查地址冲突: arping 
@@ -519,6 +522,7 @@ alias tees="sudo tee -a"
 # team: nmcli connection add con-name myteam0 ifname team0 type team config '{"runner":{"name":"roundrobin"}}'; nmcli connection modify wlan0 team0; sudo teamdctl team0 state
 # 网桥(同交换机): brctl addbr/addif/show; brctl showmacs virbr0 (查看端口对应的mac,同交换机的mac表)
 #     生成树协议(stp: spanning tree): 防止广播风暴    启用: brctl stp br0 on
+# 扫描: nmap -sP 192.168.43.0/24
 alias re="nmcli device wifi rescan"
 alias hotspot="nmcli device wifi hotspot"
 alias offhotspot="nmcli connection down Hotspot"

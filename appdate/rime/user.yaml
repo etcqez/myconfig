@@ -1,8 +1,8 @@
 var:
-  last_build_time: 1713174310
+  last_build_time: 1713356263
   option:
     ascii_punct: true
     full_shape: false
   previously_selected_schema: wubi_pinyin
   schema_access_time:
-    wubi_pinyin: 1713174088
+    wubi_pinyin: 1713343818

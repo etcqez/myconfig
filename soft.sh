@@ -1,4 +1,4 @@
-sudo pacman -S --need cpupower emacs neovim xclip neofetch firefox screen network-manager-applet dosfstools reflector iotop qt5ct smartmontools gparted woeusb vlc htop ntfs-3g newsflash os-prober kitty ripgrep gammastep ncompress apache nginx dolphin tcpdump iotop smartmontools pipewire-pulse python-pipx v2raya-git cpu-x virtualbox usbutils pot-translation-git snapper tesseract-ocr-eng net-tools
+sudo pacman -S --need cpupower emacs neovim xclip neofetch firefox screen network-manager-applet dosfstools reflector iotop qt5ct smartmontools gparted woeusb vlc htop ntfs-3g newsflash os-prober kitty ripgrep gammastep ncompress apache nginx dolphin tcpdump iotop smartmontools pipewire-pulse python-pipx v2raya-git cpu-x virtualbox usbutils pot-translation-git snapper tesseract-ocr-eng net-tools wireshark-qt nmap syncthing
 
 # pip
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
