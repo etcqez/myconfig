@@ -34,9 +34,16 @@ alias gurl="git remote get-url origin"
 export TERM=xterm-256color
 export COLORTERM=truecolor
 
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv virtualenv-init -)"
+# pyenv
+# pyenv install -l | less
+# pyenv virtualenv 3.9.9 v399
+# pyenv local v399
+# pyenv version
+# pyenv versions
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 #必须放最前面 (gentoo命令补全)
 #autoload -U compinit promptinit
@@ -253,6 +260,7 @@ alias halt="poweroff"
 alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias p="ping www.baidu.com"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -299,6 +307,7 @@ alias status="sudo systemctl status"
 alias stop="sudo systemctl stop"
 alias start="sudo systemctl start"
 alias restart="sudo systemctl restart"
+alias sd="sudo systemctl restart sddm.service"
 
 # nvim emacs
 alias e="emacs"
@@ -361,7 +370,7 @@ alias srf="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rcn"
-alias y="proxy yay -S"
+alias pr="paru -S --noconfirm"
 
 # hugo
 alias hs="hugo server"
@@ -369,8 +378,10 @@ alias hn="hugo new "
 alias hc="hugo --cleanDestinationDir"
 
 # python
-alias p="python"
+alias py="python"
 alias pydoc="sudo pydoc -p 80"
+alias j="jupyter notebook"
+alias i="ipython"
 
 # proxy
 alias proxy="env all_proxy=socks://127.0.0.1:20170"
@@ -520,7 +531,7 @@ alias tees="sudo tee -a"
 #             /etc/NetworkManager/system-connections/CMCC-dZk1.nmconnection
 #             为wifi指定网卡: nmcli connection modify CMCC-dZk1 connection.interface-name wlan0
 #             为wifi起别名: nmcli connection modify CMCC-dZk1 con-name rtl; nmcli connection modify CMCC-dZk1\ 1 con-name rt; nmcli connection
-# team: nmcli connection add con-name myteam0 ifname team0 type team config '{"runner":{"name":"roundrobin"}}'; nmcli connection modify wlan0 team0; sudo teamdctl team0 state
+# team,bind: nmcli connection add con-name myteam0 ifname team0 type team config '{"runner":{"name":"roundrobin"}}'; nmcli connection modify wlan0 team0; sudo teamdctl team0 state
 # 网桥(同交换机): brctl addbr/addif/show; brctl showmacs virbr0 (查看端口对应的mac,同交换机的mac表)
 #     生成树协议(stp: spanning tree): 防止广播风暴    启用: brctl stp br0 on
 # 扫描: nmap -sP 192.168.43.0/24

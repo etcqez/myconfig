@@ -1522,7 +1522,7 @@ skins2-last=/usr/share/vlc/skins2/default.vlt
 #qt-fs-opacity=0.800000
 
 # Resize interface to the native video size (boolean)
-qt-video-autoresize=0
+#qt-video-autoresize=1
 
 # Show playing item name in window title (boolean)
 #qt-name-in-title=1
@@ -2752,7 +2752,7 @@ sout-x26410b-tune=film
 #alsa-audio-channels=6
 
 # Software gain (float)
-alsa-gain=0.506023
+alsa-gain=0.347614
 
 [afile] # File audio output
 
@@ -3624,7 +3624,7 @@ audio-resampler=any
 #grayscale=0
 
 # Fullscreen video output (boolean)
-fullscreen=1
+#fullscreen=0
 
 # Embedded video (boolean)
 #embedded-video=1
@@ -3639,7 +3639,7 @@ fullscreen=1
 #skip-frames=1
 
 # Quiet synchro (boolean)
-#quiet-synchro=0
+quiet-synchro=1
 
 # Key press events (boolean)
 #keyboard-events=1
@@ -3654,7 +3654,7 @@ fullscreen=1
 #video-wallpaper=0
 
 # Disable screensaver (boolean)
-disable-screensaver=0
+#disable-screensaver=1
 
 # Show media title on video (boolean)
 #video-title-show=1
@@ -4110,10 +4110,10 @@ play-and-pause=1
 #advanced=0
 
 # Interface interaction (boolean)
-#interact=1
+interact=0
 
 # Locally collect statistics (boolean)
-#stats=1
+stats=0
 
 # Interface module (string)
 #intf=
@@ -4242,13 +4242,13 @@ key-rate-slower-fine=
 #global-key-jump-medium=
 
 # Medium backwards jump (string)
-#key-jump-medium=Ctrl+Left
+key-jump-medium=
 
 # Medium forward jump (string)
 #global-key-jump+medium=
 
 # Medium forward jump (string)
-#key-jump+medium=Ctrl+Right
+key-jump+medium=
 
 # Long backwards jump (string)
 #global-key-jump-long=
@@ -4338,13 +4338,13 @@ key-rate-slower-fine=
 #global-key-vol-up=
 
 # Volume up (string)
-#key-vol-up=Ctrl+Up	Volume Up
+key-vol-up=Mouse Wheel Up
 
 # Volume down (string)
 #global-key-vol-down=
 
 # Volume down (string)
-#key-vol-down=Ctrl+Down	Volume Down
+key-vol-down=Mouse Wheel Down
 
 # Mute (string)
 #global-key-vol-mute=

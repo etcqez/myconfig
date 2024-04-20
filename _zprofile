@@ -9,10 +9,10 @@ SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
 
 exec motrix &
-screen pot &
+exec pot &
 # emacs
 export LC_CTYPE=zh_CN.UTF-8
-# export XMODIFIERS=@im=fcitx
+export XMODIFIERS=@im=fcitx
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec Hyprland
