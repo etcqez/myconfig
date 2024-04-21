@@ -261,6 +261,7 @@ alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias p="ping www.baidu.com"
+alias io="sudo iotop -o -d 2"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
