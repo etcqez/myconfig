@@ -294,9 +294,9 @@ alias cm="cd ~/myconfig"
 alias tp="type -a" #同where
 alias which="which -a"
 
-#windows
+# windows
+# sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
 alias win="sudo ntfsfix /dev/nvme0n1p4;sudo mount -o rw /dev/nvme0n1p4 /mnt"
-alias winiso="sudo woeusb --device *.iso /dev/sda --target-filesystem ntfs"
 alias umn="cd; sudo umount -R /mnt"
 
 #system
