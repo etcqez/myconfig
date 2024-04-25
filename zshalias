@@ -261,7 +261,7 @@ alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias p="ping www.baidu.com"
-alias io="sudo iotop -o -d 2"
+alias io="sudo iotop -o -d 2 -q"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -541,9 +541,19 @@ alias hotspot="nmcli device wifi hotspot"
 alias offhotspot="nmcli connection down Hotspot"
 
 # zsh
-bindkey "^P" up-line-or-search 2>> /dev/null
-bindkey "^N" down-line-or-searc 2>> /dev/null
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-searc
 
 # 有意思的写法
 # 叛断端口号是否打开< /dev/tcp/127.0.0.1/2017
 # ping 十进制数字 (ip地址转化的十进制)
+# Use bash-like word definitions for navigation and operations
+
+# bash C-w
+autoload -Uz select-word-style
+select-word-style bash
+
+# Use C-w to kill back to the previous space
+zle -N backward-kill-space-word backward-kill-word-match
+zstyle :zle:backward-kill-space-word word-style space
+bindkey '^W' backward-kill-space-word

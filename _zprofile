@@ -8,8 +8,11 @@ XMODIFIERS=@im=fcitx
 SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
 
+QT_QPA_PLATFORMTHEME=qt5ct
+
 exec motrix &
 exec pot &
+
 # emacs
 export LC_CTYPE=zh_CN.UTF-8
 export XMODIFIERS=@im=fcitx
