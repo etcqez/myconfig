@@ -2752,7 +2752,7 @@ sout-x26410b-tune=film
 #alsa-audio-channels=6
 
 # Software gain (float)
-alsa-gain=8.000000
+alsa-gain=0.823975
 
 [afile] # File audio output
 
@@ -3828,7 +3828,7 @@ vout=gl
 input-fast-seek=1
 
 # Playback speed (float)
-rate=2.000000
+#rate=1.000000
 
 # Input list (string)
 #input-list=
@@ -3999,7 +3999,7 @@ rate=2.000000
 mux=any
 
 # Access output module (string)
-#access_output=
+access_output=any
 
 # Hop limit (TTL) (integer)
 #ttl=-1

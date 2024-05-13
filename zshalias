@@ -256,7 +256,7 @@ alias loc="locale"
 alias rs="echo \$?"
 alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
 alias mt="mount | column -t"
-alias halt="poweroff"
+alias halt="systemctl poweroff -i"
 alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -297,13 +297,13 @@ alias which="which -a"
 
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
-alias win="sudo ntfsfix /dev/nvme0n1p4;sudo mount -o rw /dev/nvme0n1p4 /mnt"
+alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount -o rw /dev/nvme0n1p5 /mnt"
 alias umn="cd; sudo umount -R /mnt"
 
 #system
 alias enable="sudo systemctl enable --now"
 alias disable="sudo systemctl disable"
-alias sus="systemctl suspend"
+alias sus="systemctl suspend -i"
 alias status="sudo systemctl status"
 alias stop="sudo systemctl stop"
 alias start="sudo systemctl start"

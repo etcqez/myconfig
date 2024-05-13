@@ -12,11 +12,12 @@ QT_QPA_PLATFORMTHEME=qt5ct
 
 exec motrix &
 exec pot &
+exec gammastep -O 5500K &
 
 # emacs
 export LC_CTYPE=zh_CN.UTF-8
 export XMODIFIERS=@im=fcitx
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec Hyprland
-fi
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  # exec Hyprland
+# fi
