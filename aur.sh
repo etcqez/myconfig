@@ -1,1 +1,1 @@
-yay -S tor-browser-bin rtl8812au-aircrack-ng-dkms-git ttf-all-the-icons
+yay -S tor-browser-bin ttf-all-the-icons
