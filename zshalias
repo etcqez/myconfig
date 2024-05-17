@@ -34,17 +34,6 @@ alias gurl="git remote get-url origin"
 export TERM=xterm-256color
 export COLORTERM=truecolor
 
-# pyenv
-# pyenv install -l | less
-# pyenv virtualenv 3.9.9 v399
-# pyenv local v399
-# pyenv version
-# pyenv versions
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 #必须放最前面 (gentoo命令补全)
 #autoload -U compinit promptinit
 #compinit
@@ -349,21 +338,12 @@ alias dri="docker rmi"
 # snapper -c root list
 # snapper -c root create -t single
 # sudo snapper create-config -f btrfs /
-# sudo snapper -c home create-config -f btrfs /home
 # sudo snapper list-configs
 # 删除配置: snapper -c root delete-config
-alias ro="sudo snapper -c root"
-alias ho="sudo snapper -c home"
-alias li="sudo snapper list;echo;sudo snapper -c home list"
-alias rl="sudo snapper list"
-alias hl="sudo snapper -c home list"
-alias rd="sudo snapper delete"
-alias hd="sudo snapper -c home delete"
-alias pre="sudo snapper -c root create -t pre -p;sudo snapper -c home create -t pre -p"
-alias rpre="sudo snapper -c root create -t pre -p"
-alias hpre="sudo snapper -c home create -t pre -p"
-alias rp="sudo snapper -c root create -t post -p --pre-number"
-alias hp="sudo snapper -c home create -t post -p --pre-number"
+alias li="sudo snapper list"
+alias de="sudo snapper delete"
+alias pre="sudo snapper -c root create -t pre -p"
+alias pos="sudo snapper -c root create -t post -p --pre-number"
 
 # arch
 alias s="sudo pacman -S --need"
@@ -371,7 +351,6 @@ alias srf="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rcn"
-alias pr="paru -S --noconfirm"
 
 # hugo
 alias hs="hugo server"
@@ -423,7 +402,7 @@ alias pw="cat /etc/passwd | awk -F: '{printf \"%-15s%s\n\",\$1,\$NF}'"
 alias ii="iwctl station wlan1 get-networks"
 
 # ls
-alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias la='eza -lha --sort=name --group-directories-first' # long list all
 alias a="eza -ha --sort=name --group-directories-first"
 #alias .file="ls -d .*"
 #alias .dir="ls -d .*/"
@@ -433,10 +412,10 @@ alias sl="sudo ls --color=tty -lhAt"
 
 # Helpful aliases
 alias  c='clear' # clear terminal
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
-alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
+alias l='eza --sort=name --group-directories-first'
+alias ls='eza --sort=name --group-directories-first'
+alias ll='eza -lha --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD' # long list dirs
 alias un='$aurhelper -Rns' # uninstall package
 alias up='$aurhelper -Syu' # update system/package/aur
 alias pl='$aurhelper -Qs' # list installed package

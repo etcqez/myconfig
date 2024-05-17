@@ -1,23 +1,19 @@
-PATH=~/.local/bin:$PATH
-
-BROWSER=firefox
-EDITOR=nvim
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-SDL_IM_MODULE=fcitx
-GLFW_IM_MODULE=ibus
-
-QT_QPA_PLATFORMTHEME=qt5ct
-
-exec motrix &
-exec pot &
-exec gammastep -O 5500K &
-
-# emacs
-export LC_CTYPE=zh_CN.UTF-8
-export XMODIFIERS=@im=fcitx
-
+#exec motrix &
+#exec pot &
+#exec gammastep -O 5500K &
 # if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   # exec Hyprland
 # fi
+#PATH=~/.local/bin:$PATH
+#BROWSER=firefox
+#EDITOR=nvim
+#QT_QPA_PLATFORMTHEME=qt5ct
+#GTK_IM_MODULE=fcitx
+#QT_IM_MODULE=fcitx
+#XMODIFIERS=@im=fcitx
+#INPUT_METHOD=fcitx
+#SDL_IM_MODULE=fcitx
+#GLFW_IM_MODULE=ibus
+#LC_CTYPE=zh_CN.UTF-8
+#XMODIFIERS=@im=fcitx
+#QT_STYLE_OVERRIDE=adwaita
