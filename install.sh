@@ -2,6 +2,7 @@ set -u
 
 git config --global user.name etcqez
 git config --global user.email etcqez@outlook.com
+git config --global init.defaultBranch main
 
 # zsh
 #ln -s ~/myconfig/_zprofile ~/.zprofile
