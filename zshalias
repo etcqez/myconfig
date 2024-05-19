@@ -288,7 +288,7 @@ alias which="which -a"
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
 alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount -o rw /dev/nvme0n1p5 /mnt"
-alias umn="cd; sudo umount -R /mnt"
+alias um="cd; sudo umount -R /mnt"
 
 #system
 alias enable="sudo systemctl enable --now"
@@ -441,11 +441,11 @@ alias ssh='kitten ssh'
 alias shsh="sudo sh -c"
 alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
-
 alias tees="sudo tee -a"
 
 ##gentoo
-alias ge="sudo arch-chroot /mnt/gentoo"
+alias gentoo-chroot="sh ~/myconfig/chroot-gentoo.sh"
+alias ug="sudo umount -R /mnt/gentoo"
 #alias sr="emerge --search"
 #alias vj="sudo emerge -vj"
 #alias vp="sudo emerge -vjp"
