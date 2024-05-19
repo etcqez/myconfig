@@ -444,7 +444,7 @@ alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --late
 alias tees="sudo tee -a"
 
 ##gentoo
-alias gentoo-chroot="sh ~/myconfig/chroot-gentoo.sh"
+alias gentoo-chroot="sh ~/myconfig/gentoo-chroot.sh"
 alias ug="sudo umount -R /mnt/gentoo"
 #alias sr="emerge --search"
 #alias vj="sudo emerge -vj"
