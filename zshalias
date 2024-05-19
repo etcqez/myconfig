@@ -5,17 +5,17 @@
 # sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
 alias gi="git init;gam"
 alias gam="git add * .*;git commit -am '更新配置文件'"
-# alias grr="git remove origin"
+alias gr="git remote remove origin"
+alias gg="git remote get-url origin"
+alias ga="git remote add origin"
 alias gs="git status"
 alias gcl="proxy git clone --depth 1"
 alias ga="git add"
 alias gc="git commit"
-alias gp="git push"
 alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
-alias gg="gam;gp"
-alias gurl="git remote get-url origin"
+alias gp="gam;gp"
 
 #同步文件系统
 # ext4: resize2fs /dev/lvm
@@ -445,6 +445,7 @@ alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --late
 alias tees="sudo tee -a"
 
 ##gentoo
+alias ge="sudo arch-chroot /mnt/gentoo"
 #alias sr="emerge --search"
 #alias vj="sudo emerge -vj"
 #alias vp="sudo emerge -vjp"
