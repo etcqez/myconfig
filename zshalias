@@ -15,7 +15,7 @@ alias gc="git commit"
 alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
-alias gp="gam;gp"
+alias gp="gam;git push"
 
 #同步文件系统
 # ext4: resize2fs /dev/lvm
