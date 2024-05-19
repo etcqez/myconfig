@@ -369,7 +369,7 @@ alias proxy="env all_proxy=socks://127.0.0.1:20170"
 #single
 alias lg="lazygit"
 alias du="sudo du -sh"
-alias df="df -hTP"
+alias df="df -hP"
 alias mkdir="mkdir -pv"
 alias h="history -50"
 alias nf="neofetch"

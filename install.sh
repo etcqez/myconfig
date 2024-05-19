@@ -36,7 +36,7 @@ vm.swappiness = 1' > /etc/sysctl.d/99-sysctl.conf"
 
 # vlc
 [[ -d ~/.config/vlc ]] && rm ~/.config/vlc
-mkdir ~/.config
+[[ -n ~/.config ]] && mkdir ~/.config
 ln -s ~/myconfig/appdate/vlc ~/.config/
 
 # fonts

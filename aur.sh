@@ -1,1 +1,1 @@
-yay -S tor-browser-bin ttf-all-the-icons
+yay -S  ttf-all-the-icons
