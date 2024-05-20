@@ -298,7 +298,6 @@ alias status="sudo systemctl status"
 alias stop="sudo systemctl stop"
 alias start="sudo systemctl start"
 alias restart="sudo systemctl restart"
-alias sd="sudo systemctl restart sddm.service"
 
 # nvim emacs
 alias e="emacs"
@@ -444,7 +443,9 @@ alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --late
 alias tees="sudo tee -a"
 
 ##gentoo
-alias gentoo-chroot="sh ~/myconfig/gentoo-chroot.sh"
+alias mg="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
+alias cg="sudo arch-chroot /mnt/gentoo"
+alias mcg="mg;cg"
 alias ug="sudo umount -R /mnt/gentoo"
 #alias sr="emerge --search"
 #alias vj="sudo emerge -vj"
