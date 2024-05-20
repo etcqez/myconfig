@@ -11,37 +11,33 @@ git config --global init.defaultBranch main
 sudo sh -c "cat /home/f/myconfig/zshalias >> /etc/bash.bashrc"
 
 # sysctl
+[[ ! -a /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
 sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
 # keyd
-sudo pacman -S --need --noconfirm keyd
-sudo ln -s /home/f/myconfig/appdate/default.conf /etc/keyd
+[[ ! -a /etc/keyd ]] && sudo mkdir /etc/keyd
+sudo ln -sf /home/f/myconfig/save/default.conf /etc/keyd
 sudo systemctl enable keyd --now
 
 # usb-wakeup
 sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
-mkdir -p /home/f/.local/share/fcitx5
-ln -s /home/f/myconfig/appdate/rime /home/f/.local/share/fcitx5
-
-# reflector
-sudo pacman -S --need --noconfirm reflector
-sudo ln -sf /home/f/myconfig/appdate/reflector.conf /etc/xdg/reflector/reflector.conf
-sudo systemctl enable --now reflector.timer
+[[ -a /home/f/.local/share/fcitx5 ]] && mkdir -p /home/f/.local/share/fcitx5
+ln -s /home/f/myconfig/save/rime /home/f/.local/share/fcitx5
 
 # sysrq
-sudo sh -c "echo 'kernel.sysrq = 1
-vm.swappiness = 1' > /etc/sysctl.d/99-sysctl.conf"
+[[ ! -a /etc/sysctl.d/99-sysctl.conf ]] && sudo mkdir /etc/sysctl.d/99-sysctl.conf
+sudo sh -c "echo -e 'kernel.sysrq = 1\nvm.swappiness = 1' > /etc/sysctl.d/99-sysctl.conf"
 
-# vlc
-[[ -d ~/.config/vlc ]] && rm ~/.config/vlc
-[[ -n ~/.config ]] && mkdir ~/.config
-ln -s ~/myconfig/appdate/vlc ~/.config/
+## vlc
+#[[ -d ~/.config/vlc ]] && rm ~/.config/vlc
+#[[ -n ~/.config ]] && mkdir ~/.config
+#ln -s ~/myconfig/save/vlc ~/.config/
 
 # fonts
-#ln -sf /home/f/myconfig/appdate/fonts /home/f/.local/share/fonts
+#ln -sf /home/f/myconfig/save/fonts /home/f/.local/share/fonts
 # hypr
 #mv ~/.config/hypr/userprefs.conf{,.bak}
-#ln -sf ~/myconfig/appdate/userprefs.conf ~/.config/hypr/userprefs.conf
+#ln -sf ~/myconfig/save/userprefs.conf ~/.config/hypr/userprefs.conf
 
