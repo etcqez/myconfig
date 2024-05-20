@@ -1,2 +1,4 @@
-appdate/rime/*.userdb
-appdate/rime/sync/*
+save/rime/*.userdb
+save/rime/sync/*
+save/rime/build/*
+save/rime/wubi86.userdb/*
