@@ -23,8 +23,8 @@ sudo systemctl enable keyd --now
 sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
-[[ -a /home/f/.local/share/fcitx5 ]] && mkdir -p /home/f/.local/share/fcitx5
-ln -s /home/f/myconfig/save/rime /home/f/.local/share/fcitx5
+[[ -n /home/f/.local/share/fcitx5 ]] && mkdir -p /home/f/.local/share/fcitx5
+ln -sf /home/f/myconfig/save/rime /home/f/.local/share/fcitx5
 
 # sysrq
 [[ ! -a /etc/sysctl.d/99-sysctl.conf ]] && sudo mkdir /etc/sysctl.d/99-sysctl.conf
