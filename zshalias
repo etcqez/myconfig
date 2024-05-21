@@ -307,7 +307,9 @@ alias zs="nvim ~/myconfig/zshalias"
 alias sf="nvim ~/myconfig/soft.sh"
 alias aur="nvim ~/myconfig/aur.sh"
 alias v="nvim"
+alias n="nvim"
 alias sv="sudo nvim"
+alias sn="sudo nvim"
 
 
 # docker
@@ -340,6 +342,7 @@ alias dri="docker rmi"
 # sudo snapper create-config -f btrfs /
 # sudo snapper list-configs
 # 删除配置: snapper -c root delete-config
+alias st="sudo snapper status"
 alias li="sudo snapper list"
 alias de="sudo snapper delete"
 alias pre="sudo snapper -c root create -t pre -p"
