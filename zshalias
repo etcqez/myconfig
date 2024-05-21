@@ -353,7 +353,7 @@ alias po="sudo snapper -c root create -t post -p --pre-number"
 alias s="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
-alias rc="sudo pacman -Rcn"
+alias rc="sudo pacman -Rs"
 
 # hugo
 alias hs="hugo server"
