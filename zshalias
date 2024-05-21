@@ -343,10 +343,11 @@ alias dri="docker rmi"
 # sudo snapper list-configs
 # 删除配置: snapper -c root delete-config
 alias st="sudo snapper status"
+alias st="sudo snapper undochange"
 alias li="sudo snapper list"
 alias de="sudo snapper delete"
-alias pre="sudo snapper -c root create -t pre -p"
-alias pos="sudo snapper -c root create -t post -p --pre-number"
+alias pr="sudo snapper -c root create -t pre -p"
+alias po="sudo snapper -c root create -t post -p --pre-number"
 
 # arch
 alias s="sudo pacman -S"
