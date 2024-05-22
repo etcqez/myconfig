@@ -4,8 +4,9 @@ git config --global user.name etcqez
 git config --global user.email etcqez@outlook.com
 git config --global init.defaultBranch main
 
-# zsh
-#ln -s ~/myconfig/_zprofile ~/.zprofile
+#font
+[[ ! -d /usr/share/fonts ]] && sudo mkdir /usr/share/fonts
+sudo ln -sf ~/myconfig/myfonts /usr/share/fonts
 
 # bash
 sudo sh -c "cat /home/f/myconfig/zshalias >> /etc/bash.bashrc"
@@ -22,7 +23,7 @@ sudo ln -sf /home/f/myconfig/save/default.conf /etc/keyd
 sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
-[[ -n /home/f/.local/share/fcitx5 ]] && mkdir -p /home/f/.local/share/fcitx5
+[[ -a /home/f/.local/share/fcitx5 ]] && mkdir -p /home/f/.local/share/fcitx5
 ln -sf /home/f/myconfig/save/rime /home/f/.local/share/fcitx5
 
 # sysrq
@@ -31,7 +32,7 @@ sudo sh -c "echo -e 'kernel.sysrq = 1\nvm.swappiness = 1' > /etc/sysctl.d/99-sys
 
 ## vlc
 #[[ -d ~/.config/vlc ]] && rm ~/.config/vlc
-#[[ -n ~/.config ]] && mkdir ~/.config
+#[[ -a ~/.config ]] && mkdir ~/.config
 #ln -s ~/myconfig/save/vlc ~/.config/
 
 # fonts
@@ -39,4 +40,7 @@ sudo sh -c "echo -e 'kernel.sysrq = 1\nvm.swappiness = 1' > /etc/sysctl.d/99-sys
 # hypr
 #mv ~/.config/hypr/userprefs.conf{,.bak}
 #ln -sf ~/myconfig/save/userprefs.conf ~/.config/hypr/userprefs.conf
+
+# zsh
+#ln -s ~/myconfig/_zprofile ~/.zprofile
 

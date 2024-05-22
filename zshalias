@@ -17,6 +17,10 @@ alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
 
+# 字体
+alias font="fc-list :lang=zh"
+alias fcc="sudo fc-cache -f -v"
+
 #同步文件系统
 # ext4: resize2fs /dev/lvm
 # xfs: xfs_growfs /mountpoint
@@ -307,9 +311,8 @@ alias zs="nvim ~/myconfig/zshalias"
 alias sf="nvim ~/myconfig/soft.sh"
 alias aur="nvim ~/myconfig/aur.sh"
 alias v="nvim"
-alias n="nvim"
+alias vim="nvim"
 alias sv="sudo nvim"
-alias sn="sudo nvim"
 
 
 # docker
