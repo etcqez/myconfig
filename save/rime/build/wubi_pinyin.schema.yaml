@@ -1,14 +1,14 @@
 __build_info:
-  rime_version: 1.7.3
+  rime_version: 1.9.0
   timestamps:
-    default: 1716211201
-    default.custom: 1716211201
-    key_bindings: 1716211201
+    default: 1716355334
+    default.custom: 1716361388
+    key_bindings: 1716355334
     key_bindings.custom: 0
-    punctuation: 1716211201
+    punctuation: 1716355334
     punctuation.custom: 0
-    wubi_pinyin.custom: 1716211201
-    wubi_pinyin.schema: 1716211201
+    wubi_pinyin.custom: 1716355334
+    wubi_pinyin.schema: 1716355334
 abc_segmentor:
   extra_tags:
     - reverse_lookup
@@ -67,7 +67,7 @@ key_binder:
     - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
   import_preset: default
 menu:
-  page_size: 10
+  page_size: 3
 punctuator:
   full_shape:
     " ": {commit: "　"}
