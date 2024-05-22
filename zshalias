@@ -1,5 +1,9 @@
 # 备忘录
 # sudo sysctl --system
+# nixos
+alias ni="sudo nix-env -iA"
+alias niu="sudo nix-env --uninstall"
+alias nc="nvim ~/mynix/configuration.nix"
 # git
 # alias gi="git init -b main"
 # sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
@@ -256,6 +260,7 @@ alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias p="ping www.baidu.com"
 alias io="sudo iotop -o -d 2 -q"
+alias pul="systemctl --user restart pipewire.socket"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -306,9 +311,8 @@ alias restart="sudo systemctl restart"
 # nvim emacs
 alias e="emacs"
 alias ec="emacsclient -t"
-alias daemon="emacs --daemon"
+alias eec="emacs --daemon;ec"
 alias zs="nvim ~/myconfig/zshalias"
-alias sf="nvim ~/myconfig/soft.sh"
 alias aur="nvim ~/myconfig/aur.sh"
 alias v="nvim"
 alias vim="nvim"
