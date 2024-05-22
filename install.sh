@@ -17,7 +17,6 @@ sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
 # keyd
 [[ ! -a /etc/keyd ]] && sudo mkdir /etc/keyd
 sudo ln -sf /home/f/myconfig/save/default.conf /etc/keyd
-sudo systemctl enable keyd --now
 
 # usb-wakeup
 sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
