@@ -350,7 +350,7 @@ alias dri="docker rmi"
 # sudo snapper list-configs
 # 删除配置: snapper -c root delete-config
 alias st="sudo snapper status"
-alias st="sudo snapper undochange"
+alias un="sudo snapper undochange"
 alias li="sudo snapper list"
 alias de="sudo snapper delete"
 alias pr="sudo snapper -c root create -t pre -p"
@@ -361,6 +361,7 @@ alias s="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rs"
+alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
 
 # hugo
 alias hs="hugo server"
