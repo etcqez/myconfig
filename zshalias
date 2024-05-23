@@ -10,8 +10,8 @@ alias nc="nvim ~/mynix/configuration.nix"
 alias gi="git init;gam"
 alias gam="git add * .*;git commit -am '更新配置文件'"
 alias gr="git remote remove origin"
-alias gg="git remote get-url origin"
-alias ga="git remote add origin"
+alias grg="git remote get-url origin"
+alias gra="git remote add origin"
 alias gs="git status"
 alias gcl="proxy git clone --depth 1"
 alias ga="git add"
@@ -426,12 +426,6 @@ alias l='eza --sort=name --group-directories-first'
 alias ls='eza --sort=name --group-directories-first'
 alias ll='eza -lha --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD' # long list dirs
-alias un='$aurhelper -Rns' # uninstall package
-alias up='$aurhelper -Syu' # update system/package/aur
-alias pl='$aurhelper -Qs' # list installed package
-alias pa='$aurhelper -Ss' # list availabe package
-alias pc='$aurhelper -Sc' # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='code' # gui code editor
 
 # Handy change dir shortcuts
