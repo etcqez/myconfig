@@ -248,19 +248,17 @@ alias timezone="sudo timedatectl set-timezone"
 alias ntp="sudo timedatectl set-ntp 1"
 alias cal="cal -y"
 alias zh="LANG=zh_CN.UTF-8"
-alias en="LANG=en_US.UTF-8"
+alias eng="LANG=en_US.UTF-8"
 alias lang="echo \$LANG"
 alias loc="locale"
 alias rs="echo \$?"
 alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
 alias mt="mount | column -t"
-alias halt="systemctl poweroff -i"
 alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias p="ping www.baidu.com"
 alias io="sudo iotop -o -d 2 -q"
-alias pul="systemctl --user restart pipewire.socket"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -300,13 +298,21 @@ alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount -o rw /dev/nvme0n1p5 /mnt"
 alias um="cd; sudo umount -R /mnt"
 
 #system
-alias enable="sudo systemctl enable --now"
-alias disable="sudo systemctl disable"
+alias vol="systemctl --user restart pipewire.socket"
+alias halt="systemctl poweroff -i"
 alias sus="systemctl suspend -i"
-alias status="sudo systemctl status"
-alias stop="sudo systemctl stop"
-alias start="sudo systemctl start"
-alias restart="sudo systemctl restart"
+alias en="sudo systemctl enable --now"
+alias uen="systemctl --user enable --now"
+alias dis="sudo systemctl disable"
+alias udis="systemctl --user disable"
+alias st="sudo systemctl status"
+alias ust="systemctl --user status"
+alias sto="sudo systemctl stop"
+alias usto="systemctl --user stop"
+alias sta="sudo systemctl start"
+alias usta="systemctl --user start"
+alias re="sudo systemctl restart"
+alias ure="systemctl --user restart"
 
 # nvim emacs
 alias e="emacs"
@@ -523,7 +529,7 @@ alias ug="sudo umount -R /mnt/gentoo"
 # 网桥(同交换机): brctl addbr/addif/show; brctl showmacs virbr0 (查看端口对应的mac,同交换机的mac表)
 #     生成树协议(stp: spanning tree): 防止广播风暴    启用: brctl stp br0 on
 # 扫描: nmap -sP 192.168.43.0/24
-alias re="nmcli device wifi rescan"
+alias rescan="nmcli device wifi rescan"
 alias hotspot="nmcli device wifi hotspot"
 alias offhotspot="nmcli connection down Hotspot"
 
