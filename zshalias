@@ -1,4 +1,9 @@
-# 备忘录
+# show error
+# dmesg; journalctl -xe (x: show explanatory texts e: end)
+alias jour="journalctl -xe"
+alias dmesg="sudo dmesg"
+# 
+# memorandum
 # sudo sysctl --system
 # nixos
 alias ni="sudo nix-env -iA"
@@ -39,6 +44,13 @@ alias fcc="sudo fc-cache -f -v"
 # resize2fs /dev/VG_NAME/LV_NAME 1G
 # lvreduce -L 1G /dev/VG_NAME/LV_NAME
 # mount
+# thin
+# sudo lvcreate -L 150G -T vg_linux/thin_pool
+# sudo lvcreate -V 50G -T vg_linux/thin_pool -n thin_pop
+# sudo lvremove vg_linux/thin_pop
+alias lvs="sudo lvs"
+alias vgs="sudo vgs"
+alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
@@ -259,6 +271,7 @@ alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias p="ping www.baidu.com"
 alias io="sudo iotop -o -d 2 -q"
+alias iotop="sudo iotop"
 
 # 磁盘管理
 # 创建设备文件: mknod nvme1 b 259 1 (b: 块设备 259: 设备类型 1: 设备编号)
@@ -319,6 +332,7 @@ alias e="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="nvim ~/myconfig/zshalias"
+alias .="source ~/myconfig/zshalias"
 alias aur="nvim ~/myconfig/aur.sh"
 alias v="nvim"
 alias vim="nvim"
@@ -355,7 +369,7 @@ alias dri="docker rmi"
 # sudo snapper create-config -f btrfs /
 # sudo snapper list-configs
 # 删除配置: snapper -c root delete-config
-alias st="sudo snapper status"
+alias sn="sudo snapper status"
 alias un="sudo snapper undochange"
 alias li="sudo snapper list"
 alias de="sudo snapper delete"
