@@ -1,3 +1,7 @@
+#必须放最前面 (gentoo命令补全)
+autoload -U compinit promptinit
+compinit
+
 # show error
 # dmesg; journalctl -xe (x: show explanatory texts e: end)
 alias jour="journalctl -xe"
@@ -54,11 +58,6 @@ alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
-
-#必须放最前面 (gentoo命令补全)
-#autoload -U compinit promptinit
-#compinit
-#promptinit; prompt gentoo
 
 # emacs verm
 vterm_printf() {
@@ -328,7 +327,7 @@ alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
 
 # nvim emacs
-alias e="emacs"
+alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="nvim ~/myconfig/zshalias"
@@ -473,6 +472,7 @@ alias mg="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/
 alias cg="sudo arch-chroot /mnt/gentoo"
 alias mcg="mg;cg"
 alias ug="sudo umount -R /mnt/gentoo"
+alias e="sudo emerge"
 #alias sr="emerge --search"
 #alias vj="sudo emerge -vj"
 #alias vp="sudo emerge -vjp"
@@ -481,9 +481,6 @@ alias ug="sudo umount -R /mnt/gentoo"
 #alias esync="sudo emerge --sync"
 #alias ewrld="sudo emerge --keep-going  -avjuDN @world" --exclude="nvim* vscodium"
 #alias erbld="sudo emerge --ask @module-rebuild"
-#alias ra="sudo rc-update add"
-#alias rd="sudo rc-update del"
-#alias rs="sudo rc-service"
 
 ##nvidia
 #alias nviglx="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep 'OpenGL renderer'"
