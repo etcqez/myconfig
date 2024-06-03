@@ -478,8 +478,8 @@ alias e="sudo emerge"
 #alias vp="sudo emerge -vjp"
 #alias ac="sudo emerge -ac"
 #alias cu="sudo emerge -vj --changed-use --deep @world"
-#alias esync="sudo emerge --sync"
-#alias ewrld="sudo emerge --keep-going  -avjuDN @world" --exclude="nvim* vscodium"
+alias es="sudo emerge --sync"
+alias ew="sudo emerge --keep-going  -juDN @world"
 #alias erbld="sudo emerge --ask @module-rebuild"
 
 ##nvidia
