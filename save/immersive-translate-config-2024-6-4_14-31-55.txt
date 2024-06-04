@@ -1,0 +1,44 @@
+{
+  "isChangedAlwaysTranslatedUrls": true,
+  "pcFloatBallMainBtnTooltipShownCount": 6,
+  "updatedAt": "2024-06-04T04:18:05.889Z",
+  "localUpdatedAt": "2024-06-04T04:18:05.889Z",
+  "translationLanguagePattern": {
+    "matches": [
+      "en"
+    ],
+    "excludeMatches": []
+  },
+  "generalRule": {
+    "subtitleRule.add": {
+      "autoEnableSubtitle": false,
+      "youtubeAutoEnableSubtitle": false
+    }
+  },
+  "translationService": "transmart",
+  "translationServiceChangedbyUserAt": "2024-05-22T12:22:52.049Z",
+  "translationUrlPattern": {
+    "matches": [],
+    "excludeMatches": [
+      "127.0.0.1"
+    ]
+  },
+  "interfaceLanguage": "zh-CN",
+  "autoSync": false,
+  "pcFloatBall": {
+    "enable": true,
+    "blockUrls": [
+      "*immersivetranslate.com/preview",
+      "https://app.immersivetranslate.com/",
+      "https://app.immersivetranslate.com/pdf-pro*",
+      "*.immersivetranslate.com/download-subtitle*"
+    ],
+    "guideBlockUrls": [
+      "https://onboarding.immersivetranslate.com*"
+    ],
+    "clickType": "translate",
+    "afterInstalledAt": "2023-10-28",
+    "fixedPosition": "left",
+    "isPc": true
+  }
+}
