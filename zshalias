@@ -300,6 +300,7 @@ alias anstop="waydroid session stop"
 alias cf="cd ~/.config" 
 alias cl="cd ~/.local/share" 
 alias cm="cd ~/myconfig" 
+alias ca="cd ~/myarch"
 
 #type
 alias tp="type -a" #同where
