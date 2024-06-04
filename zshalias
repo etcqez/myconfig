@@ -304,6 +304,7 @@ alias cl="cd ~/.local/share"
 alias cm="cd ~/myconfig" 
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
+alias cg="cd ~/mygentoo"
 
 #type
 alias tp="type -a" #同where
@@ -473,10 +474,10 @@ alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --late
 alias tees="sudo tee -a"
 
 ##gentoo
-alias mg="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
-alias cg="sudo arch-chroot /mnt/gentoo"
-alias mcg="mg;cg"
-alias ug="sudo umount -R /mnt/gentoo"
+alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
+alias chg="sudo arch-chroot /mnt/gentoo"
+alias mnc="mg;cg"
+alias umg="sudo umount -R /mnt/gentoo"
 alias e="sudo emerge"
 alias ne="sudo emerge --newuse"
 #alias sr="emerge --search"
