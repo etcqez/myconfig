@@ -301,6 +301,7 @@ alias cf="cd ~/.config"
 alias cl="cd ~/.local/share" 
 alias cm="cd ~/myconfig" 
 alias ca="cd ~/myarch"
+alias cn="cd ~/mynix"
 
 #type
 alias tp="type -a" #同where
