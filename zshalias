@@ -15,7 +15,7 @@ alias dm="sudo dmesg"
 alias ni="sudo nix-env -iA"
 alias niu="sudo nix-env --uninstall"
 alias nc="nvim ~/mynix/configuration.nix"
-alias ns="hardware.pulseaudio.configFile"
+alias ns="sudo nixos-rebuild switch"
 # git
 # alias gi="git init -b main"
 # sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
