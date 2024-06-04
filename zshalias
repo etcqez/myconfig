@@ -7,7 +7,7 @@ alias j="journalctl"
 alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
 alias ju="journalctl -u" # u: unit
 alias jbl="journalctl -u bluetooth"
-alias dmesg="sudo dmesg"
+alias dm="sudo dmesg"
 # 
 # memorandum
 # sudo sysctl --system
