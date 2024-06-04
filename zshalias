@@ -5,7 +5,8 @@ compinit
 # show error
 alias j="journalctl"
 alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
-alias ju="journalctl -ue" # u: unit
+alias ju="journalctl -u" # u: unit
+alias jbl="journalctl -u bluetooth"
 alias dmesg="sudo dmesg"
 # 
 # memorandum
@@ -394,7 +395,7 @@ alias hc="hugo --cleanDestinationDir"
 # python
 alias py="python"
 alias pydoc="sudo pydoc -p 80"
-alias j="jupyter notebook"
+alias jn="jupyter notebook"
 alias i="ipython"
 
 # proxy
