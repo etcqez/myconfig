@@ -14,7 +14,7 @@ alias dm="sudo dmesg"
 # nixos
 alias ni="sudo nix-env -iA"
 alias niu="sudo nix-env --uninstall"
-alias nc="nvim ~/mynix/configuration.nix"
+alias nc="vim ~/mynix/configuration.nix"
 alias ns="sudo nixos-rebuild switch"
 # git
 # alias gi="git init -b main"
@@ -264,7 +264,6 @@ alias ntp="sudo timedatectl set-ntp 1"
 alias cal="cal -y"
 alias zh="LANG=zh_CN.UTF-8"
 alias eng="LANG=en_US.UTF-8"
-alias lang="echo \$LANG"
 alias loc="locale"
 alias rs="echo \$?"
 alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
@@ -306,6 +305,7 @@ alias cm="cd ~/myconfig"
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
 alias cg="cd ~/mygentoo"
+alias cr="cd ~/myfedora"
 
 #type
 alias tp="type -a" #同where
@@ -334,16 +334,14 @@ alias usta="systemctl --user start"
 alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
 
-# nvim emacs
+# vim emacs
 alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
-alias zs="nvim ~/myconfig/zshalias"
+alias zs="vim ~/myconfig/zshalias"
 alias .="source ~/myconfig/zshalias"
-alias aur="nvim ~/myconfig/aur.sh"
-alias v="nvim"
-alias vim="nvim"
-alias sv="sudo nvim"
+alias vi="vim"
+alias sv="sudo vim"
 
 
 # docker
