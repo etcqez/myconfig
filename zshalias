@@ -32,6 +32,8 @@ alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
+alias gp="gam;git push"
+alias cgp="cd ~/myconfig;gam;git push"
 
 # 字体
 alias font="fc-list :lang=zh"
