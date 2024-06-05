@@ -308,8 +308,8 @@ alias cg="cd ~/mygentoo"
 alias cr="cd ~/myfedora"
 
 #type
-alias tp="type -a" #同where
-alias which="which -a"
+alias ty="type -a" #同where
+alias wh="which -a"
 
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
