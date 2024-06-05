@@ -96,9 +96,9 @@ Switch One Desktop Down=
 Switch One Desktop Up=
 Switch One Desktop to the Left=
 Switch One Desktop to the Right=
-Switch Window Down=Meta+Alt+Down; Meta+J
+Switch Window Down=Meta+J; Meta+Alt+Down
 Switch Window Left=Meta+H; Meta+Alt+Left
-Switch Window Right=Meta+Alt+Right; Meta+L
+Switch Window Right=Meta+L; Meta+Alt+Right
 Switch Window Up=Meta+K; Meta+Alt+Up
 Switch to Desktop 1=Ctrl+F1
 Switch to Desktop 10=
@@ -148,7 +148,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Alt+F4; Meta+W
+Window Close=Meta+W; Alt+F4
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -220,5 +220,10 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta++; Meta+=
+view_zoom_in=Meta+=; Meta++
 view_zoom_out=Meta+-
+
+[org.kde.konsole.desktop][Global Shortcuts]
+NewTab=
+NewWindow=
+_launch=Meta+T; Ctrl+Alt+T; Meta+Return
