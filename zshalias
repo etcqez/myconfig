@@ -390,6 +390,28 @@ alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rs"
 alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
 
+# fedora
+alias y="sudo yum install"
+
+# debian
+alias a="sudo apt install"
+
+##gentoo
+alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
+alias chg="sudo arch-chroot /mnt/gentoo"
+alias mnc="mg;cg"
+alias umg="sudo umount -R /mnt/gentoo"
+alias e="sudo emerge"
+alias ne="sudo emerge --newuse"
+#alias sr="emerge --search"
+#alias vj="sudo emerge -vj"
+#alias vp="sudo emerge -vjp"
+#alias cu="sudo emerge -vj --changed-use --deep @world"
+alias es="sudo emerge --sync"
+alias ew="sudo emerge --update --newuse --deep --with-bdeps=y @world"
+alias ed="sudo emerge --depclean"
+alias erb="sudo emerge --ask @module-rebuild"
+
 # hugo
 alias hs="hugo server"
 alias hn="hugo new "
@@ -474,22 +496,6 @@ alias shsh="sudo sh -c"
 alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 alias tees="sudo tee -a"
-
-##gentoo
-alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
-alias chg="sudo arch-chroot /mnt/gentoo"
-alias mnc="mg;cg"
-alias umg="sudo umount -R /mnt/gentoo"
-alias e="sudo emerge"
-alias ne="sudo emerge --newuse"
-#alias sr="emerge --search"
-#alias vj="sudo emerge -vj"
-#alias vp="sudo emerge -vjp"
-#alias cu="sudo emerge -vj --changed-use --deep @world"
-alias es="sudo emerge --sync"
-alias ew="sudo emerge --update --newuse --deep --with-bdeps=y @world"
-alias ed="sudo emerge --depclean"
-alias erb="sudo emerge --ask @module-rebuild"
 
 ##nvidia
 #alias nviglx="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep 'OpenGL renderer'"
