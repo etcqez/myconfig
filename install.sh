@@ -17,10 +17,6 @@ sudo sh -c "cat /home/f/myconfig/zshalias >> /etc/bash.bashrc"
 [[ ! -a /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
 sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
-# keyd
-[[ ! -a /etc/keyd ]] && sudo mkdir /etc/keyd
-sudo ln -sf /home/f/myconfig/save/default.conf /etc/keyd
-
 # usb-wakeup
 sudo ln -sf /home/f/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 

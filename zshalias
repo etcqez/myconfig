@@ -14,7 +14,7 @@ alias dm="sudo dmesg"
 # nixos
 alias ni="sudo nix-env -iA"
 alias niu="sudo nix-env --uninstall"
-alias nc="nvim ~/mynix/configuration.nix"
+alias nc="vim ~/mynix/configuration.nix"
 alias ns="sudo nixos-rebuild switch"
 # git
 # alias gi="git init -b main"
@@ -32,6 +32,8 @@ alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
+alias gp="gam;git push"
+alias cgp="cd ~/myconfig;gam;git push"
 
 # 字体
 alias font="fc-list :lang=zh"
@@ -264,7 +266,6 @@ alias ntp="sudo timedatectl set-ntp 1"
 alias cal="cal -y"
 alias zh="LANG=zh_CN.UTF-8"
 alias eng="LANG=en_US.UTF-8"
-alias lang="echo \$LANG"
 alias loc="locale"
 alias rs="echo \$?"
 alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
@@ -306,10 +307,11 @@ alias cm="cd ~/myconfig"
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
 alias cg="cd ~/mygentoo"
+alias cr="cd ~/myfedora"
 
 #type
-alias tp="type -a" #同where
-alias which="which -a"
+alias ty="type -a" #同where
+alias wh="which -a"
 
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
@@ -334,16 +336,14 @@ alias usta="systemctl --user start"
 alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
 
-# nvim emacs
+# vim emacs
 alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
-alias zs="nvim ~/myconfig/zshalias"
+alias zs="vim ~/myconfig/zshalias"
 alias .="source ~/myconfig/zshalias"
-alias aur="nvim ~/myconfig/aur.sh"
-alias v="nvim"
-alias vim="nvim"
-alias sv="sudo nvim"
+alias vi="vim"
+alias sv="sudo vim"
 
 
 # docker
@@ -389,6 +389,28 @@ alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rs"
 alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
+
+# fedora
+alias y="sudo yum install"
+
+# debian
+alias a="sudo apt install"
+
+##gentoo
+alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
+alias chg="sudo arch-chroot /mnt/gentoo"
+alias mnc="mg;cg"
+alias umg="sudo umount -R /mnt/gentoo"
+alias e="sudo emerge"
+alias ne="sudo emerge --newuse"
+#alias sr="emerge --search"
+#alias vj="sudo emerge -vj"
+#alias vp="sudo emerge -vjp"
+#alias cu="sudo emerge -vj --changed-use --deep @world"
+alias es="sudo emerge --sync"
+alias ew="sudo emerge --update --newuse --deep --with-bdeps=y @world"
+alias ed="sudo emerge --depclean"
+alias erb="sudo emerge --ask @module-rebuild"
 
 # hugo
 alias hs="hugo server"
