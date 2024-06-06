@@ -410,7 +410,7 @@ alias ne="sudo emerge --newuse"
 alias es="sudo emerge --sync"
 alias ew="sudo emerge --update --newuse --deep --with-bdeps=y @world"
 alias ed="sudo emerge --depclean"
-alias erb="sudo emerge --ask @module-rebuild"
+alias erb="sudo emerge --ask bb @module-rebuild"
 alias erb="sudo emerge --ask @module-rebuild"
 
 # hugo
