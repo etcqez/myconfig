@@ -319,8 +319,7 @@ alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount -o rw /dev/nvme0n1p5 /mnt"
 alias um="cd; sudo umount -R /mnt"
 
 #system
-alias vol="systemctl --user restart pulseaudio.socket"
-alias vol="systemctl --user restart pipewire.socket"
+alias rb="sudo systemctl restart bluetooth"
 alias halt="systemctl poweroff -i"
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
