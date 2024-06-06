@@ -318,6 +318,8 @@ alias um="cd; sudo umount -R /mnt"
 
 #system
 alias rb="sudo systemctl restart bluetooth; sudo modprobe -r btusb; sudo modprobe  btusb"
+alias blb="sh ~/myconfig/bak/headset.sh"
+alias blr="sh ~/myconfig/headset.sh; sudo systemctl restart bluetooth; sudo modprobe -r btusb; sudo modprobe  btusb"
 alias halt="systemctl poweroff -i"
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
