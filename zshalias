@@ -389,6 +389,7 @@ alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rs"
 alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
+alias qs="pacman -Qs" # pacman -Qs pipewire
 
 # fedora
 alias y="sudo yum install"
@@ -403,15 +404,11 @@ alias mnc="mg;cg"
 alias umg="sudo umount -R /mnt/gentoo"
 alias e="sudo emerge"
 alias ne="sudo emerge --newuse"
-#alias sr="emerge --search"
-#alias vj="sudo emerge -vj"
-#alias vp="sudo emerge -vjp"
-#alias cu="sudo emerge -vj --changed-use --deep @world"
 alias es="sudo emerge --sync"
-alias ew="sudo emerge --update --newuse --deep --with-bdeps=y @world"
+alias ew="sudo emerge --update --jobs --newuse --deep --with-bdeps=y @world"
 alias ed="sudo emerge --depclean"
-alias erb="sudo emerge --ask bb @module-rebuild"
-alias erb="sudo emerge --ask @module-rebuild"
+alias rebu="sudo emerge --ask @module-rebuild"
+alias dp="sudo dispatch-conf"
 
 # hugo
 alias hs="hugo server"
