@@ -1,0 +1,18 @@
+[General]
+Name=Baseus Encok D02 Pro
+Class=0x240404
+SupportedTechnologies=BR/EDR;
+Trusted=true
+Blocked=false
+Services=0000110b-0000-1000-8000-00805f9b34fb;0000110c-0000-1000-8000-00805f9b34fb;0000110e-0000-1000-8000-00805f9b34fb;0000111e-0000-1000-8000-00805f9b34fb;00001200-0000-1000-8000-00805f9b34fb;
+
+[LinkKey]
+Key=B0031761950363B5434EBA6092B63A7B
+Type=4
+PINLength=0
+
+[DeviceID]
+Source=1
+Vendor=1494
+Product=10
+Version=576
