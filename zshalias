@@ -32,8 +32,6 @@ alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
-alias gp="gam;git push"
-alias cgp="cd ~/myconfig;gam;git push"
 
 # 字体
 alias font="fc-list :lang=zh"
@@ -303,7 +301,7 @@ alias anstop="waydroid session stop"
 #cd
 alias cf="cd ~/.config" 
 alias cl="cd ~/.local/share" 
-alias cm="cd ~/myconfig" 
+alias c="cd ~/myconfig" 
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
 alias cg="cd ~/mygentoo"
@@ -468,7 +466,6 @@ alias a="eza -ha --sort=name --group-directories-first"
 alias sl="sudo ls --color=tty -lhAt"
 
 # Helpful aliases
-alias  c='clear' # clear terminal
 alias l='eza --sort=name --group-directories-first'
 alias ls='eza --sort=name --group-directories-first'
 alias ll='eza -lha --sort=name --group-directories-first' # long list all
