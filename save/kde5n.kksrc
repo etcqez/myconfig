@@ -56,7 +56,7 @@ Switch One Desktop Up=Meta+Ctrl+Up
 Switch One Desktop to the Left=Meta+Ctrl+Left
 Switch One Desktop to the Right=Meta+Ctrl+Right
 Switch Window Down=Meta+Alt+Down; Meta+J
-Switch Window Left=Meta+Alt+Left; Meta+H
+Switch Window Left=Meta+H; Meta+Alt+Left
 Switch Window Right=Meta+Alt+Right; Meta+L
 Switch Window Up=Meta+Alt+Up; Meta+K
 Switch to Desktop 1=Ctrl+F1
@@ -111,12 +111,12 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Alt+F4; Meta+W
+Window Close=Meta+W; Alt+F4
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
 Window Lower=
-Window Maximize=Meta+PgUp; Meta+F
+Window Maximize=Meta+F; Meta+PgUp
 Window Maximize Horizontal=
 Window Maximize Vertical=
 Window Minimize=Meta+PgDown
@@ -185,3 +185,8 @@ Window to Screen 7=
 view_actual_size=Meta+0
 view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
+
+[org.kde.konsole.desktop][Global Shortcuts]
+NewTab=
+NewWindow=
+_launch=Meta+T; Meta+Return; Ctrl+Alt+T
