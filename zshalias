@@ -389,6 +389,7 @@ alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
 alias rc="sudo pacman -Rs"
 alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
+alias qs="pacman -Qs" # pacman -Qs pipewire
 
 # fedora
 alias y="sudo yum install"
