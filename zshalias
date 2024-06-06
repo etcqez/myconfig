@@ -319,7 +319,7 @@ alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount -o rw /dev/nvme0n1p5 /mnt"
 alias um="cd; sudo umount -R /mnt"
 
 #system
-alias rb="sudo systemctl restart bluetooth"
+alias rb="sudo modprobe -r btusb; sudo modprobe  btusb"
 alias halt="systemctl poweroff -i"
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
