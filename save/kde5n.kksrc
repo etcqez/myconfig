@@ -1,12 +1,19 @@
 [kitty.desktop][Global Shortcuts]
 _launch=Meta+T; Meta+Return
 
+[ksmserver][Global Shortcuts]
+Halt Without Confirmation=
+Lock Session=
+Log Out=Ctrl+Alt+Del
+Log Out Without Confirmation=
+Reboot Without Confirmation=
+
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
 Decrease Opacity=
 Edit Tiles=
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Increase Opacity=
@@ -22,10 +29,10 @@ Krohnkite: Grow Width=Meta+Ctrl+L
 Krohnkite: Increase=Meta+I
 Krohnkite: Left=
 Krohnkite: Monocle Layout=Meta+M
-Krohnkite: Move Down/Next=
-Krohnkite: Move Left=
-Krohnkite: Move Right=
-Krohnkite: Move Up/Prev=
+Krohnkite: Move Down/Next=Meta+Shift+J
+Krohnkite: Move Left=Meta+Shift+H
+Krohnkite: Move Right=Meta+Shift+L
+Krohnkite: Move Up/Prev=Meta+Shift+K
 Krohnkite: Next Layout=Meta+\\
 Krohnkite: Previous Layout=Meta+|
 Krohnkite: Quarter Layout=
@@ -56,9 +63,9 @@ Switch One Desktop Up=Meta+Ctrl+Up
 Switch One Desktop to the Left=Meta+Ctrl+Left
 Switch One Desktop to the Right=Meta+Ctrl+Right
 Switch Window Down=Meta+Alt+Down; Meta+J
-Switch Window Left=Meta+H; Meta+Alt+Left
+Switch Window Left=Meta+Alt+Left; Meta+H
 Switch Window Right=Meta+Alt+Right; Meta+L
-Switch Window Up=Meta+Alt+Up; Meta+K
+Switch Window Up=Meta+K; Meta+Alt+Up
 Switch to Desktop 1=Ctrl+F1
 Switch to Desktop 10=
 Switch to Desktop 11=
@@ -116,7 +123,7 @@ Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
 Window Lower=
-Window Maximize=Meta+F; Meta+PgUp
+Window Maximize=Meta+PgUp; Meta+F
 Window Maximize Horizontal=
 Window Maximize Vertical=
 Window Minimize=Meta+PgDown
@@ -189,4 +196,4 @@ view_zoom_out=Meta+-
 [org.kde.konsole.desktop][Global Shortcuts]
 NewTab=
 NewWindow=
-_launch=Meta+T; Meta+Return; Ctrl+Alt+T
+_launch=Meta+Return; Meta+T; Ctrl+Alt+T
