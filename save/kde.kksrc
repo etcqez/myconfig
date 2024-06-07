@@ -148,7 +148,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+W; Alt+F4
+Window Close=Alt+F4; Meta+W
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -220,10 +220,14 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 view_actual_size=Meta+0
-view_zoom_in=Meta+=; Meta++
+view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
 
 [org.kde.konsole.desktop][Global Shortcuts]
 NewTab=
 NewWindow=
-_launch=Meta+T; Ctrl+Alt+T; Meta+Return
+_launch=Meta+T; Meta+Return; Ctrl+Alt+T
+
+[org.kde.krunner.desktop][Global Shortcuts]
+RunClipboard=Alt+Shift+F2
+_launch=Search; Alt+F2; Meta+R
