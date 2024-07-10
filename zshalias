@@ -1,7 +1,7 @@
 #必须放最前面 (gentoo命令补全)
 autoload -U compinit promptinit
 compinit
-eval "$(register-python-argcomplete pipx)"
+test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 
 # show error
 alias j="journalctl"
