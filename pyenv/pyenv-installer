@@ -20,14 +20,14 @@ colorize() {
 }
 
 # Checks for `.pyenv` file, and suggests to remove it for installing
-if [ -d "${PYENV_ROOT}" ]; then
-  { echo
-    colorize 1 "WARNING"
-    echo ": Can not proceed with installation. Kindly remove the '${PYENV_ROOT}' directory first."
-    echo
-  } >&2
-    exit 1
-fi
+#if [ -d "${PYENV_ROOT}" ]; then
+#  { echo
+#    colorize 1 "WARNING"
+#    echo ": Can not proceed with installation. Kindly remove the '${PYENV_ROOT}' directory first."
+#    echo
+#  } >&2
+#    exit 1
+#fi
 
 failed_checkout() {
   echo "Failed to git clone $1"
