@@ -1,0 +1,10 @@
+sudo ntfsfix /dev/nvme0n1p4;sudo mount /dev/nvme0n1p4 /mnt;sudo mount -o rw,remount /dev/nvme0n1p4 /mnt
+cd /mnt/Windows/System32/config
+chntpw -e system
+
+cd ControlSet001\Services\BTHPORT\Parameters\Keys
+
+hex e09dfa81fcaa
+
+sudo su
+cd /var/lib/bluetooth/
