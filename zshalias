@@ -396,7 +396,7 @@ alias y="yay -S"
 alias qs="pacman -Qs" # pacman -Qs pipewire
 
 # fedora
-alias y="sudo yum install"
+alias d="sudo yum install"
 
 # debian
 alias a="sudo apt install"
