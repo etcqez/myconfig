@@ -320,11 +320,10 @@ alias um="cd; sudo umount -R /mnt"
 
 #system
 alias br="sudo systemctl restart bluetooth"
+alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart bluetooth"
 alias blbackup="sh ~/myconfig/bluetooth/backup.sh"
 alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart bluetooth"
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
-alias ht="sto bluetooth; systemctl poweroff -i"
-alias rty="sto bluetooth; reboot"
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
 alias di="sudo systemctl disable --now"
