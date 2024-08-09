@@ -21,8 +21,9 @@ sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/999-sysctl.conf
 sudo ln -sf ~/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
-[[ -a ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
+[[ ! -a ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
 ln -sf ~/myconfig/save/rime ~/.local/share/fcitx5
+ln -sf ~/myconfig/save/fcitx5 ~/.config
 
 # sysrq
 #[[ ! -a /etc/sysctl.d/99-sysctl.conf ]] && sudo mkdir /etc/sysctl.d/99-sysctl.conf
