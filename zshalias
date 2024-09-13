@@ -9,7 +9,7 @@ alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
 alias ju="journalctl -u" # u: unit
 alias jbl="journalctl -u bluetooth"
 alias dm="sudo dmesg"
-# 
+#
 # memorandum
 # sudo sysctl --system
 # nixos
@@ -62,6 +62,7 @@ alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
+#export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
 vterm_printf() {
@@ -90,9 +91,9 @@ function help(){
 #压缩: zip -r dir dir  解压: unzip dir.zip -d /opt
 #打包: tar cvf dir.tar *  预览: tar tvf dir.tar  解压到当前目录: tar xvf ../dir/dir.tar  解压到指定目录: tar xvf dir.tar -C ../桌面
 #打包压缩: z: gz  j: bz2  J: xz
-#          sudo tar zcf etc.tar.gz /etc  
-#          sudo tar jcf etc.tar.bz2 /etc  
-#          sudo tar Jcf etc.tar.xz /etc  
+#          sudo tar zcf etc.tar.gz /etc
+#          sudo tar jcf etc.tar.bz2 /etc
+#          sudo tar Jcf etc.tar.xz /etc
 #          sudo zip -r etc.zip /etc
 #解压: sudo tar xf etc.tar.xz -C /tmp (xf通用)
 #不包含目录本身,只打包目录内的文件和子目录: cd /etc -> sudo tar Jcf /home/f/etc.xz *
@@ -114,7 +115,7 @@ alias finds="sudo find /bin/ -perm /7000 | xargs ls --color=tty -lh --time=ctime
 # xargs: 将标准输入传给下一个命令,作为其的参数  查找并按大小排序: find -name "*.txt" | xargs ls -Sl
 #        -n: 每行的参数个数
 # 如果文件名包含空格: find -print0 | xargs -0 ls -Sl (-print0: 在标准输出中打印完整的文件名，后面跟一个空字符（而不是 -print 使用的换行符）。这样，包含换行符或其他类型空白的文件名就能被处理find输出的程序正确理解。该选项对应于 xargs 的 -0 选项)
-alias findall="sudo find / \( -path '/sys' -o -path '/proc' -o -path '/run' -o -path '/.snapshots' -o -path '/tmp' \) -a -prune -o" # 1. -a -prune -o 必须成对出现 2. \(\) 前后必须留空
+alias findall="sudo find / \( -path '/sys' -o -path '/proc' -o -path '/run' -o -path '/.snapshots' -o -path '/tmp' -o -path '*.git' -o -path '*.idea' -o -path '*.vscode' \) -a -prune -o" # 1. -a -prune -o 必须成对出现 2. \(\) 前后必须留空
 alias shx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod +x {} \;"
 alias shrx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod -x {} \;"
 
@@ -158,7 +159,7 @@ alias facl="sudo setfacl -m u:f:rwx"
 #如果拥有一个文件夹写权限,就可以删除文件,而和被删除的文件无关
 
 #用户
-#sudo getent passwd f 
+#sudo getent passwd f
 #创建系统账号: useradd -r -u -g -s -d -c (r:uid低于1000且不创建家目录)
 #组: gruops  f (查看用户的组) sudo groupmems -l -g f (查看组包含的用户, g: 指定用户替换当前用户)
 #参考某个文件来修改文件的所有者: chown --reference=
@@ -167,7 +168,7 @@ alias facl="sudo setfacl -m u:f:rwx"
 #自动设置密码
 #passwd --stdin <
 
-#tr 
+#tr
 #小写转大写: tr 'a-z' 'A-Z'
 #            tr '[:lower:]' '[:upper:]'
 #生成随机密码: tr -dc '[:alnum:]' < /dev/urandom (d: 删除 c: 补集 urandom: 随机字符,包括可见的和不可见的)
@@ -213,7 +214,7 @@ alias facl="sudo setfacl -m u:f:rwx"
 #文本
 #文件转换换行:dos2unix unix2dos (unix和win使用的换行不同)
 #转换编码:iconv -f GB2312 win.txt -o unix.txt (将gb2312转换为utf8)
-#iconv -f UTF8 -t GB2312 unix.txt -o win.txt (反之. from...to...output) 
+#iconv -f UTF8 -t GB2312 unix.txt -o win.txt (反之. from...to...output)
 
 #常用命令
 #date +"%F %T"
@@ -247,7 +248,7 @@ alias facl="sudo setfacl -m u:f:rwx"
 #detach:ctrl a d
 
 #w(uptime) who whoami tty
-#w,who:查看谁登录了系统 
+#w,who:查看谁登录了系统
 
 #杳看硬件.操作系统信息 	id	lsblk
 alias fr="free -h"
@@ -289,7 +290,7 @@ alias iotop="sudo iotop"
 # 显示路径
 # type which where whereis(包括帮助文件目录)
 
-# history 
+# history
 # !! !:n !n !-n !string !?string !?string:p
 # !* !^ !$ !-4:*:p
 
@@ -300,9 +301,9 @@ alias an="screen waydroid show-full-ui"
 alias anstop="waydroid session stop"
 
 #cd
-alias cf="cd ~/.config" 
-alias cl="cd ~/.local/share" 
-alias c="cd ~/myconfig" 
+alias cf="cd ~/.config"
+alias cl="cd ~/.local/share"
+alias c="cd ~/myconfig"
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
 alias cg="cd ~/mygentoo"
@@ -343,9 +344,11 @@ alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshalias"
+alias vr="vim ~/.vim/vimrc"
 alias .="source ~/myconfig/zshalias"
 alias vi="vim"
 alias sv="sudo vim"
+alias fv="vim \$(fzf) "
 
 
 # docker
@@ -419,7 +422,7 @@ alias hn="hugo new "
 alias hc="hugo --cleanDestinationDir"
 
 # python
-[ -d ~/.pyenv ] && sh ~/myconfig/pyenv.sh 
+[ -d ~/.pyenv ] && sh ~/myconfig/pyenv.sh
 alias pyenv="~/.pyenv/bin/pyenv"
 alias py="python"
 alias pydoc="sudo pydoc -p 80"
@@ -465,20 +468,15 @@ alias pw="cat /etc/passwd | awk -F: '{printf \"%-15s%s\n\",\$1,\$NF}'"
 alias ii="iwctl station wlan1 get-networks"
 
 # ls
-alias la='eza -lha --sort=name --group-directories-first' # long list all
-alias a="eza -ha --sort=name --group-directories-first"
 #alias .file="ls -d .*"
 #alias .dir="ls -d .*/"
 #alias onlydir="ls -d */"
 #alias onlyfile=""
 alias sl="sudo ls --color=tty -lhAt"
-
-# Helpful aliases
-alias l='eza --sort=name --group-directories-first'
-alias ls='eza --sort=name --group-directories-first'
-alias ll='eza -lha --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD' # long list dirs
-alias vc='code' # gui code editor
+alias a="ls -hA --group-directories-first"
+alias l="ls --group-directories-first"
+alias ll="ls -lh --group-directories-first"
+alias la="ls -lhA --group-directories-first"
 
 # Handy change dir shortcuts
 alias ..='cd ..'
@@ -559,7 +557,7 @@ alias rebu="sudo emerge --ask @module-rebuild"
 #                    -w ./target.cap (-nn: 以数字显示 -w: 写入文件,可以使用wireshark打开)
 # sudo ping -s 1230 www.baidu.com -f
 # arp缓存: arp -n   arp绑定: arp -s
-# 检查地址冲突: arping 
+# 检查地址冲突: arping
 # 查看网卡驱动: ethtool -i wlan0
 # 修改ip地址: nmcli connection  modify rtl ipv4.address 192.168.43.200/24 ipv4.gateway 192.168.43.1 ipv4.dns 223.6.6.6 ipv4.method manual   生效: sudo nmcli connection  reload; nmcli connection  up rtl
 #             /etc/NetworkManager/system-connections/CMCC-dZk1.nmconnection
