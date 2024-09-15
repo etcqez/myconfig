@@ -349,7 +349,8 @@ alias .="source ~/myconfig/zshalias"
 alias vi="vim"
 alias sv="sudo vim"
 alias fv="vim \$(fzf) "
-
+alias se="emacs --init-directory=~/spacemacs -bg black"
+alias wm="xprop WM_CLASS"
 
 # docker
 #
