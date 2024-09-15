@@ -15,10 +15,10 @@ sudo sh -c "cat ~/myconfig/zshalias >> /etc/bash.bashrc"
 
 # sysctl
 [[ ! -a /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
-sudo ln -s ~/myconfig/99-sysctl.conf /etc/sysctl.d/999-sysctl.conf
+sudo ln -s ~/myconfig/save/99-sysctl.conf /etc/sysctl.d/999-sysctl.conf
 
 # usb-wakeup
-sudo ln -sf ~/myconfig/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
+sudo ln -sf ~/myconfig/save/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
 [[ ! -a ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
