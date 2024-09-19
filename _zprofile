@@ -7,10 +7,11 @@
 #PATH=~/.local/bin:$PATH
 #BROWSER=firefox
 #EDITOR=nvim
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-INPUT_METHOD=fcitx
-SDL_IM_MODULE=fcitx
-GLFW_IM_MODULE=ibus
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
 #QT_STYLE_OVERRIDE=adwaita
+exec /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &

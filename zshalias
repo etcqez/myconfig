@@ -62,6 +62,7 @@ alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
+export EDITOR=vim
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
@@ -338,6 +339,7 @@ alias sta="sudo systemctl start"
 alias usta="systemctl --user start"
 alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
+alias sdr="sudo systemctl daemon-reload"
 
 # vim emacs
 alias em="emacs"
@@ -349,7 +351,9 @@ alias .="source ~/myconfig/zshalias"
 alias vi="vim"
 alias sv="sudo vim"
 alias fv="vim \$(fzf) "
-alias se="emacs --init-directory=~/spacemacs -bg black"
+alias se="(emacs --init-directory=~/spacemacs -bg black &) && exit"
+alias xk="exec screen xkeysnail -q /home/f/myconfig/config.py &"
+alias pk="pkill"
 alias wm="xprop WM_CLASS"
 
 # docker

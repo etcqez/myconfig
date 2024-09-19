@@ -5,6 +5,7 @@ git config --global user.name etcqez
 git config --global user.email etcqez@outlook.com
 git config --global init.defaultBranch main
 git config --global http.version HTTP/1.1
+git config --global core.quotepath false
 
 # font
 [[ ! -d /usr/share/fonts ]] && sudo mkdir /usr/share/fonts
@@ -14,16 +15,16 @@ sudo ln -sf ~/myconfig/myfonts /usr/share/fonts
 sudo sh -c "cat ~/myconfig/zshalias >> /etc/bash.bashrc"
 
 # sysctl
-[[ ! -a /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
+[[ ! -e /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
 sudo ln -s ~/myconfig/save/99-sysctl.conf /etc/sysctl.d/999-sysctl.conf
 
 # usb-wakeup
 sudo ln -sf ~/myconfig/save/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
-[[ ! -a ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
+[[ ! -e ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
 ln -sf ~/myconfig/save/rime ~/.local/share/fcitx5
-[[ -a ~/.config/fcitx5 ]] && rm -rf ~/.config/fcitx5
+[[ -e ~/.config/fcitx5 ]] && rm -rf ~/.config/fcitx5
 ln -s ~/myconfig/save/fcitx5 ~/.config
 
 # sysrq
@@ -41,6 +42,5 @@ ln -s ~/myconfig/save/fcitx5 ~/.config
 #mv ~/.config/hypr/userprefs.conf{,.bak}
 #ln -sf ~/myconfig/save/userprefs.conf ~/.config/hypr/userprefs.conf
 
-# zsh
-#ln -s ~/myconfig/_zprofile ~/.zprofile
-
+# x11
+ln -sf ~/myconfig/_zprofile ~/.zprofile; ln -sf ~/myconfig/_zprofile ~/.xsession; ln -sf ~/myconfig/_zprofile ~/.xprofile
