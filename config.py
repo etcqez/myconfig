@@ -93,6 +93,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jet
     K("C-w"): [K("C-backspace"), set_mark(False)],
     # Kill line
     K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
+    K("C-u"): [K("Shift-home"), K("C-x"), set_mark(False)],
     # Undo
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z"),
