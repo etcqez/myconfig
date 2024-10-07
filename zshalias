@@ -397,10 +397,15 @@ alias po="sudo snapper -c root create -t post -p --pre-number"
 alias s="sudo pacman -S"
 alias sy="sudo pacman -Sy"
 alias syyu="sudo pacman -Syyu"
-alias rc="sudo pacman -Rs"
+alias Syyu="yay -Syyu --noconfirm"
+# Remove dependencies not required by other packages
+alias rs="sudo pacman -Rs"
+# Remove all dependent packages
+alias rc="sudo pacman -Rc"
 alias yaycacha="yay -Scc Cache directory: /var/cache/pacman/pkg"
-alias y="yay -S"
+alias y="yay -S --noconfirm"
 alias qs="pacman -Qs" # pacman -Qs pipewire
+alias rr="sudo pacman -Rd --nodeps"
 
 # fedora
 alias d="sudo yum install"
