@@ -61,7 +61,7 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jetbrains-pycharm-ce"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jetbrains-pycharm-ce", "jetbrains-idea-ce"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
