@@ -1,3 +1,5 @@
+ln -sf ~/myconfig/_zprofile ~/.zprofile; ln -sf ~/myconfig/_zprofile ~/.xsession; ln -sf ~/myconfig/_zprofile ~/.xprofile
+
 sudo groupadd -f uinput
 sudo gpasswd -a $USER uinput
 

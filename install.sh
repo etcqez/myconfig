@@ -8,8 +8,8 @@ git config --global http.version HTTP/1.1
 git config --global core.quotepath false
 
 # font
-[[ ! -d /usr/share/fonts ]] && sudo mkdir /usr/share/fonts
-sudo ln -sf ~/myconfig/myfonts /usr/share/fonts
+#[[ ! -d /usr/share/fonts ]] && sudo mkdir /usr/share/fonts
+#sudo ln -sf ~/myconfig/myfonts /usr/share/fonts
 
 # bash
 sudo sh -c "cat ~/myconfig/zshalias >> /etc/bash.bashrc"

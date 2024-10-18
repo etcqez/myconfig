@@ -1,3 +1,5 @@
+export PATH=~/.local/bin:$PATH
+
 #exec motrix &
 #exec pot &
 #exec gammastep -O 5500K &
@@ -11,14 +13,13 @@
 # export LC_CTYPE="zh_CN.UTF-8"
 # export LANG="zh_CN.UTF-8"
 
-export PATH=~/.local/:$PATH
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD=fcitx
-export SDL_IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XMODIFIERS=@im=fcitx
+#export INPUT_METHOD=fcitx
+#export SDL_IM_MODULE=fcitx
 #QT_STYLE_OVERRIDE=adwaita
-exec /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
+sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
 # exec ~/.local/bin/xkeysnail -q ~/myconfig/config.py &
 
 # 代理
