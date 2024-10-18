@@ -117,6 +117,7 @@ alias finds="sudo find /bin/ -perm /7000 | xargs ls --color=tty -lh --time=ctime
 #        -n: 每行的参数个数
 # 如果文件名包含空格: find -print0 | xargs -0 ls -Sl (-print0: 在标准输出中打印完整的文件名，后面跟一个空字符（而不是 -print 使用的换行符）。这样，包含换行符或其他类型空白的文件名就能被处理find输出的程序正确理解。该选项对应于 xargs 的 -0 选项)
 alias findall="sudo find / \( -path '/sys' -o -path '/proc' -o -path '/run' -o -path '/.snapshots' -o -path '/tmp' \) -a -prune -o -iname" # 1. -a -prune -o 必须成对出现 2. \(\) 前后必须留空
+alias findtmp="sudo find /tmp/ -iname"
 alias shx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod +x {} \;"
 alias shrx="find -maxdepth 1 -mindepth 1 -name '*.sh' -exec chmod -x {} \;"
 
@@ -265,7 +266,6 @@ alias sysrq="sudo sh -c 'echo 1 > /proc/sys/kernel/sysrq'"
 alias timezone="sudo timedatectl set-timezone"
 alias ntp="sudo timedatectl set-ntp 1"
 alias cal="cal -y"
-alias zh="LANG=zh_CN.UTF-8"
 alias eng="LANG=en_US.UTF-8"
 alias loc="locale"
 alias rs="echo \$?"
@@ -347,6 +347,7 @@ alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshalias"
+alias zh="vim ~/.zsh_history"
 alias zp="vim ~/myconfig/_zprofile"
 alias vr="vim ~/.vim/vimrc"
 alias nv="nvim"
