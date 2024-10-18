@@ -62,7 +62,7 @@ alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
-export EDITOR=vim
+# export EDITOR=emacs
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
@@ -97,7 +97,7 @@ function help(){
 #          sudo tar Jcf etc.tar.xz /etc
 #          sudo zip -r etc.zip /etc
 #解压: sudo tar xf etc.tar.xz -C /tmp (xf通用)
-#不包含目录本身,只打包目录内的文件和子目录: cd /etc -> sudo tar Jcf /home/f/etc.xz *
+#不包含目录本身,只打包目录内的文件和子目录: cd /etc -> sudo tar Jcf ~/etc.xz *
 #tar实现快速复制: time tar c /boot | tar x -C ./    real	0m0.733s
 #                 time cp -a /boot /opt/    real	0m0.093s
 # --exclude: 排除文件   -T /root/includefilelist: 包含文件列表  -X /root/excludefilelist: 排除的文件列表 (TX后接的是文件)
@@ -274,6 +274,7 @@ alias mt="mount | column -t"
 alias blk="lsblk -f"
 alias route="route -n"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias grube="sudo vim /etc/default/grub"
 alias p="ping www.baidu.com"
 alias io="sudo iotop -o -d 2 -q"
 alias iotop="sudo iotop"
@@ -303,7 +304,7 @@ alias anstop="waydroid session stop"
 
 #cd
 alias cf="cd ~/.config"
-alias cl="cd ~/.local/share"
+alias cs="cd ~/.local/share"
 alias c="cd ~/myconfig"
 alias ca="cd ~/myarch"
 alias cn="cd ~/mynix"
@@ -346,13 +347,14 @@ alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshalias"
+alias zp="vim ~/myconfig/_zprofile"
 alias vr="vim ~/.vim/vimrc"
+alias nv="nvim"
 alias .="source ~/myconfig/zshalias"
-alias vi="vim"
-alias sv="sudo vim"
 alias fv="vim \$(fzf) "
 alias se="(emacs --init-directory=~/spacemacs -bg black &) && exit"
 alias xk="exec screen xkeysnail -q /home/f/myconfig/config.py &"
+alias xw="xkeysnail --watch ~/myconfig/config.py"
 alias pk="pkill"
 alias wm="xprop WM_CLASS"
 
@@ -440,7 +442,8 @@ alias jn="jupyter notebook"
 alias i="ipython"
 
 # proxy
-alias proxy="env all_proxy=socks://127.0.0.1:20170"
+alias v2="export env all_proxy=socks://127.0.0.1:20170"
+alias cl="export env all_proxy=socks://127.0.0.1:7890"
 
 #single
 alias lg="lazygit"
@@ -556,7 +559,8 @@ alias rebu="sudo emerge --ask @module-rebuild"
 # 判断网络是否连接: 1. mii-tool eth0 2. ethtool eth0
 # 本地端口范围: cat /proc/sys/net/ipv4/ip_local_port_range
 # 查看被占用的端口号: less /etc/services
-# alias ss="sudo ss -ntlp"
+alias ss="sudo ss -ntlp"
+# netstat -tln 端口号
 # 查看端口被那个进程使用: sudo lsof -i :20170
 # man tcp
 # 抓包: sudo tcpdump -i wlan0 -nn icmp and (每个条件用and分割)    eg: tcpdump -i eth0 -nn icmp and src host 10.0.0.6 and dst host 10.0.0.7

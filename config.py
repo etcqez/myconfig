@@ -9,7 +9,7 @@ define_timeout(1)
 # [Global modemap] Change modifier keys as in xmodmap
 define_modmap({
     Key.CAPSLOCK: Key.LEFT_CTRL,
-    Key.RIGHT_ALT: Key.LEFT_CTRL
+    Key.RIGHT_ALT: Key.LEFT_CTRL,
 })
 
 # [Conditional modmap] Change modifier keys in certain applications
@@ -44,15 +44,16 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
 
 
 # Keybindings for Firefox/Chrome
-define_keymap(re.compile("Firefox|Vivaldi"), {
-    # Ctrl+Alt+j/k to switch next/previous tab
-    K("C-M-j"): K("C-TAB"),
-    K("C-M-k"): K("C-Shift-TAB"),
-    # Type C-j to focus to the content
-    K("C-j"): K("C-f6"),
-    # very naive "Edit in editor" feature (just an example)
-    K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
-}, "Firefox and Chrome")
+define_keymap(re.compile("code"), {
+    K("C-b"): with_mark(K("left")),
+    K("C-f"): with_mark(K("right")),
+    K("C-p"): with_mark(K("up")),
+    K("C-n"): with_mark(K("down")),
+    K("C-a"): with_mark(K("home")),
+    K("C-g"): [K("esc"), set_mark(False)],
+    K("C-e"): with_mark(K("end")),
+    K("C-g"): [K("esc"), set_mark(False)],
+}, "code")
 
 # Keybindings for Zeal https://github.com/zealdocs/zeal/
 define_keymap(re.compile("Zeal"), {
@@ -61,7 +62,7 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jetbrains-pycharm-ce", "jetbrains-idea-ce"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jetbrains-pycharm-ce", "jetbrains-idea-ce", "Eclipse", "code-oss"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
