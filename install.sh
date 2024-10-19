@@ -43,4 +43,4 @@ ln -s ~/myconfig/save/fcitx5 ~/.config
 #ln -sf ~/myconfig/save/userprefs.conf ~/.config/hypr/userprefs.conf
 
 # x11
-ln -sf ~/myconfig/_zprofile ~/.zprofile; ln -sf ~/myconfig/_zprofile ~/.xsession; ln -sf ~/myconfig/_zprofile ~/.xprofile
+ln -sf ~/myconfig/_zprofile ~/.zprofile

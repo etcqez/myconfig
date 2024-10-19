@@ -445,8 +445,9 @@ alias jn="jupyter notebook"
 alias i="ipython"
 
 # proxy
-alias v2="export env all_proxy=socks://127.0.0.1:20170"
-alias cl="export env all_proxy=socks://127.0.0.1:7890"
+alias v2="env all_proxy=socks://127.0.0.1:20170"
+alias cl="env all_proxy=socks://127.0.0.1:7890"
+alias ge="env all_proxy=socks://127.0.0.1:9999"
 
 #single
 alias lg="lazygit"
@@ -590,7 +591,7 @@ alias offhotspot="nmcli connection down Hotspot"
 
 # zsh
 bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-searc
+bindkey "^N" down-line-or-search
 
 # 有意思的写法
 # 叛断端口号是否打开< /dev/tcp/127.0.0.1/2017

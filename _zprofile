@@ -20,8 +20,10 @@ export PATH=~/.local/bin:$PATH
 #export SDL_IM_MODULE=fcitx
 #QT_STYLE_OVERRIDE=adwaita
 sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
+#geph5-client-gui &
 # exec ~/.local/bin/xkeysnail -q ~/myconfig/config.py &
 
 # 代理
-# export env all_proxy=socks://127.0.0.1:7890
+#export env all_proxy=socks://127.0.0.1:9999
+#export env all_proxy=socks://127.0.0.1:7890
 # exec ~/.config/mihomo/clash-linux &
