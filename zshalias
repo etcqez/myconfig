@@ -26,7 +26,7 @@ alias gr="git remote remove origin"
 alias grg="git remote get-url origin"
 alias gra="git remote add origin"
 alias gs="git status"
-alias gcl="proxy git clone --depth 1"
+alias gcl="git clone --depth 1"
 alias ga="git add"
 alias gc="git commit"
 alias gps="git push --set-upstream origin main"
@@ -445,9 +445,9 @@ alias jn="jupyter notebook"
 alias i="ipython"
 
 # proxy
-alias v2="env all_proxy=socks://127.0.0.1:20170"
-alias cl="env all_proxy=socks://127.0.0.1:7890"
-alias ge="env all_proxy=socks://127.0.0.1:9999"
+alias v2="env all_proxy='socks://127.0.0.1:20170' https_proxy='http://127.0.0.1:20170' http_proxy='http://127.0.0.1:20170'"
+alias cl="env all_proxy='socks://127.0.0.1:7890' https_proxy='http://127.0.0.1:7890' http_proxy='http://127.0.0.1:7890'"
+alias ge="env all_proxy='socks://127.0.0.1:9999' https_proxy='http://127.0.0.1:9999' http_proxy='http://127.0.0.1:9999'"
 
 #single
 alias lg="lazygit"
@@ -599,10 +599,32 @@ bindkey "^N" down-line-or-search
 # Use bash-like word definitions for navigation and operations
 
 # bash C-w
-autoload -Uz select-word-style
-select-word-style bash
+#autoload -Uz select-word-style
+#select-word-style bash
+## Use C-w to kill back to the previous space
+#zle -N backward-kill-space-word backward-kill-word-match
+#zstyle :zle:backward-kill-space-word word-style space
+#bindkey '^W' backward-kill-space-word
 
-# Use C-w to kill back to the previous space
-zle -N backward-kill-space-word backward-kill-word-match
-zstyle :zle:backward-kill-space-word word-style space
-bindkey '^W' backward-kill-space-word
+# C-w
+# Create a new widget.
+zle -N backward-kill-space-word
+backward-kill-space-word() {
+  # Inform the line editor that this widget will kill text.
+  zle -f kill
+  # Set $WORDCHARS for this command only.
+  WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
+}
+# See comments above.
+zle -N backward-kill-bash-word
+backward-kill-bash-word() {
+  zle -f kill
+  WORDCHARS='' zle .backward-kill-word
+}
+# Bind the widgets to keys.
+bindkey   '^W' backward-kill-space-word
+bindkey '^[^H' backward-kill-bash-word
+
+# shift+tab
+bindkey '^[[Z' reverse-menu-complete
+

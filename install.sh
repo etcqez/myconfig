@@ -11,21 +11,18 @@ git config --global core.quotepath false
 #[[ ! -d /usr/share/fonts ]] && sudo mkdir /usr/share/fonts
 #sudo ln -sf ~/myconfig/myfonts /usr/share/fonts
 
-# bash
-sudo sh -c "cat ~/myconfig/zshalias >> /etc/bash.bashrc"
-
 # sysctl
 [[ ! -e /etc/sysctl.d ]] && sudo mkdir /etc/sysctl.d
 sudo ln -s ~/myconfig/save/99-sysctl.conf /etc/sysctl.d/999-sysctl.conf
 
 # usb-wakeup
-sudo ln -sf ~/myconfig/save/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
+#sudo ln -sf ~/myconfig/save/90-usb-wakeup.rules /etc/udev/rules.d/90-usb-wakeup.rules
 
 # rime
 [[ ! -e ~/.local/share/fcitx5 ]] && mkdir -p ~/.local/share/fcitx5
 ln -sf ~/myconfig/save/rime ~/.local/share/fcitx5
-[[ -e ~/.config/fcitx5 ]] && rm -rf ~/.config/fcitx5
-ln -s ~/myconfig/save/fcitx5 ~/.config
+#[[ -e ~/.config/fcitx5 ]] && rm -rf ~/.config/fcitx5
+#ln -s ~/myconfig/save/fcitx5 ~/.config
 
 # sysrq
 #[[ ! -a /etc/sysctl.d/99-sysctl.conf ]] && sudo mkdir /etc/sysctl.d/99-sysctl.conf

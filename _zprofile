@@ -1,4 +1,6 @@
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:/data/Xray-linux-64:/data/v2ray-linux-64:$PATH
+
+#export env V2RAYA_V2RAY_BIN=/data/Xray-linux-64/xray
 
 #exec motrix &
 #exec pot &
@@ -13,11 +15,11 @@ export PATH=~/.local/bin:$PATH
 # export LC_CTYPE="zh_CN.UTF-8"
 # export LANG="zh_CN.UTF-8"
 
-#export GTK_IM_MODULE=fcitx
-#export QT_IM_MODULE=fcitx
-#export XMODIFIERS=@im=fcitx
-#export INPUT_METHOD=fcitx
-#export SDL_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
 #QT_STYLE_OVERRIDE=adwaita
 sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
 #geph5-client-gui &
@@ -27,3 +29,4 @@ sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
 #export env all_proxy=socks://127.0.0.1:9999
 #export env all_proxy=socks://127.0.0.1:7890
 # exec ~/.config/mihomo/clash-linux &
+[ -e /usr/bin/geph5-client-gui ] && /usr/bin/geph5-client-gui || /data/geph5-client-gui
