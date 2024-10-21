@@ -3,6 +3,10 @@ autoload -U compinit promptinit
 compinit
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 
+# pyenv
+[ ~/.pyenv/bin/pyenv ] && eval "$(pyenv virtualenv-init -)"
+
+
 # show error
 alias j="journalctl"
 alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
@@ -15,7 +19,7 @@ alias dm="sudo dmesg"
 # nixos
 alias ni="sudo nix-env -iA"
 alias niu="sudo nix-env --uninstall"
-alias nc="vim ~/mynix/configuration.nix"
+# alias nc="vim ~/mynix/configuration.nix"
 alias ns="sudo nixos-rebuild switch"
 # git
 # alias gi="git init -b main"
@@ -437,7 +441,6 @@ alias hn="hugo new "
 alias hc="hugo --cleanDestinationDir"
 
 # python
-[ -d ~/.pyenv ] && sh ~/myconfig/pyenv.sh
 alias pyenv="~/.pyenv/bin/pyenv"
 alias py="python"
 alias pydoc="sudo pydoc -p 80"

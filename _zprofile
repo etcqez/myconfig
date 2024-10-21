@@ -1,6 +1,9 @@
-export PATH=~/.local/bin:/data/Xray-linux-64:/data/v2ray-linux-64:$PATH
+export PATH=~/.local/bin:~/.pyenv/bin/:$PATH
 
-#export env V2RAYA_V2RAY_BIN=/data/Xray-linux-64/xray
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 #exec motrix &
 #exec pot &
@@ -10,10 +13,6 @@ export PATH=~/.local/bin:/data/Xray-linux-64:/data/v2ray-linux-64:$PATH
 # fi
 #BROWSER=firefox
 #EDITOR=nvim
-#
-# export LC_ALL="C.UTF-8"
-# export LC_CTYPE="zh_CN.UTF-8"
-# export LANG="zh_CN.UTF-8"
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -29,4 +28,4 @@ sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
 #export env all_proxy=socks://127.0.0.1:9999
 #export env all_proxy=socks://127.0.0.1:7890
 # exec ~/.config/mihomo/clash-linux &
-[ -e /usr/bin/geph5-client-gui ] && /usr/bin/geph5-client-gui || /data/geph5-client-gui
+[ -e /usr/bin/geph5-client-gui ] && (exec /usr/bin/geph5-client-gui &) || (exec /data/geph5-client-gui &)

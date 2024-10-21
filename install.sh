@@ -41,3 +41,6 @@ ln -sf ~/myconfig/save/rime ~/.local/share/fcitx5
 
 # x11
 ln -sf ~/myconfig/_zprofile ~/.zprofile
+
+pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+
