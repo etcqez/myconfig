@@ -1,4 +1,4 @@
-#必须放最前面 (gentoo命令补全)
+# 必须放最前面 (gentoo命令补全)
 autoload -U compinit promptinit
 compinit
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
@@ -361,8 +361,7 @@ alias fv="vim \$(fzf) "
 alias se="(emacs --init-directory=~/spacemacs -bg black &) && exit"
 alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
 alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
-alias pk="pkill"
-alias spk="sudo pkill"
+alias pk="sudo pkill"
 alias wm="xprop WM_CLASS"
 
 # docker
@@ -601,43 +600,35 @@ bindkey "^N" down-line-or-search
 # ping 十进制数字 (ip地址转化的十进制)
 # Use bash-like word definitions for navigation and operations
 
-# bash C-w
-#autoload -Uz select-word-style
-#select-word-style bash
-## Use C-w to kill back to the previous space
-#zle -N backward-kill-space-word backward-kill-word-match
-#zstyle :zle:backward-kill-space-word word-style space
-#bindkey '^W' backward-kill-space-word
-
-# bash C-w
-autoload -Uz select-word-style
-select-word-style bash
-
-# Use C-w to kill back to the previous space
-zle -N backward-kill-space-word backward-kill-word-match
-zstyle :zle:backward-kill-space-word word-style space
-bindkey '^W' backward-kill-space-word
-
-
 # C-w
 # Create a new widget.
-#zle -N backward-kill-space-word
-#backward-kill-space-word() {
-#  # Inform the line editor that this widget will kill text.
-#  zle -f kill
-#  # Set $WORDCHARS for this command only.
-#  WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
-#}
-## See comments above.
-#zle -N backward-kill-bash-word
-#backward-kill-bash-word() {
-#  zle -f kill
-#  WORDCHARS='' zle .backward-kill-word
-#}
-## Bind the widgets to keys.
-#bindkey   '^W' backward-kill-space-word
-#bindkey '^[^H' backward-kill-bash-word
+zle -N backward-kill-space-word
+backward-kill-space-word() {
+  # Inform the line editor that this widget will kill text.
+  zle -f kill
+  # Set $WORDCHARS for this command only.
+  WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
+}
+# See comments above.
+zle -N backward-kill-bash-word
+backward-kill-bash-word() {
+  zle -f kill
+  WORDCHARS='' zle .backward-kill-word
+}
+# Bind the widgets to keys.
+bindkey   '^W' backward-kill-space-word
+bindkey '^[^H' backward-kill-bash-word
 
 # shift+tab
 bindkey '^[[Z' reverse-menu-complete
 
+my-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word
+
+my—backward—delete—word(){}
+
+# 自动启动文件:  /home/f/.config/autostart

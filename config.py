@@ -10,6 +10,7 @@ define_timeout(1)
 define_modmap({
     Key.CAPSLOCK: Key.LEFT_CTRL,
     Key.RIGHT_ALT: Key.LEFT_CTRL,
+    Key.LEFT_CTRL: Key.ESC,
 })
 
 # [Conditional modmap] Change modifier keys in certain applications
