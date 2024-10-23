@@ -310,11 +310,6 @@ alias anstop="waydroid session stop"
 alias cf="cd ~/.config"
 alias cs="cd ~/.local/share"
 alias c="cd ~/myconfig"
-alias ca="cd ~/myarch"
-alias cn="cd ~/mynix"
-alias cg="cd ~/mygentoo"
-alias cr="cd ~/myfedora"
-alias cy="cd ~/mypython"
 
 #type
 alias ty="type -a" #同where
@@ -419,7 +414,8 @@ alias rr="sudo pacman -Rd --nodeps"
 alias d="sudo yum install"
 
 # debian
-alias a="sudo apt install"
+alias ai="sudo apt install"
+alias au="sudo apt update"
 
 ##gentoo
 alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
