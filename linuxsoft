@@ -1,0 +1,4 @@
+ntfs-3g
+ark  #与dolphin同用右键解压
+p7zip unrar unarchiver lzop lrzip #安装ark可选依赖
+sudo pacman -S packagekit-qt5 packagekit appstream-qt appstream             #确保Discover(软件中心）可用 需重启
