@@ -5,7 +5,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-ps -ef | grep motrix | grep -v grep || motrix &
+# ps -ef | grep motrix | grep -v grep || motrix &
 ps -ef | grep oneko | grep -v grep || oneko -tofocus -tomoyo &
 (ps -ef | grep geph5 | grep -v grep  && pkill geph5) ; ([ -e /usr/bin/geph5-client-gui ] && (exec /usr/bin/geph5-client-gui &) || (exec /data/geph5-client-gui &))
 ps -ef | grep xkeysnail | grep -v grep || sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &

@@ -445,7 +445,7 @@ alias i="ipython"
 # proxy
 alias v2="env all_proxy='socks://127.0.0.1:20170' https_proxy='http://127.0.0.1:20170' http_proxy='http://127.0.0.1:20170'"
 alias cl="env all_proxy='socks://127.0.0.1:7890' https_proxy='http://127.0.0.1:7890' http_proxy='http://127.0.0.1:7890'"
-alias ge="env all_proxy='socks://127.0.0.1:9999' https_proxy='http://127.0.0.1:9999' http_proxy='http://127.0.0.1:9999'"
+alias ge="env http_proxy='http://127.0.0.1:9999'"
 
 #single
 alias lg="lazygit"
