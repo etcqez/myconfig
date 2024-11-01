@@ -22,14 +22,14 @@ define_conditional_modmap(re.compile(r'Emacs'), {
 # [Multipurpose modmap] Give a key two meanings. A normal key when pressed and
 # released, and a modifier key when held down with another key. See Xcape,
 # Carabiner and caps2esc for ideas and concept.
-define_multipurpose_modmap(
-    # Enter is enter when pressed and released. Control when held down.
-    {Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]}
+# define_multipurpose_modmap(
+#     # Enter is enter when pressed and released. Control when held down.
+#     {Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]}
 
     # Capslock is escape when pressed and released. Control when held down.
     # {Key.CAPSLOCK: [Key.ESC, Key.LEFT_CTRL]
     # To use this example, you can't remap capslock with define_modmap.
-)
+# )
 
 # [Conditional multipurpose modmap] Multipurpose modmap in certain conditions,
 # such as for a particular device.
@@ -43,6 +43,17 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
    Key.RIGHT_SHIFT: [Key.KPRIGHTPAREN, Key.RIGHT_SHIFT]
 })
 
+define_keymap(lambda wm_class: wm_class in ("konsole"), {
+    K("LSuper-c"): K("LC-LShift-c"),
+    K("LSuper-v"): K("LC-LShift-v"),
+}, "Terminal")
+
+define_keymap(re.compile(".*"), {
+    K("LSuper-c"): K("C-c"),
+    K("LSuper-x"): K("C-x"),
+    K("LSuper-v"): K("C-v"),
+    K("LSuper-a"):[K("C-home"), K("C-a"), set_mark(True)],
+}, "all")
 
 # Keybindings for Firefox/Chrome
 define_keymap(re.compile("code"), {
@@ -129,3 +140,4 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jet
         K("u"): [K("C-z"), set_mark(False)],
     }
 }, "Emacs-like keys")
+
