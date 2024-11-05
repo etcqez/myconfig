@@ -43,19 +43,24 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
    Key.RIGHT_SHIFT: [Key.KPRIGHTPAREN, Key.RIGHT_SHIFT]
 })
 
+# 终端
 define_keymap(lambda wm_class: wm_class in ("konsole"), {
     K("LSuper-c"): K("LC-LShift-c"),
     K("LSuper-v"): K("LC-LShift-v"),
 }, "Terminal")
 
+# 全局
 define_keymap(re.compile(".*"), {
+    K("C-g"): K("esc"),
+    K("C-left_brace"): K("esc"),
     K("LSuper-c"): K("C-c"),
     K("LSuper-x"): K("C-x"),
     K("LSuper-v"): K("C-v"),
-    K("LSuper-a"):[K("C-home"), K("C-a"), set_mark(True)],
+    K("LSuper-a"):[K("C-home"), K("C-a")],
+    K("C-LSuper-n"): K("enter"),
+    K("C-LSuper-b"): K("backspace"),
 }, "all")
 
-# Keybindings for Firefox/Chrome
 define_keymap(re.compile("code"), {
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
@@ -111,7 +116,8 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jet
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z"),
     # Mark
-    K("C-space"): set_mark(True),
+    # K("C-space"): set_mark(True),
+    K("C-Shift-key_2"): set_mark(True),
     K("C-M-space"): with_or_set_mark(K("C-right")),
     # Search
     K("C-s"): K("F3"),
@@ -125,7 +131,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jet
     # C-x YYY
     K("C-x"): {
         # C-x h (select all)
-        K("h"): [K("C-home"), K("C-a"), set_mark(True)],
+        K("h"): [K("C-home"), K("C-a")],
         # C-x C-f (open)
         K("C-f"): K("C-o"),
         # C-x C-s (save)
