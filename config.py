@@ -56,6 +56,8 @@ define_keymap(re.compile(".*"), {
     K("LSuper-c"): K("C-c"),
     K("LSuper-x"): K("C-x"),
     K("LSuper-v"): K("C-v"),
+    K("LSuper-t"): K("C-t"),
+    K("LSuper-LShift-t"): K("C-Shift-t"),
     K("LSuper-a"):[K("C-home"), K("C-a")],
     K("C-LSuper-n"): K("enter"),
     K("C-LSuper-b"): K("backspace"),

@@ -5,4 +5,4 @@ git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CU
 git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 sed -Ei '/^plugins=/s/\)$/ zsh-autosuggestions zsh-syntax-highlighting\)/' ~/.zshrc
 sed -Ei '/^plugins=/s/\)$/ sudo z\)/' ~/.zshrc
-echo source ~/myconfig/zshalias >> ~/.zshrc
+echo source ~/myconfig/zshrc >> ~/.zshrc

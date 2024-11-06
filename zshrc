@@ -345,13 +345,12 @@ alias sdr="sudo systemctl daemon-reload"
 alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
-alias zs="vim ~/myconfig/zshalias"
-alias zh="vim ~/.zsh_history"
+alias zs="vim ~/myconfig/zshrc"
 alias zp="vim ~/myconfig/_zprofile"
 alias vr="vim ~/.vim/vimrc"
 alias nv="nvim"
 alias sv="sudo vim"
-alias .="source ~/myconfig/zshalias"
+alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
 alias se="(emacs --init-directory=~/spacemacs -bg black &) && exit"
 alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
@@ -446,8 +445,8 @@ alias i="ipython"
 # alias v2="env all_proxy='socks://127.0.0.1:20170' https_proxy='http://127.0.0.1:20170' http_proxy='http://127.0.0.1:20170'"
 # alias cl="env all_proxy='socks://127.0.0.1:7890' https_proxy='http://127.0.0.1:7890' http_proxy='http://127.0.0.1:7890'"
 #export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"
-
-alias ge="env http_proxy='http://127.0.0.1:9999'"
+alias sb='export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"'
+alias ge='export http_proxy="http://127.0.0.1:9910"; export https_proxy="http://127.0.0.1:9910"'
 
 #single
 alias lg="lazygit"
