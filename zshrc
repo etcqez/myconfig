@@ -1,5 +1,7 @@
 # load zsh-completions
 autoload -U compinit && compinit
+autoload -U select-word-style
+select-word-style bash
 
 # git
 # alias gi="git init -b main"
