@@ -1,6 +1,23 @@
 # load zsh-completions
 autoload -U compinit && compinit
 
+# git
+# alias gi="git init -b main"
+# sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
+alias gi="git init;gam"
+alias gam="git add * .*;git commit -am '更新配置文件'"
+alias gg="git remote get-url origin"
+alias grr="git remote remove origin"
+alias gra="git remote add origin"
+alias gs="git status"
+alias gcl="git clone --depth 1"
+alias ga="git add"
+alias gc="git commit"
+alias gps="git push --set-upstream origin main"
+alias gpl="git pull"
+alias gl="git log"
+alias gp="gam;git push"
+
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 
 # pyenv
@@ -31,23 +48,6 @@ alias ni="sudo nix-env -iA"
 alias niu="sudo nix-env --uninstall"
 # alias nc="vim ~/mynix/configuration.nix"
 alias ns="sudo nixos-rebuild switch"
-# git
-# alias gi="git init -b main"
-# sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
-alias gi="git init;gam"
-alias gam="git add * .*;git commit -am '更新配置文件'"
-alias gr="git remote remove origin"
-alias grg="git remote get-url origin"
-alias gra="git remote add origin"
-alias gs="git status"
-alias gcl="git clone --depth 1"
-alias ga="git add"
-alias gc="git commit"
-alias gps="git push --set-upstream origin main"
-alias gpl="git pull"
-alias gl="git log"
-alias gp="gam;git push"
-
 # 字体
 alias font="fc-list :lang=zh"
 alias fcc="sudo fc-cache -f -v"
