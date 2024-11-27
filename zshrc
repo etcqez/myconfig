@@ -34,6 +34,13 @@ function ,take() {
 mkdir -p "$(dirname "$1")" && touch "$1" && take "$(dirname "$1")"
 }
 
+alias a="ls -hA --group-directories-first"
+alias l="ls --group-directories-first"
+alias ll="ls -lh --group-directories-first"
+alias la="ls -lhA --group-directories-first"
+alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
+alias sl="sudo ls --color=tty -lhAt"
+
 # show error
 alias j="journalctl"
 alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
@@ -662,12 +669,4 @@ export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
-
-else
-  alias a="ls -hA --group-directories-first"
-  alias l="ls --group-directories-first"
-  alias ll="ls -lh --group-directories-first"
-  alias la="ls -lhA --group-directories-first"
-  alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
-alias sl="sudo ls --color=tty -lhAt"
