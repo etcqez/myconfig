@@ -526,18 +526,6 @@ alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate
 alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 alias tees="sudo tee -a"
 
-##gentoo
-alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
-alias chg="sudo arch-chroot /mnt/gentoo"
-alias mnc="mg;cg"
-alias umg="sudo umount -R /mnt/gentoo"
-alias e="sudo emerge"
-alias ne="sudo emerge --newuse"
-alias ac="sudo emerge -ac"
-alias es="sudo emerge --sync"
-alias ew="sudo emerge --update --jobs --newuse --deep --with-bdeps=y @world"
-alias rebu="sudo emerge --ask @module-rebuild"
-
 ##nvidia
 #alias nviglx="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia glxinfo | grep 'OpenGL renderer'"
 #alias glx="glxinfo | grep 'OpenGL renderer'"
