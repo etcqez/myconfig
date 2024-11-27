@@ -332,7 +332,6 @@ alias um="cd; sudo umount -R /mnt"
 #system
 #
 # systemd
-if [[ "$(ps -p 1 -o comm=)" == "systemd" ]]; then
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
 alias di="sudo systemctl disable --now"
@@ -352,7 +351,6 @@ alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart b
 alias blbackup="sh ~/myconfig/bluetooth/backup.sh"
 alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart bluetooth"
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
-fi
 
 # vim emacs
 alias em="emacs"
@@ -378,7 +376,6 @@ alias wm="xprop WM_CLASS"
 # docker update --restart=no
 # sudo docker info
 #
-if command -v docker &> /dev/null; then
 alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias d="docker"
 alias dup="docker update"
@@ -394,7 +391,6 @@ alias dre="docker restart"
 alias ddf="docker system df"
 alias drm="docker rm"
 alias dri="docker rmi"
-fi
 
 # snapper
 # snapper -c root status 0..2
