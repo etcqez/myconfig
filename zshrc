@@ -268,7 +268,6 @@ alias facl="sudo setfacl -m u:f:rwx"
 
 #杳看硬件.操作系统信息 	id	lsblk
 alias fr="free -h"
-alias uname="uname -r"
 alias release="cat /etc/*-release"
 alias cpu="cat /proc/cpuinfo"
 alias part="cat /proc/partitions"
@@ -331,11 +330,9 @@ alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount /dev/nvme0n1p5 /mnt;sudo mount
 alias um="cd; sudo umount -R /mnt"
 
 #system
-alias br="sudo systemctl restart bluetooth"
-alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart bluetooth"
-alias blbackup="sh ~/myconfig/bluetooth/backup.sh"
-alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart bluetooth"
-alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
+#
+# systemd
+if [[ "$(ps -p 1 -o comm=)" == "systemd" ]]; then
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
 alias di="sudo systemctl disable --now"
@@ -350,6 +347,12 @@ alias usta="systemctl --user start"
 alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
 alias sdr="sudo systemctl daemon-reload"
+alias br="sudo systemctl restart bluetooth"
+alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart bluetooth"
+alias blbackup="sh ~/myconfig/bluetooth/backup.sh"
+alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart bluetooth"
+alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
+fi
 
 # vim emacs
 alias em="emacs"
@@ -375,6 +378,7 @@ alias wm="xprop WM_CLASS"
 # docker update --restart=no
 # sudo docker info
 #
+if command -v docker &> /dev/null; then
 alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias d="docker"
 alias dup="docker update"
@@ -390,6 +394,7 @@ alias dre="docker restart"
 alias ddf="docker system df"
 alias drm="docker rm"
 alias dri="docker rmi"
+fi
 
 # snapper
 # snapper -c root status 0..2
@@ -634,10 +639,8 @@ my—backward—delete—word(){}
 bindkey '^[[Z' reverse-menu-complete
 
 # 自动启动文件:  /home/f/.config/autostart
+if [[ "$(uname)" == "Darwin" ]]; then
 
-os_name=$(uname -s | tr '[:upper:]' '[:lower:]')
-
-if [[ $os_name == *"darwin"* ]]; then
   export HOMEBREW_NO_AUTO_UPDATE=1
   alias a="ls -hA"
   alias l="ls"
