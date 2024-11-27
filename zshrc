@@ -599,31 +599,31 @@ bindkey "^N" down-line-or-search
 # Use bash-like word definitions for navigation and operations
 
 #################################
-# C-w
-# Create a new widget.
-zle -N backward-kill-space-word
-backward-kill-space-word() {
-# Inform the line editor that this widget will kill text.
-zle -f kill
-# Set $WORDCHARS for this command only.
-WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
-}
-# See comments above.
-zle -N backward-kill-bash-word
-backward-kill-bash-word() {
-zle -f kill
-WORDCHARS='' zle .backward-kill-word
-}
-# Bind the widgets to keys.
-bindkey   '^W' backward-kill-space-word
-bindkey '^[^H' backward-kill-bash-word
-my-backward-delete-word() {
-local WORDCHARS=${WORDCHARS/\//}
-zle backward-delete-word
-}
-zle -N my-backward-delete-word
-bindkey '^W' my-backward-delete-word
-my—backward—delete—word(){}
+## C-w
+## Create a new widget.
+#zle -N backward-kill-space-word
+#backward-kill-space-word() {
+## Inform the line editor that this widget will kill text.
+#zle -f kill
+## Set $WORDCHARS for this command only.
+#WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
+#}
+## See comments above.
+#zle -N backward-kill-bash-word
+#backward-kill-bash-word() {
+#zle -f kill
+#WORDCHARS='' zle .backward-kill-word
+#}
+## Bind the widgets to keys.
+#bindkey   '^W' backward-kill-space-word
+#bindkey '^[^H' backward-kill-bash-word
+#my-backward-delete-word() {
+#local WORDCHARS=${WORDCHARS/\//}
+#zle backward-delete-word
+#}
+#zle -N my-backward-delete-word
+#bindkey '^W' my-backward-delete-word
+#my—backward—delete—word(){}
 #################################
 
 # shift+tab
