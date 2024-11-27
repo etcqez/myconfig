@@ -1,11 +1,21 @@
-# 必须放最前面 (gentoo命令补全)
-autoload -U compinit promptinit
-compinit
+# load zsh-completions
+autoload -U compinit && compinit
+
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 
 # pyenv
 [ -e ~/.pyenv/bin/pyenv ] && eval "$(pyenv virtualenv-init -)"
 
+# 函数
+function mcd {
+  mkdir $1 && cd $1;
+}
+function ,touch {
+mkdir -p "$(dirname "$1")" && touch "$1"
+}
+function ,take() {
+mkdir -p "$(dirname "$1")" && touch "$1" && take "$(dirname "$1")"
+}
 
 # show error
 alias j="journalctl"
@@ -71,21 +81,21 @@ export COLORTERM=truecolor
 
 # emacs verm
 vterm_printf() {
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
+  if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+    # Tell tmux to pass the escape sequences through
+    printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+  elif [ "${TERM%%-*}" = "screen" ]; then
+    # GNU screen (screen, screen-256color, screen-256color-bce)
+    printf "\eP\e]%s\007\e\\" "$1"
+  else
+    printf "\e]%s\e\\" "$1"
+  fi
 }
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+  alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
 function help(){
-    bash -c "help $@"
+  bash -c "help $@"
 }
 #vim 编辑二进制: vim -b /bin/ls -> :%!xxd -> :%!xxd -r
 
@@ -447,6 +457,7 @@ alias i="ipython"
 #export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"
 alias sb='export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"'
 alias ge='export http_proxy="http://127.0.0.1:9910"; export https_proxy="http://127.0.0.1:9910"'
+alias hi='export http_proxy="http://127.0.0.1:12334"; export https_proxy="http://127.0.0.1:12334"'
 
 #single
 alias lg="lazygit"
@@ -472,7 +483,6 @@ alias cpb="\cp -av --backup=numbered"
 alias mv="mv -iv"
 
 #rm
-alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 alias t="tree -cr /tmp"
 alias t2="tree -L 2"
 #alias rmall="\rm -rf *;\rm -rf .[^.]*"
@@ -488,11 +498,6 @@ alias ii="iwctl station wlan1 get-networks"
 #alias .dir="ls -d .*/"
 #alias onlydir="ls -d */"
 #alias onlyfile=""
-alias sl="sudo ls --color=tty -lhAt"
-alias a="ls -hA --group-directories-first"
-alias l="ls --group-directories-first"
-alias ll="ls -lh --group-directories-first"
-alias la="ls -lhA --group-directories-first"
 
 # Handy change dir shortcuts
 alias ..='cd ..'
@@ -549,9 +554,9 @@ alias rebu="sudo emerge --ask @module-rebuild"
 # 只读挂载: mount -r LABEL=test /mnt/sdb2
 # 重新挂载: mount -o remount.rw /mnt/sdb2
 # 挂载文件夹: mount -B /etc/ /mnt/etc/
-    #/etc/fstab /etc/ /mnt/etc/ none bind 0 0
+#/etc/fstab /etc/ /mnt/etc/ none bind 0 0
 # 挂载文件(文件模拟分区): dd if=/dev/zero of=/disk.img bs=1M count=100 -> mkfs.ext4 /disk.img(给文件创建文件系统) -> blkid /disk.img -> mkdir /mnt/disk;mount /disk.img /mnt/loop -> losetup -a #查看关联
-    #/etc/fstab /disk.img /data/disk xfs defaults 0 0
+#/etc/fstab /disk.img /data/disk xfs defaults 0 0
 # swap
 # swap分区: 分区类型选择swap -> mkswap ->  分区查看: swapon -s ->  挂载: swapon -a
 # 清除mbr分区表: dd if=/dev/zero of=/dev/sdc bs=1 count=66 seek=446
@@ -598,34 +603,72 @@ bindkey "^N" down-line-or-search
 # Use bash-like word definitions for navigation and operations
 
 #################################
- # C-w
- # Create a new widget.
- zle -N backward-kill-space-word
- backward-kill-space-word() {
-   # Inform the line editor that this widget will kill text.
-   zle -f kill
-   # Set $WORDCHARS for this command only.
-   WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
- }
- # See comments above.
- zle -N backward-kill-bash-word
- backward-kill-bash-word() {
-   zle -f kill
-   WORDCHARS='' zle .backward-kill-word
- }
- # Bind the widgets to keys.
- bindkey   '^W' backward-kill-space-word
- bindkey '^[^H' backward-kill-bash-word
- my-backward-delete-word() {
-     local WORDCHARS=${WORDCHARS/\//}
-     zle backward-delete-word
- }
- zle -N my-backward-delete-word
- bindkey '^W' my-backward-delete-word
- my—backward—delete—word(){}
+# C-w
+# Create a new widget.
+zle -N backward-kill-space-word
+backward-kill-space-word() {
+# Inform the line editor that this widget will kill text.
+zle -f kill
+# Set $WORDCHARS for this command only.
+WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
+}
+# See comments above.
+zle -N backward-kill-bash-word
+backward-kill-bash-word() {
+zle -f kill
+WORDCHARS='' zle .backward-kill-word
+}
+# Bind the widgets to keys.
+bindkey   '^W' backward-kill-space-word
+bindkey '^[^H' backward-kill-bash-word
+my-backward-delete-word() {
+local WORDCHARS=${WORDCHARS/\//}
+zle backward-delete-word
+}
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word
+my—backward—delete—word(){}
 #################################
 
 # shift+tab
 bindkey '^[[Z' reverse-menu-complete
 
 # 自动启动文件:  /home/f/.config/autostart
+
+os_name=$(uname -s | tr '[:upper:]' '[:lower:]')
+
+if [[ $os_name == *"darwin"* ]]; then
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  alias a="ls -hA"
+  alias l="ls"
+  alias ll="ls -lh"
+  alias la="ls -lhA"
+  # 切换到finder
+  function pfd() {
+    osascript 2> /dev/null <<EOF
+  tell application "Finder"
+    return POSIX path of (target of window 1 as alias)
+  end tell
+EOF
+}
+function cdf() {
+  cd "$(pfd)"
+}
+function rm() {
+  DIR=$(mktemp -d /tmp/trash-$(date +%F_%H-%M-%S)_XXXXXX);\mv $@ $DIR
+}
+
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+
+else
+  alias a="ls -hA --group-directories-first"
+  alias l="ls --group-directories-first"
+  alias ll="ls -lh --group-directories-first"
+  alias la="ls -lhA --group-directories-first"
+  alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
+fi;
+alias sl="sudo ls --color=tty -lhAt"
