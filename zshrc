@@ -40,7 +40,6 @@ alias a="ls -hA --group-directories-first"
 alias l="ls --group-directories-first"
 alias ll="ls -lh --group-directories-first"
 alias la="ls -lhA --group-directories-first"
-alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 alias sl="sudo ls --color=tty -lhAt"
 
 # show error
@@ -660,4 +659,7 @@ export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+else
+alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
+
