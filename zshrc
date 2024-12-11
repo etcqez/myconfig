@@ -361,7 +361,6 @@ alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart blue
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
-alias em="emacs"
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshrc"
