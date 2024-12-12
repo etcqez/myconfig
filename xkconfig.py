@@ -16,7 +16,8 @@ define_modmap({
 # [Conditional modmap] Change modifier keys in certain applications
 define_conditional_modmap(re.compile(r'Emacs'), {
 #    Key.RIGHT_CTRL: Key.ESC,
-    Key.CAPSLOCK: Key.LEFT_CTRL
+    Key.CAPSLOCK: Key.LEFT_CTRL,
+    K("C-g"): K("C-g"),
 })
 
 # [Multipurpose modmap] Give a key two meanings. A normal key when pressed and
@@ -49,19 +50,6 @@ define_keymap(lambda wm_class: wm_class in ("konsole"), {
     K("LSuper-v"): K("LC-LShift-v"),
 }, "Terminal")
 
-# 全局
-define_keymap(re.compile(".*"), {
-    K("C-g"): K("esc"),
-    K("C-left_brace"): K("esc"),
-    K("LSuper-c"): K("C-c"),
-    K("LSuper-x"): K("C-x"),
-    K("LSuper-v"): K("C-v"),
-    K("LSuper-t"): K("C-t"),
-    K("LSuper-LShift-t"): K("C-Shift-t"),
-    K("LSuper-a"):[K("C-home"), K("C-a")],
-    K("C-LSuper-n"): K("enter"),
-    K("C-LSuper-b"): K("backspace"),
-}, "all")
 
 define_keymap(re.compile("code"), {
     K("C-b"): with_mark(K("left")),
@@ -149,3 +137,17 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gvim", "konsole", "jet
     }
 }, "Emacs-like keys")
 
+# 全局
+# define_keymap(re.compile(".*"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs"), {
+    K("C-g"): K("esc"),
+    K("C-left_brace"): K("esc"),
+    K("LSuper-c"): K("C-c"),
+    K("LSuper-x"): K("C-x"),
+    K("LSuper-v"): K("C-v"),
+    K("LSuper-t"): K("C-t"),
+    K("LSuper-LShift-t"): K("C-Shift-t"),
+    K("LSuper-a"):[K("C-home"), K("C-a")],
+    K("C-LSuper-n"): K("enter"),
+    K("C-LSuper-b"): K("backspace"),
+}, "all")

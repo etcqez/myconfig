@@ -335,11 +335,13 @@ alias wh="which -a"
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
 alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount /dev/nvme0n1p5 /mnt;sudo mount -o rw /dev/nvme0n1p5 /mnt"
-alias um="cd; sudo umount -R /mnt"
+alias umnt="cd; sudo umount -R /mnt"
+alias um="cd; sudo umount -R"
 
 #system
 #
 # systemd
+alias rl="sudo systemctl daemon-reload"
 alias sus="systemctl suspend -i"
 alias en="sudo systemctl enable --now"
 alias di="sudo systemctl disable --now"
@@ -353,7 +355,6 @@ alias sta="sudo systemctl start"
 alias usta="systemctl --user start"
 alias re="sudo systemctl restart"
 alias ure="systemctl --user restart"
-alias sdr="sudo systemctl daemon-reload"
 alias br="sudo systemctl restart bluetooth"
 alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart bluetooth"
 alias blbackup="sh ~/myconfig/bluetooth/backup.sh"
