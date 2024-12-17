@@ -3,6 +3,10 @@ autoload -U compinit && compinit
 autoload -Uz select-word-style
 select-word-style shell
 
+# ddcutil 亮度控制
+alias d+="ddcutil -b 5 setvcp 10 + 5"
+alias d-="ddcutil -b 5 setvcp 10 - 5"
+
 # git
 # alias gi="git init -b main"
 # sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
@@ -84,7 +88,6 @@ alias pvs="sudo pvs"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
-# export EDITOR=emacs
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
@@ -294,8 +297,8 @@ alias nvme="sudo smartctl /dev/nvme0n1p1 -a"
 alias mt="mount | column -t"
 alias blk="lsblk -f"
 alias route="route -n"
-alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias grube="sudo vim /etc/default/grub"
+alias grubmk="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias grubin="sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch"
 alias p="ping"
 alias io="sudo iotop -o -d 2 -q"
 alias iotop="sudo iotop"
@@ -319,6 +322,9 @@ alias iotop="sudo iotop"
 
 #############################################################################
 
+# 前端
+alias cnpm="npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc"
+
 # android
 alias an="screen waydroid show-full-ui"
 alias anstop="waydroid session stop"
@@ -327,6 +333,7 @@ alias anstop="waydroid session stop"
 alias cf="cd ~/.config"
 alias cs="cd ~/.local/share"
 alias c="cd ~/myconfig"
+alias cde="cd ~/Desktop"
 
 #type
 alias ty="type -a" #同where
@@ -334,7 +341,7 @@ alias wh="which -a"
 
 # windows
 # sudo woeusb --device ./tiny11\ 23H2\ x64.iso  /dev/sda --target-filesystem ntfs
-alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount /dev/nvme0n1p5 /mnt;sudo mount -o rw /dev/nvme0n1p5 /mnt"
+# alias win="sudo ntfsfix /dev/nvme0n1p5;sudo mount /dev/nvme0n1p5 /mnt;sudo mount -o rw /dev/nvme0n1p5 /mnt"
 alias umnt="cd; sudo umount -R /mnt"
 alias um="cd; sudo umount -R"
 
@@ -362,17 +369,25 @@ alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart blue
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
+export EDITOR=vim
 alias ec="emacsclient -t"
 alias eec="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
-alias zp="vim ~/myconfig/_zprofile"
-alias vr="vim ~/.vim/vimrc"
+alias docc="$EDITOR ~/myconfig/doc/c.sh"
+alias docj="$EDITOR ~/myconfig/doc/java.sh"
+alias doce="$EDITOR ~/myconfig/doc/emacs.sh"
+alias docv="$EDITOR ~/myconfig/doc/vim.sh"
+alias docn="$EDITOR ~/myconfig/doc/nvim.sh"
+alias docjs="$EDITOR ~/myconfig/doc/js.sh"
+alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
+alias zp="$EDITOR ~/myconfig/_zprofile"
+alias vr="$EDITOR ~/.vim/vimrc"
 alias nv="nvim"
 alias sv="sudo vim"
 alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
-alias se="(emacs --init-directory=~/spacemacs -bg black &) && exit"
+alias se="(emacs --init-directory=~/emacs -bg black &) && exit"
 alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
 alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
 alias pk="sudo pkill"
