@@ -330,10 +330,11 @@ alias an="screen waydroid show-full-ui"
 alias anstop="waydroid session stop"
 
 #cd
-alias cf="cd ~/.config"
-alias cs="cd ~/.local/share"
-alias c="cd ~/myconfig"
-alias cde="cd ~/Desktop"
+alias cf="cd ~/.config/"
+alias cl="cd ~/.local/share/"
+alias c="cd ~/myconfig/"
+alias desk="cd ~/Desktop/"
+alias docu="cd ~/Documents/"
 
 #type
 alias ty="type -a" #同where
@@ -369,9 +370,9 @@ alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart blue
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
-export EDITOR=vim
+export EDITOR=nvim
 alias ec="emacsclient -t"
-alias eec="emacs --daemon;ec"
+alias eda="emacs --daemon;ec"
 alias zs="vim ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias docc="$EDITOR ~/myconfig/doc/c.sh"
