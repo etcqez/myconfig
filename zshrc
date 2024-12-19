@@ -680,3 +680,10 @@ else
 alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
 
+#vim-mode
+# Normal mode
+function append-last-word { ((++CURSOR)); zle insert-last-word; }
+zle -N append-last-word
+bindkey -M vicmd '\e.' append-last-word
+# Insert mode
+bindkey -M viins '\e.' insert-last-word
