@@ -383,8 +383,9 @@ alias docn="$EDITOR ~/myconfig/doc/nvim.sh"
 alias docjs="$EDITOR ~/myconfig/doc/js.sh"
 alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
 alias zp="$EDITOR ~/myconfig/_zprofile"
-alias vr="$EDITOR ~/.vim/vimrc"
+# alias vr="$EDITOR ~/.vim/vimrc"
 alias nv="nvim"
+alias vim="nvim"
 alias sv="sudo vim"
 alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
@@ -485,6 +486,7 @@ alias sb='export http_proxy="http://127.0.0.1:20122"; export https_proxy="http:/
 alias ge='export http_proxy="http://127.0.0.1:9910"; export https_proxy="http://127.0.0.1:9910"'
 alias hi='export http_proxy="http://127.0.0.1:12334"; export https_proxy="http://127.0.0.1:12334"'
 alias ka='export http_proxy="http://127.0.0.1:3067"; export https_proxy="http://127.0.0.1:3067"'
+alias va='export http_proxy="http://127.0.0.1:20171"; export https_proxy="http://127.0.0.1:20171"'
 
 #single
 alias lg="lazygit"
