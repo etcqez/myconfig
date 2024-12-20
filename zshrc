@@ -86,8 +86,8 @@ alias lvs="sudo lvs"
 alias vgs="sudo vgs"
 alias pvs="sudo pvs"
 
-export TERM=xterm-256color
-export COLORTERM=truecolor
+# export TERM=xterm-256color
+# export COLORTERM=truecolor
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
@@ -386,10 +386,12 @@ alias zp="$EDITOR ~/myconfig/_zprofile"
 # alias vr="$EDITOR ~/.vim/vimrc"
 alias nv="nvim"
 alias vim="nvim"
+alias vi="nvim"
 alias sv="sudo vim"
 alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
-alias se="(emacs --init-directory=~/emacs -bg black &) && exit"
+alias emacsbef="emacs -nw --init-directory=~/.emacs.d.bef -bg black"
+alias doom="emacs -nw --init-directory=~/.config/emacs"
 alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
 alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
 alias pk="sudo pkill"
@@ -689,3 +691,24 @@ zle -N append-last-word
 bindkey -M vicmd '\e.' append-last-word
 # Insert mode
 bindkey -M viins '\e.' insert-last-word
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 修复zsh-vi-mode
+# bindkey '^D' delete-char
