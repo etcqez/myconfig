@@ -86,8 +86,8 @@ alias lvs="sudo lvs"
 alias vgs="sudo vgs"
 alias pvs="sudo pvs"
 
-export TERM=xterm-256color
-export COLORTERM=truecolor
+# export TERM=xterm-256color
+# export COLORTERM=truecolor
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
@@ -383,12 +383,15 @@ alias docn="$EDITOR ~/myconfig/doc/nvim.sh"
 alias docjs="$EDITOR ~/myconfig/doc/js.sh"
 alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
 alias zp="$EDITOR ~/myconfig/_zprofile"
-alias vr="$EDITOR ~/.vim/vimrc"
+# alias vr="$EDITOR ~/.vim/vimrc"
 alias nv="nvim"
+alias vim="nvim"
+alias vi="nvim"
 alias sv="sudo vim"
 alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
-alias se="(emacs --init-directory=~/emacs -bg black &) && exit"
+alias emacsbef="emacs -nw --init-directory=~/.emacs.d.bef -bg black"
+alias doom="emacs -nw --init-directory=~/.config/emacs"
 alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
 alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
 alias pk="sudo pkill"
@@ -485,6 +488,7 @@ alias sb='export http_proxy="http://127.0.0.1:20122"; export https_proxy="http:/
 alias ge='export http_proxy="http://127.0.0.1:9910"; export https_proxy="http://127.0.0.1:9910"'
 alias hi='export http_proxy="http://127.0.0.1:12334"; export https_proxy="http://127.0.0.1:12334"'
 alias ka='export http_proxy="http://127.0.0.1:3067"; export https_proxy="http://127.0.0.1:3067"'
+alias va='export http_proxy="http://127.0.0.1:20171"; export https_proxy="http://127.0.0.1:20171"'
 
 #single
 alias lg="lazygit"
@@ -687,3 +691,24 @@ zle -N append-last-word
 bindkey -M vicmd '\e.' append-last-word
 # Insert mode
 bindkey -M viins '\e.' insert-last-word
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 修复zsh-vi-mode
+# bindkey '^D' delete-char
