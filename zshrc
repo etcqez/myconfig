@@ -698,42 +698,14 @@ fi;
 
 
 
-# local WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-#
-#   backward-kill-dir () {
-#     local WORDCHARS=${WORDCHARS/\/}
-#     zle backward-kill-word
-#     zle -f kill
-# }
-# zle -N backward-kill-dir
-# bindkey '^[^?' backward-kill-dir
-#
-# # Alt+Backspace
-# backward-kill-dir () {
-#     local WORDCHARS=${WORDCHARS/\/}
-#     zle backward-kill-word
-#     zle -f kill  # Ensures that after repeated backward-kill-dir, Ctrl+Y will restore all of them.
-# }
-# zle -N backward-kill-dir
-# bindkey '^[^?' backward-kill-dir
+# Use bash-like word definitions for navigation and operations
+autoload -Uz select-word-style
+select-word-style bash
 
-
-# Alt+Left
-backward-word-dir () {
-    local WORDCHARS=${WORDCHARS/\/}
-    zle backward-word
-}
-zle -N backward-word-dir
-bindkey "^[[1;3D" backward-word-dir
-
-# Alt+Right
-forward-word-dir () {
-    local WORDCHARS=${WORDCHARS/\/}
-    zle forward-word
-}
-zle -N forward-word-dir
-bindkey "^[[1;3C" forward-word-dir
-
+# Use C-w to kill back to the previous space
+zle -N backward-kill-space-word backward-kill-word-match
+zstyle :zle:backward-kill-space-word word-style space
+bindkey '^W' backward-kill-space-word
 
 
 
