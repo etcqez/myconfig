@@ -698,24 +698,24 @@ fi;
 
 
 
-local WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-  backward-kill-dir () {
-    local WORDCHARS=${WORDCHARS/\/}
-    zle backward-kill-word
-    zle -f kill
-}
-zle -N backward-kill-dir
-bindkey '^[^?' backward-kill-dir
-
-# Alt+Backspace
-backward-kill-dir () {
-    local WORDCHARS=${WORDCHARS/\/}
-    zle backward-kill-word
-    zle -f kill  # Ensures that after repeated backward-kill-dir, Ctrl+Y will restore all of them.
-}
-zle -N backward-kill-dir
-bindkey '^[^?' backward-kill-dir
+# local WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+#
+#   backward-kill-dir () {
+#     local WORDCHARS=${WORDCHARS/\/}
+#     zle backward-kill-word
+#     zle -f kill
+# }
+# zle -N backward-kill-dir
+# bindkey '^[^?' backward-kill-dir
+#
+# # Alt+Backspace
+# backward-kill-dir () {
+#     local WORDCHARS=${WORDCHARS/\/}
+#     zle backward-kill-word
+#     zle -f kill  # Ensures that after repeated backward-kill-dir, Ctrl+Y will restore all of them.
+# }
+# zle -N backward-kill-dir
+# bindkey '^[^?' backward-kill-dir
 
 
 # Alt+Left
