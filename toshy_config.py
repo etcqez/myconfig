@@ -1774,6 +1774,49 @@ modmap("Cond modmap - Terms - Mac kbd", {
 ###################################################################################################
 ###  SLICE_MARK_START: user_custom_modmaps  ###  EDITS OUTSIDE THESE MARKS WILL BE LOST ON UPGRADE
 
+editors = ["emacs"]
+
+editorsStr                         = toRgxStr(editors)
+# my
+modmap("CapsLock is Right Ctrl in Some Editor ", {
+    Key.CAPSLOCK:               Key.LEFT_CTRL,                  # Modmap Caps Lock to be a Ctrl key (not Cmd)
+}, when = lambda ctx:
+    cnfg.screen_has_focus and
+    matchProps(clas=editorsStr)(ctx) )
+
+keymap("Some Editor", {
+    # 修正
+    C("LC-Tab") :               C("LC-Tab"),
+    C("Shift-LC-Tab") :               C("Shift-LC-Tab"),
+    C("Alt-f"):            C("Alt-f"),                  # Delete Right Word of Cursor
+    C("Alt-b"):            C("Alt-b"),                  # Delete Right Word of Cursor
+    # Key.LEFT_CTRL:            [iEF2NT(),Key.LEFT_META],                  # Delete Right Word of Cursor
+    C("Alt-LC-f") :             C("Alt-Super-f"),
+    C("Alt-LC-1") :             C("Alt-Super-1"),
+    C("Alt-LC-2") :             C("Alt-Super-2"),
+    C("Alt-LC-3") :             C("Alt-Super-3"),
+    C("Alt-LC-4") :             C("Alt-Super-4"),
+    C("Alt-LC-5") :             C("Alt-Super-5"),
+    C("Alt-LC-6") :             C("Alt-Super-6"),
+    C("LC-Space"):              C("Super-Space"),            # Launcher or Workspaces or Applications (user choice)
+    C("LC-Left_Brace"):         C("Esc"),                    # Close Find Files dialog with Escape
+    C("Shift-LC-f") :           C("Shift-Super-f"),
+    #
+    C("Alt-LC-l") :             C("Alt-Super-l"),
+    C("Alt-LC-h") :             C("Alt-Super-h"),
+    C("Alt-LC-j") :             C("Alt-Super-j"),
+    C("Alt-LC-k") :             C("Alt-Super-k"),
+    C("Alt-LC-u") :             C("Alt-Super-u"),
+    C("Alt-LC-i") :             C("Alt-Super-i"),
+    C("Alt-LC-n") :             C("Alt-Super-n"),
+    C("Alt-LC-m") :             C("Alt-Super-m"),
+    # 最大化
+    C("Alt-Shift-LC-f") :             C("Alt-Shift-Super-f"),
+}, when = lambda ctx:
+    cnfg.screen_has_focus and
+    matchProps(clas=editorsStr)(ctx)
+)
+
 
 # my
 modmap("CapsLock is Right Ctrl in GenGUI", {
@@ -1783,6 +1826,7 @@ modmap("CapsLock is Right Ctrl in GenGUI", {
     cnfg.screen_has_focus and
     matchProps(not_clas=terms_and_remotes_Str)(ctx) )
 
+
 # my
 modmap("CapsLock is Left Ctrl in GenTerms", {
     Key.CAPSLOCK:               Key.LEFT_CTRL,                  # Modmap Caps Lock to be a Ctrl key (not Cmd)
@@ -1790,23 +1834,17 @@ modmap("CapsLock is Left Ctrl in GenTerms", {
     cnfg.screen_has_focus and
     matchProps(clas=termStr)(ctx) )
 
-# my
-modmap("CapsLock is Left Ctrl in Emacs", {
-    Key.CAPSLOCK:               Key.LEFT_CTRL,                  # Modmap Caps Lock to be a Ctrl key (not Cmd)
-}, when = lambda ctx:
-    cnfg.screen_has_focus and
-    matchProps(clas=emacs)(ctx) )
 
 # my
 keymap("General Terminals", {
-
     # 修正
     C("LC-Tab") :               C("LC-Tab"),
     C("Shift-LC-Tab") :               C("Shift-LC-Tab"),
     C("Alt-f"):            C("Alt-f"),                  # Delete Right Word of Cursor
     C("Alt-b"):            C("Alt-b"),                  # Delete Right Word of Cursor
+    C("Alt-v"):            C("Alt-v"),                  # Delete Right Word of Cursor
+    C("Alt-Backspace"):            C("Alt-Backspace"),                  # Delete Right Word of Cursor
     # Key.LEFT_CTRL:            [iEF2NT(),Key.LEFT_META],                  # Delete Right Word of Cursor
-
     C("Alt-LC-f") :             C("Alt-Super-f"),
     C("Alt-LC-1") :             C("Alt-Super-1"),
     C("Alt-LC-2") :             C("Alt-Super-2"),
@@ -1836,28 +1874,25 @@ keymap("General Terminals", {
     C("Alt-LC-i") :             C("Alt-Super-i"),
     C("Alt-LC-n") :             C("Alt-Super-n"),
     C("Alt-LC-m") :             C("Alt-Super-m"),
-
     # 最大化
     C("Alt-Shift-LC-f") :             C("Alt-Shift-Super-f"),
-
 }, when = lambda ctx:
     cnfg.screen_has_focus and
     matchProps(clas=termStr)(ctx)
 )
 
+
 # my
 keymap("Firefox Browsers Overrides", {
     # C("Super-k") :             C("Super-k"),
-
 }, when = matchProps(clas=browsers_firefoxStr))
+
 
 # my
 if DESKTOP_ENV == 'kde':
     keymap("GenGUI overrides: KDE", {
-
         # Application launcher menu remap
         # C("RC-Space"):             [iEF2NT(),C("Alt-F1")],          # Application Launcher Menu
-
         # krunner drop-down (similar to Spotlight) remap
         C("RC-Space"):             C("RC-Space"),          # Invoke krunner drop-down
     }, when = lambda ctx:
@@ -1865,31 +1900,32 @@ if DESKTOP_ENV == 'kde':
         matchProps(not_clas=remoteStr)(ctx)
     )
 
+
 # my
 keymap("General GUI", {
-
+    # 修复zellij切屏
+    C("Alt-Left"):              C("Alt-Left"),                    # Left of Word
+    C("Alt-Shift-Left"):        C("Alt-Shift-Left"),              # Select Left of Word
+    C("Alt-Right"):             C("Alt-Right"),                   # Right of Word
+    C("Alt-Shift-Right"):       C("Alt-Shift-Right"),             # Select Right of Word
+    C("Alt-Shift-g"):           C("Alt-Shift-g"),                 # View source control
     # 选中
     C("Super-Shift-b"):                   C("Shift-Left"),                    # Close Find Files dialog with Escape
     C("Super-Shift-f"):                   C("Shift-Right"),                    # Close Find Files dialog with Escape
-
     C("Super-Left_Brace"):                   C("Esc"),                    # Close Find Files dialog with Escape
     C("Super-Space"):                   C("Super-Space"),                    # Close Find Files dialog with Escape
     C("Super-g"):                   C("Esc"),                    # Close Find Files dialog with Escape
     C("RC-Backslash") :             C("Super-Backslash"),
-
     C("Super-v") :             C("Page_Down"),
     C("Alt-v") :             C("Page_Up"),
-
     # C("LC-h") :             C("Super-h"),
     # C("LC-l") :             C("Super-l"),
     # C("LC-j") :             C("Super-j"),
     # C("LC-k") :             C("Super-k"),
-
     C("Shift-LC-h") :             C("Shift-Super-h"),
     C("Shift-LC-l") :             C("Shift-Super-l"),
     C("Shift-LC-j") :             C("Shift-Super-j"),
     C("Shift-LC-k") :             C("Shift-Super-k"),
-
     # command当窗口管理器修饰键
     # C("RC-l") :             C("Super-l"),
     # C("RC-h") :             C("Super-h"),
@@ -1899,23 +1935,21 @@ keymap("General GUI", {
     # C("Super-l") :             C("RC-l"),
     # C("Super-j") :             C("RC-j"),
     # # C("Super-k") :             C("RC-k"),
-
-
     C("LC-h") :             C("LC-h"),
     # Wordwise
     C("Alt-f"):            C("C-Right"),                  # Delete Right Word of Cursor
     C("Alt-b"):            C("C-Left"),                  # Delete Right Word of Cursor
     C("Super-w"):   C("C-Backspace"),               # Delete word left of cursor
     C("Alt-d"):   C("C-Delete"),               # Delete word left of cursor
-
     C("Alt-Shift-b"):           C("LC-Shift-Left"),
     C("Alt-Shift-f"):           C("LC-Shift-Right"),
-
 }, when = lambda ctx:
     cnfg.screen_has_focus and
     matchProps(not_clas=remoteStr)(ctx)
 )
 
+
+# my
 keymap("General Web Browsers", {
     C("RC-Key_1"):              C("RC-Key_1"),                 # Jump to Tab #1-#8
     C("RC-Key_2"):              C("RC-Key_2"),
