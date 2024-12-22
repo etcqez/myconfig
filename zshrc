@@ -697,7 +697,7 @@ fi;
 
 
 
-#################################C-w#########################################
+#################################C-w M-backage#########################################
 # Use bash-like word definitions for navigation and operations
 autoload -Uz select-word-style
 select-word-style bash
@@ -706,7 +706,7 @@ select-word-style bash
 zle -N backward-kill-space-word backward-kill-word-match
 zstyle :zle:backward-kill-space-word word-style space
 bindkey '^W' backward-kill-space-word
-#################################C-w#########################################
+#################################C-w M-backage#########################################
 
 
 
