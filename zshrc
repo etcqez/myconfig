@@ -695,13 +695,40 @@ else
 alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
 
-#vim-mode
+
+# 删除一个单词（直到下一个非字母数字字符）
+function delete_word() {
+  # 获取当前命令行内容
+  local line=$(fc -ln -0)
+  # 删除最后一个单词
+  local new_line=${line%[^[:alnum:]]*}
+  # 替换当前命令行内容
+  print -z "$new_line"
+}
+
+# 将 Ctrl + W 映射到删除单词的功能
+zle -N delete_word
+bindkey '^W' delete_word
+
+
+
+
+
+
+
+
+
+
+
+
+
+#vim-mode 恢复 alt .
 # Normal mode
-function append-last-word { ((++CURSOR)); zle insert-last-word; }
-zle -N append-last-word
-bindkey -M vicmd '\e.' append-last-word
-# Insert mode
-bindkey -M viins '\e.' insert-last-word
+# function append-last-word { ((++CURSOR)); zle insert-last-word; }
+# zle -N append-last-word
+# bindkey -M vicmd '\e.' append-last-word
+# # Insert mode
+# bindkey -M viins '\e.' insert-last-word
 
 
 
@@ -721,5 +748,3 @@ bindkey -M viins '\e.' insert-last-word
 
 
 
-# 修复zsh-vi-mode
-# bindkey '^D' delete-char
