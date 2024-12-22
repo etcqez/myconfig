@@ -23,6 +23,13 @@ alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
+function g {
+  if [ "~" -eq "$2" ]; then
+    git clone --depth 1 git@github.com:etcqez/"$1".git ~/.config/"$1"
+  else
+    git clone --depth 1 git@github.com:etcqez/"$1".git ~/".$1"
+  fi
+}
 
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 
@@ -374,6 +381,7 @@ alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
 export EDITOR=nvim
+alias hx="helix"
 alias ec="emacsclient -t"
 alias eda="emacs --daemon;ec"
 alias zs="$EDITOR ~/myconfig/zshrc"
