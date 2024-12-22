@@ -86,7 +86,7 @@ alias fcc="sudo fc-cache -f -v"
 # lvreduce -L 1G /dev/VG_NAME/LV_NAME
 # mount
 # thin
-# sudo lvcreate -L 150G -T vg_linux/thin_pool
+#s udo lvcreate -L 150G -T vg_linux/thin_pool
 # sudo lvcreate -V 50G -T vg_linux/thin_pool -n thin_pop
 # sudo lvremove vg_linux/thin_pop
 alias lvs="sudo lvs"
