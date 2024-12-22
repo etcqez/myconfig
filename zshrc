@@ -696,21 +696,6 @@ alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR
 fi;
 
 
-# 删除一个单词（直到下一个非字母数字字符）
-function delete_word() {
-  # 获取当前命令行内容
-  local line=$(fc -ln -0)
-  # 删除最后一个单词
-  local new_line=${line%[^[:alnum:]]*}
-  # 替换当前命令行内容
-  print -z "$new_line"
-}
-
-# 将 Ctrl + W 映射到删除单词的功能
-zle -N delete_word
-bindkey '^W' delete_word
-
-
 
 
 
