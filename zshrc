@@ -332,7 +332,10 @@ alias anstop="waydroid session stop"
 #cd
 alias cf="cd ~/.config/"
 alias cl="cd ~/.local/share/"
-alias c="cd ~/myconfig/"
+alias cm="cd ~/myconfig/"
+function c {
+  cd ~/.config/$1;
+}
 alias desk="cd ~/Desktop/"
 alias docu="cd ~/Documents/"
 
