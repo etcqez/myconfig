@@ -698,6 +698,7 @@ fi;
 
 
 
+local WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
   backward-kill-dir () {
     local WORDCHARS=${WORDCHARS/\/}
