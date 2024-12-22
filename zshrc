@@ -698,9 +698,14 @@ fi;
 
 
 
-autoload -U select-word-style
-select-word-style bash
 
+  backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+    zle -f kill
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
 
 
 
