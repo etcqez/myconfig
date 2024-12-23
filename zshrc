@@ -1,20 +1,7 @@
-# 启动zellij
-if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
-    else
-        zellij
-    fi
-
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
-    fi
-fi
-
 # load zsh-completions
-autoload -U compinit && compinit
-autoload -Uz select-word-style
-select-word-style shell
+# autoload -U compinit && compinit
+# autoload -Uz select-word-style
+# select-word-style shell
 
 # ddcutil 亮度控制
 alias d+="ddcutil -b 5 setvcp 10 + 5"
