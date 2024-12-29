@@ -10,7 +10,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # (ps -ef | grep geph5 | grep -v grep  && pkill geph5) ; ([ -e /usr/bin/geph5-client-gui ] && (exec /usr/bin/geph5-client-gui &) || (exec /data/geph5-client-gui &))
 # ps -ef | grep xkeysnail | grep -v grep || sudo /home/f/.local/bin/xkeysnail -q /home/f/myconfig/config.py &
 # /data/shark-linux -size 2 -walk 0 &
-git-auto-sync-daemon &
+# ps -ef | grep xeyes | grep -v grep || xeyes &
 
 #exec pot &
 #exec gammastep -O 5500K &

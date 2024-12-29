@@ -1,3 +1,7 @@
+# stow
+# 覆盖已存在的文件
+# stow --adopt .
+
 # load zsh-completions
 # autoload -U compinit && compinit
 # autoload -Uz select-word-style
@@ -403,8 +407,8 @@ alias .="source ~/myconfig/zshrc"
 alias fv="vim \$(fzf) "
 alias emacsbef="emacs -nw --init-directory=~/.emacs.d.bef -bg black"
 alias doom="emacs -nw --init-directory=~/.config/emacs"
-alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
-alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
+# alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
+# alias xkw="sudo ~/.local/bin/xkeysnail --watch ~/myconfig/config.py"
 alias pk="sudo pkill"
 alias wm="xprop WM_CLASS"
 
@@ -556,8 +560,8 @@ alias ssh='kitten ssh'
 
 # sudo
 alias shsh="sudo sh -c"
-alias refrat="sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
-alias refage="sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refrat="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refage="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
 alias tees="sudo tee -a"
 
 ##nvidia
