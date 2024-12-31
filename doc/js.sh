@@ -1,4 +1,4 @@
-# npm yarn安装的命令在~/.yarn/bin
+# yarn安装的命令在~/.yarn/bin
 # npm config set registry https://registry.npmmirror.com
 # nrm use taobao  修改镜像
 # npm config list
@@ -34,3 +34,27 @@
 #     数组：games.value[0].name = ''
 #
 # reactive：只能定义对象 类型的响应式数据
+
+# vite
+"dev": "vite --open",
+
+# @别名
+1. pnpm i @types/node --save-dev
+2. vite.config.ts
+//引入node提供的内置的模块path, 可以获取绝对路径
+import path from 'path';
+
+  //src文件夹配置别名
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname,'src')
+    }
+  }
+3, tsconfig.app.json  补全路径
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+ 

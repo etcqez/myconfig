@@ -25,6 +25,8 @@ set commentary
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+set clipboard=unnamedplus
+
 map s <Plug>(easymotion-s)
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>

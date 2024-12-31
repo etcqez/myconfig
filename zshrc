@@ -51,6 +51,7 @@ function ,take() {
 mkdir -p "$(dirname "$1")" && touch "$1" && take "$(dirname "$1")"
 }
 
+alias ls="ls --color=auto"
 alias a="ls -hA --group-directories-first"
 alias l="ls --group-directories-first"
 alias ll="ls -lh --group-directories-first"
