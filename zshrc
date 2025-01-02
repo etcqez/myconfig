@@ -561,8 +561,8 @@ alias ssh='kitten ssh'
 
 # sudo
 alias shsh="sudo sh -c"
-alias refrat="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
-alias refage="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 > /etc/pacman.d/mirrorlist'"
+alias refrat="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose -c CN --protocol https --sort rate --latest 5 --download-timeout 5 --threads 5 | tee /etc/pacman.d/mirrorlist' 2> /dev/null"
+alias refage="command -v /usr/bin/reflector && sudo sh -c 'reflector --verbose --protocol https --sort age --latest 5 --download-timeout 5 --threads 5 | tee /etc/pacman.d/mirrorlist' 2> /dev/null"
 alias tees="sudo tee -a"
 
 ##nvidia
