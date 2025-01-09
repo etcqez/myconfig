@@ -2,10 +2,8 @@
 # 覆盖已存在的文件
 # stow --adopt .
 
-# load zsh-completions
-# autoload -U compinit && compinit
-# autoload -Uz select-word-style
-# select-word-style shell
+# macos
+alias b="brew install"
 
 # ddcutil 亮度控制
 alias d+="ddcutil -b 5 setvcp 10 + 5"
@@ -103,23 +101,23 @@ alias pvs="sudo pvs"
 #export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # emacs verm
-vterm_printf() {
-  if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
-    # Tell tmux to pass the escape sequences through
-    printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-  elif [ "${TERM%%-*}" = "screen" ]; then
-    # GNU screen (screen, screen-256color, screen-256color-bce)
-    printf "\eP\e]%s\007\e\\" "$1"
-  else
-    printf "\e]%s\e\\" "$1"
-  fi
-}
-if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-  alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
-fi
-function help(){
-  bash -c "help $@"
-}
+# vterm_printf() {
+#   if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+#     # Tell tmux to pass the escape sequences through
+#     printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+#   elif [ "${TERM%%-*}" = "screen" ]; then
+#     # GNU screen (screen, screen-256color, screen-256color-bce)
+#     printf "\eP\e]%s\007\e\\" "$1"
+#   else
+#     printf "\e]%s\e\\" "$1"
+#   fi
+# }
+# if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+#   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+# fi
+# function help(){
+#   bash -c "help $@"
+# }
 #vim 编辑二进制: vim -b /bin/ls -> :%!xxd -> :%!xxd -r
 
 # 静态链接: 把库和程序本身打包在一起成一个文件    动态链接: 程序和库分离
@@ -386,9 +384,9 @@ alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
 export EDITOR=nvim
-alias hx="helix"
-alias ec="emacsclient -t"
-alias eda="emacs --daemon;ec"
+alias emc="emacsclient -t"
+alias emda="emacs --daemon;ec"
+alias em="emacs -nw"
 alias zs="$EDITOR ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias docc="$EDITOR ~/myconfig/doc/c.sh"
@@ -502,6 +500,7 @@ alias i="ipython"
 #export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"
 alias sb='export http_proxy="http://127.0.0.1:20122"; export https_proxy="http://127.0.0.1:20122"'
 alias ge='export http_proxy="http://127.0.0.1:9910"; export https_proxy="http://127.0.0.1:9910"'
+alias ge5='export http_proxy="http://127.0.0.1:19999"; export https_proxy="http://127.0.0.1:19999"'
 alias hi='export http_proxy="http://127.0.0.1:12334"; export https_proxy="http://127.0.0.1:12334"'
 alias ka='export http_proxy="http://127.0.0.1:3067"; export https_proxy="http://127.0.0.1:3067"'
 alias va='export http_proxy="http://127.0.0.1:20171"; export https_proxy="http://127.0.0.1:20171"'
@@ -697,6 +696,7 @@ export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
 else
+alias hx="helix"
 alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
 

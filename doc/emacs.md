@@ -1,5 +1,4 @@
 # 语法高亮
-sfj
 global-font-lock-mode 1
 
 # consult 提供预览，分组，缩小范围
