@@ -4,6 +4,7 @@
 
 # macos
 alias b="brew install"
+alias yq="yabai -m query --windows | grep app"
 
 # ddcutil 亮度控制
 alias d+="ddcutil -b 5 setvcp 10 + 5"
@@ -390,6 +391,7 @@ alias ed="emacs --daemon;em"
 alias emacs="emacs -nw"
 alias zs="$EDITOR ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
+alias dot="cd ~/dotfiles/"
 alias docc="$EDITOR ~/myconfig/doc/c.sh"
 alias docj="$EDITOR ~/myconfig/doc/java.sh"
 alias doce="$EDITOR ~/myconfig/doc/emacs.sh"
