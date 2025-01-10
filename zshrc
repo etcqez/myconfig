@@ -115,9 +115,10 @@ alias pvs="sudo pvs"
 # if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
 #   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 # fi
-# function help(){
-#   bash -c "help $@"
-# }
+
+function help(){
+  bash -c "help $@"
+}
 #vim 编辑二进制: vim -b /bin/ls -> :%!xxd -> :%!xxd -r
 
 # 静态链接: 把库和程序本身打包在一起成一个文件    动态链接: 程序和库分离
@@ -384,9 +385,9 @@ alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
 export EDITOR=nvim
-alias emc="emacsclient -t"
-alias emda="emacs --daemon;ec"
-alias em="emacs -nw"
+alias e="TERM=xterm-emacs emacsclient -t"
+alias ed="emacs --daemon;em"
+alias emacs="emacs -nw"
 alias zs="$EDITOR ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias docc="$EDITOR ~/myconfig/doc/c.sh"
@@ -399,11 +400,11 @@ alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
 alias zp="$EDITOR ~/myconfig/_zprofile"
 # alias vr="$EDITOR ~/.vim/vimrc"
 alias nv="nvim"
-alias vim="nvim"
+alias v="nvim"
 alias vi="nvim"
-alias sv="sudo vim"
+alias sv="sudo nvim"
 alias .="source ~/myconfig/zshrc"
-alias fv="vim \$(fzf) "
+alias fv="nvim \$(fzf) "
 alias emacsbef="emacs -nw --init-directory=~/.emacs.d.bef -bg black"
 alias doom="emacs -nw --init-directory=~/.config/emacs"
 # alias xk="sudo screen ~/.local/bin/xkeysnail -q /home/f/myconfig/config.py"
@@ -469,18 +470,18 @@ alias d="sudo yum install"
 alias ai="sudo apt install"
 alias au="sudo apt update"
 
-##gentoo
-alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
-alias chg="sudo arch-chroot /mnt/gentoo"
-alias mnc="mg;cg"
-alias umg="sudo umount -R /mnt/gentoo"
-alias e="sudo emerge"
-alias ne="sudo emerge --newuse"
-alias es="sudo emerge --sync"
-alias ew="sudo emerge --update --jobs --newuse --deep --with-bdeps=y @world"
-alias ed="sudo emerge --depclean"
-alias rebu="sudo emerge --ask @module-rebuild"
-alias dp="sudo dispatch-conf"
+# ##gentoo
+# alias mng="sudo mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/vg_linux-lv_gentoo /mnt/gentoo"
+# alias chg="sudo arch-chroot /mnt/gentoo"
+# alias mnc="mg;cg"
+# alias umg="sudo umount -R /mnt/gentoo"
+# alias e="sudo emerge"
+# alias ne="sudo emerge --newuse"
+# alias es="sudo emerge --sync"
+# alias ew="sudo emerge --update --jobs --newuse --deep --with-bdeps=y @world"
+# alias ed="sudo emerge --depclean"
+# alias rebu="sudo emerge --ask @module-rebuild"
+# alias dp="sudo dispatch-conf"
 
 # hugo
 alias hs="hugo server"
