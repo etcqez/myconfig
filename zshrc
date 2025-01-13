@@ -120,6 +120,8 @@ alias pvs="sudo pvs"
 function help(){
   bash -c "help $@"
 }
+
+alias re="echo $?"
 #vim 编辑二进制: vim -b /bin/ls -> :%!xxd -> :%!xxd -r
 
 # 静态链接: 把库和程序本身打包在一起成一个文件    动态链接: 程序和库分离
@@ -376,7 +378,7 @@ alias sto="sudo systemctl stop"
 alias usto="systemctl --user stop"
 alias sta="sudo systemctl start"
 alias usta="systemctl --user start"
-alias re="sudo systemctl restart"
+alias res="sudo systemctl restart"
 alias ure="systemctl --user restart"
 alias br="sudo systemctl restart bluetooth"
 alias bre="sudo modprobe -r btusb; sudo modprobe btusb; sudo systemctl restart bluetooth"
@@ -386,9 +388,17 @@ alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
 export EDITOR=nvim
-alias e="TERM=xterm-emacs emacsclient -t"
-alias ed="emacs --daemon;em"
-alias emacs="emacs -nw"
+function e(){
+  # if ps aux | grep -i "emacs" | grep -v "grep"
+  if pgrep -x Emacs > /dev/null
+  then
+    TERM=xterm-emacs emacsclient -t $1
+  else
+    emacs --daemon
+    TERM=xterm-emacs emacsclient -t $1
+  fi
+}
+alias emacsnw="emacs -nw"
 alias zs="$EDITOR ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias dot="cd ~/dotfiles/"
