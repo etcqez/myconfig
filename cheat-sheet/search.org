@@ -1,0 +1,6 @@
+* github
+in:[name,description,readme] xxx
+stars:>2000
+fork:>3000
+pushed:>2025-01-01
+language:xxx

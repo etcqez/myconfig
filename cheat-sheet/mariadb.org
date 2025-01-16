@@ -1,0 +1,2 @@
+# 修改root密码
+mariadb-admin -u root -p password

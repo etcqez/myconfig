@@ -1,3 +1,7 @@
+# ps -ef
+# ps aux
+# lsof -i:6379
+#
 # stow
 # 覆盖已存在的文件
 # stow --adopt .
@@ -5,6 +9,7 @@
 # macos
 alias b="brew install"
 alias yq="yabai -m query --windows | grep app"
+alias ps -ef
 
 # ddcutil 亮度控制
 alias d+="ddcutil -b 5 setvcp 10 + 5"
@@ -683,6 +688,7 @@ bindkey '^[[Z' reverse-menu-complete
 # 自动启动文件:  /home/f/.config/autostart
 if [[ "$(uname)" == "Darwin" ]]; then
 
+  alias lsblk="diskutil list"
   export HOMEBREW_NO_AUTO_UPDATE=1
   alias a="ls -hA"
   alias l="ls"

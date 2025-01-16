@@ -1,5 +1,6 @@
-spring-boot 打包
-    <build>
+* spring-boot 打包
+#+begin_src xml
+      <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -7,6 +8,9 @@ spring-boot 打包
             </plugin>
         </plugins>
     </build>
+#+end_src
 
-运行
-java -jar -Dserver.port=8888 ./springboot-base-mybatis-02-1.0-SNAPSHOT.jar
+#+begin_src sh
+  # 运行
+    java -jar -Dserver.port=8888 ./springboot-base-mybatis-02-1.0-SNAPSHOT.jar
+#+end_src
