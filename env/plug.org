@@ -1,0 +1,2 @@
+* idea
+grep console  将日志级别上色

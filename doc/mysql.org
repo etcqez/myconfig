@@ -1,0 +1,21 @@
+* 获取每个部门中薪资最高的员工信息
+select * from emp e, (select dept_id, max(salary) max_sal from emp group by dept_id) a where e.dept_id = a.dept_id and e.salary = a.max_sal;
+* 查询工资低于本部门平均工资的员工信息
+select e.* from emp e, (select dept_id, avg(salary) avg_sal from emp group by dept_id) as a where e.dept_id = a.dept_id and e.salary < a.avg_sal;
+* 查询入职时间在2015-01-01(包含)以前的员工，并对结果根据职位分组，获取员工数量大于等于2的职位
+select job,count(*) from emp where entry_data <= '2015-01-01' group by job having count(*) >= 2;
+一旦进行了分组，select后面只能是分组名或者聚合函数
+聚合函数不能在where中使用，只能在having中使用，因为where执行在分组之前，having执行在分组之后
+* 多字段排序 order by age, score, update_time desc
+根据年龄升序排序，如果年龄相同，才会根据score进行升序排序，如果，age, score都相同，才会根据update_time进行降序排序
+* 查询最早入职的员工信息
+select * from emp where entry_date = (select min(entry_date) from emp)
+* 查询"教研部"和"咨咨部" 的所有员工信息
+select * from emp where dept_id in (select * from dept where name = '教研部' or nama = '咨询部')
+* 查询与“李忠”的 薪资 及 职位 都相同的员工信息
+1. select * from emp where salary = (select salary from emp where name = '李忠') and (select job from emp where name = '李忠')
+2. select * from emp where (salary,job) = (select salary,job from emp where name = '李忠')
+* 查询 "教研部" 性别为男，且在 "2011-05-01" 之后入职的员工信息
+select e.* from emp e, dept d where e.dept_id = d.id and d.name = '教研部' and e.gender = 1 and e.entry_date > '2011-05-01'
+* 查询 部门人数 超过 10 人的部门名称
+select d.name, count(*) from emp e, dept d where e.dept_id = d.id group by d.name having count(*) > 10;

@@ -1,0 +1,25 @@
+help @string
+expire 设置过期时间
+ttl 查看过期时间
+unlink key 非阻塞删除
+move key 0 移动key到0
+dbsize 当前数据库key数量
+select 0 切换数据库0
+nginx -c 配置文件
+nginx -s [stop|quit|reopen|reload]
+
+* string
+mset|mget 同时操作多个key
+getrange 切片
+setrange key 1 xxx 索引1处设置xxx
+incr 自增
+decr 自减
+strlen
+append 末尾追加
+setex key 过期时间 value
+setnx 如果不存在就设置
+getset key value 同 set key value get
+
+* list
+lpush|rpush
+lrange

@@ -392,30 +392,61 @@ alias blrecover="sh ~/myconfig/bluetooth/recover.sh; sudo systemctl restart blue
 alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 
 # vim emacs
-export EDITOR=nvim
-function e(){
-  # if ps aux | grep -i "emacs" | grep -v "grep"
-  if pgrep -x Emacs > /dev/null
-  then
-    TERM=xterm-emacs emacsclient -t $1
+# function ee(){
+#   # if ps aux | grep -i "emacs" | grep -v "grep"
+#   if pgrep -x Emacs > /dev/null
+#   then
+#     TERM=xterm-emacs emacsclient -t $1
+#   else
+#     emacs --daemon
+#     TERM=xterm-emacs emacsclient -t $1
+#   fi
+# }
+# function e(){
+#   # if ps aux | grep -i "emacs" | grep -v "grep"
+#   if pgrep -x Emacs > /dev/null
+#   then
+#     TERM=xterm-emacs emacsclient -t $1
+#   else
+#     emacs &
+#   fi
+# }
+
+function e () {
+  # 使用 emacsclient 执行 Elisp 代码来获取帧的数量
+  frame_count=$(emacsclient -e "(length (frame-list))" 2>/dev/null)
+
+# 检查命令是否成功执行以及帧的数量是否为数字
+if [ $? -eq 0 ] && [[ $frame_count =~ ^[0-9]+$ ]]; then
+  # 判断帧数量是否大于 1
+  if [ "$frame_count" -gt 1 ]; then
+    # emacsclient -e "(my/raise-frame-and-open-file \"$1\")" -n -a ""
+    emacsclient -n -a "" $@;emacsclient -e "(select-frame-set-input-focus (selected-frame))"
   else
-    emacs --daemon
-    TERM=xterm-emacs emacsclient -t $1
+    # emacsclient -e "(my/raise-frame)" -n -c -a "" $@
+    emacsclient -n -c -a "" $@;emacsclient -e "(select-frame-set-input-focus (selected-frame))"
   fi
+else
+  emacs --daemon && emacsclient -n -c -a "" $@
+fi
+# sleep 0.5
+# yabai -m query --windows | jq -r 'map(select(.app == "Emacs")) | first | .id' | xargs -I{} yabai -m window --focus {}
 }
-alias emacsnw="emacs -nw"
-alias zs="$EDITOR ~/myconfig/zshrc"
+
+alias ee='TERM=xterm-emacs emacsclient -nw -c -a ""'
+export EDITOR='TERM=xterm-emacs emacsclient -nw -c -a ""'
+alias zs="nvim ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias dot="cd ~/dotfiles/"
-alias docc="$EDITOR ~/myconfig/doc/c.sh"
-alias docj="$EDITOR ~/myconfig/doc/java.sh"
-alias doce="$EDITOR ~/myconfig/doc/emacs.sh"
-alias docv="$EDITOR ~/myconfig/doc/vim.sh"
-alias docn="$EDITOR ~/myconfig/doc/nvim.sh"
-alias docjs="$EDITOR ~/myconfig/doc/js.sh"
-alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
-alias zp="$EDITOR ~/myconfig/_zprofile"
-# alias vr="$EDITOR ~/.vim/vimrc"
+alias docc="ee ~/myconfig/doc/c.sh"
+alias docj="ee ~/myconfig/doc/java.sh"
+alias doce="ee ~/myconfig/doc/emacs.sh"
+alias docv="ee ~/myconfig/doc/vim.sh"
+alias docn="ee ~/myconfig/doc/nvim.sh"
+alias docjs="ee ~/myconfig/doc/js.sh"
+alias docnano="ee ~/myconfig/doc/nano.sh"
+alias zp="ee ~/myconfig/_zprofile"
+# alias vr="ee ~/.vim/vimrc"
 alias nv="nvim"
 alias v="nvim"
 alias vi="nvim"
@@ -436,7 +467,7 @@ alias wm="xprop WM_CLASS"
 # docker update --restart=no
 # sudo docker info
 #
-alias ee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
+alias eee="docker attach --detach-keys 'ctrl-z,ctrl-q' emacs"
 alias d="docker"
 alias dup="docker update"
 alias oneemacs="docker run -it --rm silex/emacs"
@@ -709,11 +740,11 @@ function rm() {
   DIR=$(mktemp -d /tmp/trash-$(date +%F_%H-%M-%S)_XXXXXX);\mv $@ $DIR
 }
 
-export HOMEBREW_INSTALL_FROM_API=1
-export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
+# export HOMEBREW_INSTALL_FROM_API=1
+# export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
+# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
+# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
+# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
 else
 alias hx="helix"
 alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
@@ -763,3 +794,6 @@ bindkey '^W' backward-kill-space-word
 
 
 
+# Local Variables:
+# mode: sh
+# End:
