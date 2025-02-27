@@ -1,0 +1,6 @@
+* 配置文件路径
+redis-cli INFO | grep config_file
+* 远程连接
+关闭： protected-mode
+远程ip： bind
+设置密码: requirepass

@@ -55,13 +55,6 @@ function ,take() {
 mkdir -p "$(dirname "$1")" && touch "$1" && take "$(dirname "$1")"
 }
 
-alias ls="ls --color=auto"
-alias a="ls -hA --group-directories-first"
-alias l="ls --group-directories-first"
-alias ll="ls -lh --group-directories-first"
-alias la="ls -lhA --group-directories-first"
-alias sl="sudo ls --color=tty -lhAt"
-
 # show error
 alias j="journalctl"
 alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
@@ -412,7 +405,7 @@ alias binfo="sudo bash -c 'cat /var/lib/bluetooth/*/*/info'"
 #   fi
 # }
 
-function e () {
+function ee () {
   # 使用 emacsclient 执行 Elisp 代码来获取帧的数量
   frame_count=$(emacsclient -e "(length (frame-list))" 2>/dev/null)
 
@@ -433,23 +426,22 @@ fi
 # yabai -m query --windows | jq -r 'map(select(.app == "Emacs")) | first | .id' | xargs -I{} yabai -m window --focus {}
 }
 
-alias ee='TERM=xterm-emacs emacsclient -nw -c -a ""'
+alias e='TERM=xterm-emacs emacsclient -nw -c -a ""'
 export EDITOR='TERM=xterm-emacs emacsclient -nw -c -a ""'
 alias zs="nvim ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias dot="cd ~/dotfiles/"
-alias docc="ee ~/myconfig/doc/c.sh"
-alias docj="ee ~/myconfig/doc/java.sh"
-alias doce="ee ~/myconfig/doc/emacs.sh"
-alias docv="ee ~/myconfig/doc/vim.sh"
-alias docn="ee ~/myconfig/doc/nvim.sh"
-alias docjs="ee ~/myconfig/doc/js.sh"
-alias docnano="ee ~/myconfig/doc/nano.sh"
-alias zp="ee ~/myconfig/_zprofile"
+alias docc="$EDITOR ~/myconfig/doc/c.sh"
+alias docj="$EDITOR ~/myconfig/doc/java.sh"
+alias doce="$EDITOR ~/myconfig/doc/emacs.sh"
+alias docv="$EDITOR ~/myconfig/doc/vim.sh"
+alias docn="$EDITOR ~/myconfig/doc/nvim.sh"
+alias docjs="$EDITOR ~/myconfig/doc/js.sh"
+alias docnano="$EDITOR ~/myconfig/doc/nano.sh"
+alias zp="$EDITOR ~/myconfig/_zprofile"
 # alias vr="ee ~/.vim/vimrc"
-alias nv="nvim"
+alias n="nvim"
 alias v="nvim"
-alias vi="nvim"
 alias sv="sudo nvim"
 alias .="source ~/myconfig/zshrc"
 alias fv="nvim \$(fzf) "
@@ -597,15 +589,10 @@ alias ii="iwctl station wlan1 get-networks"
 # Handy change dir shortcuts
 alias ..='cd ..'
 alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
+alias -- -='cd -'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
-
-# Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
-alias ssh='kitten ssh'
 
 # sudo
 alias shsh="sudo sh -c"
@@ -716,15 +703,18 @@ bindkey "^N" down-line-or-search
 # shift+tab
 bindkey '^[[Z' reverse-menu-complete
 
+alias ls="ls --color=auto"
 # 自动启动文件:  /home/f/.config/autostart
-if [[ "$(uname)" == "Darwin" ]]; then
 
+# mac
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   alias lsblk="diskutil list"
-  export HOMEBREW_NO_AUTO_UPDATE=1
   alias a="ls -hA"
   alias l="ls"
   alias ll="ls -lh"
-  alias la="ls -lhA"
+  alias al="ls -lhA"
+  alias netstat="netstat -an | grep LISTEN"
   # 切换到finder
   function pfd() {
     osascript 2> /dev/null <<EOF
@@ -740,14 +730,15 @@ function rm() {
   DIR=$(mktemp -d /tmp/trash-$(date +%F_%H-%M-%S)_XXXXXX);\mv $@ $DIR
 }
 
-# export HOMEBREW_INSTALL_FROM_API=1
-# export HOMEBREW_API_DOMAIN="https://mirrors.aliyun.com/homebrew-bottles/api"
-# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/brew.git"
-# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.aliyun.com/homebrew/homebrew-core.git"
-# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.aliyun.com/homebrew/homebrew-bottles"
 else
-alias hx="helix"
-alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
+  # linux
+  alias a="ls -hA --group-directories-first"
+  alias l="ls --group-directories-first"
+  alias ll="ls -lh --group-directories-first"
+  alias al="ls -lhA --group-directories-first"
+  alias sl="sudo ls --color=tty -lhAt"
+  alias hx="helix"
+  alias rm="DIR=\$(mktemp -d /tmp/trash-\$(date +%F_%H-%M-%S)_XXXXXX);\mv -t \$DIR"
 fi;
 
 

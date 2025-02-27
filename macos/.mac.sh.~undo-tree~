@@ -1,0 +1,6 @@
+(undo-tree-save-format-version . 1)
+"c01234adb1fd65d81af3c2d7bcf93c69f286fb61"
+[nil current nil nil (26496 44221 950272 0) 0 nil]
+([nil nil ((78 . 80) (t 26488 38268 232452 674000)) ((#(";s" 0 2 (fontified t)) . 78) (undo-tree-id0 . -2) (undo-tree-id1 . -2) (undo-tree-id2 . -2) (undo-tree-id3 . -2) (undo-tree-id4 . -2) (undo-tree-id5 . -2) (undo-tree-id6 . -2) (undo-tree-id7 . -2) (undo-tree-id8 . -2) (undo-tree-id9 . -2) (undo-tree-id10 . -2) (undo-tree-id11 . -2) (undo-tree-id12 . -2) (undo-tree-id13 . -2) (undo-tree-id14 . -2) (undo-tree-id15 . -2) (undo-tree-id16 . -2) (undo-tree-id17 . -2) (undo-tree-id18 . -2) (undo-tree-id19 . -2) (undo-tree-id20 . -2) (undo-tree-id21 . -2) (undo-tree-id22 . -2) (undo-tree-id23 . -2) (undo-tree-id24 . -2)) (26496 44221 696708 0) 0 nil])
+([nil nil ((apply -2 78 82 undo--wrap-and-run-primitive-undo 78 82 ((78 . 80) 80))) ((apply 2 78 80 undo--wrap-and-run-primitive-undo 78 80 ((#("# " 0 2 (face font-lock-comment-delimiter-face fontified t)) . 78) 82))) (26496 44221 696633 0) 0 nil])
+nil

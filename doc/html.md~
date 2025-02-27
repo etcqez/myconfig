@@ -1,0 +1,9 @@
+# flex （给父元素设置，控制子元素）
+# flex-direction （控制主轴排列方向）
+row 横枞 row-reverse column column-reverse
+# justify-content (主轴上子元素的对齐方式) 一定要先确定好主轴
+flex-start flex-end center space-around 平分剩余空间 space-between 先两边贴边，再平分剩余空间
+# flex-wrap 控制子元素是否换行
+nowarp warp
+# align-items (侧轴上子元素的对齐方式)
+flex-start flex-end center stretch 侧轴拉伸
