@@ -427,7 +427,9 @@ fi
 }
 
 alias e='TERM=xterm-emacs emacsclient -nw -c -a ""'
-export EDITOR='TERM=xterm-emacs emacsclient -nw -c -a ""'
+export EDITOR='emacsclient -nw -c'
+# export EDITOR='TERM=xterm-emacs emacsclient -nw -c -a ""'
+
 alias zs="nvim ~/myconfig/zshrc"
 alias doc="cd ~/myconfig/doc"
 alias dot="cd ~/dotfiles/"
