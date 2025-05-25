@@ -1,0 +1,69 @@
+* mac
+#+begin_src sh
+  alias yq="yabai -m query --windows | grep app"
+
+#+end_src
+* git
+* iso
+#+begin_src sh
+  sudo dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
+#+end_src
+* 文件系统
+** 同步文件系统
+#+begin_src sh
+# ext4: resize2fs /dev/lvm
+# xfs: xfs_growfs /mountpoint
+# btrfs: sudo btrfs filesystem resize max /
+#lvm
+# lvcreate -n lv1 -l 100%vg vg0 (100%vg: 卷组的百分比)
+# lvextend -l +100%free /dev/mapper/vg1-lv1 (100%free: 剩于的百分比)
+# lvextend -r -l +100%free /dev/mapper/vg1-lv1 #  -r: 既扩展空间又扩展文件系统
+# 缩减逻辑卷 (ext4)
+# umount /dev/VG_NAME/LV_NAME
+# fsck -f /dev/VG_NAME/LV_NAME
+# resize2fs /dev/VG_NAME/LV_NAME 1G
+# lvreduce -L 1G /dev/VG_NAME/LV_NAME
+# mount
+# thin
+#s udo lvcreate -L 150G -T vg_linux/thin_pool
+# sudo lvcreate -V 50G -T vg_linux/thin_pool -n thin_pop
+# sudo lvremove vg_linux/thin_pop
+
+#+end_src
+* 二进制
+** vim 编辑二进制
+#+begin_src sh
+  vim -b /bin/ls -> :%!xxd -> :%!xxd -r
+#+end_src
+* 库
+静态链接: 把库和程序本身打包在一起成一个文件    动态链接: 程序和库分离
+查看程序需要的库: ldd /bin/ls
+查看已经加载的库: ldconfig -p
+* 压缩
+#压缩: zip -r dir dir  解压: unzip dir.zip -d /opt
+#打包: tar cvf dir.tar *  预览: tar tvf dir.tar  解压到当前目录: tar xvf ../dir/dir.tar  解压到指定目录: tar xvf dir.tar -C ../桌面
+#打包压缩: z: gz  j: bz2  J: xz
+#          sudo tar zcf etc.tar.gz /etc
+#          sudo tar jcf etc.tar.bz2 /etc
+#          sudo tar Jcf etc.tar.xz /etc
+#          sudo zip -r etc.zip /etc
+#解压: sudo tar xf etc.tar.xz -C /tmp (xf通用)
+#不包含目录本身,只打包目录内的文件和子目录: cd /etc -> sudo tar Jcf ~/etc.xz *
+#tar实现快速复制: time tar c /boot | tar x -C ./    real	0m0.733s
+#                 time cp -a /boot /opt/    real	0m0.093s
+# --exclude: 排除文件   -T /root/includefilelist: 包含文件列表  -X /root/excludefilelist: 排除的文件列表 (TX后接的是文件)
+# split (分割文件): split -b 1M -d etc.xz t/etc_xz (-d: 后缀为数字)   合并: cat etc_xz* > etc.xz
+# cpio: find /etc | cpio -ov > etc.cpio (-o: output) 同: tar cvf etc.tar /etc
+#       预览: cpio -tv < etc.cpio 同: tar tvf etc.tar   find的查找的目录带有/etc这样的绝对路径,直接解压会覆盖/etc cp -r /etc .  (复制要打包的文件夹) -> find ./etc | cpio -ov > etc2.cpio (重新打包,发现路径带点) -> cpio -idv < /home/f/etc2.cpio (-d: 自动创建文件夹. 将标准输入解压至当前目录)
+#查看linux源代码行数: tar xvf linux.tar.xz -> cat `find -name "*.c"` |wc -l
+
+# 搜索: locate (updated) -i (不区分大小写) -n (只列前几个) -r (使用正则表达式)
+# find -maxdepth -mindepth -depth (先处理目录内的文件,再处理目录本身) -name -iname -inum (节点编号相同,不同分区的文件节点可能相同) -ls -samefile (节点编号相同且在同一分区) -links -regex -type -empty -a (与条件,默认) -o -not (同!)
+#     eg: find /misc/cd -name "tree*" -> rpm -ivh /misc/cd/Packages/tree-2.0.4-2.oe2203sp3.x86_64.rpm (tree没有信赖包,直接yum安装)
+# -size [+,-][k,M,G,c(byte)]: 根据大小来查找 -atime [+,-]: 天 -amin (分钟)
+# -perm [/|-] (/: 或 -: 并) eg: 1. -perm /444 (所有者或者所属组或者other有4有权限就可以) 2. -perm -444 (所有者并且所属组并且other有4有权限就可以) 3. perm -044 (不关心所有者) 4. find /bin/ -perm /7000 (只要有一个特殊权限) 5.find /bin/ -perm -7000 (需要3个特殊权限)
+alias finds="sudo find /bin/ -perm /7000 | xargs ls --color=tty -lh --time=ctime -t"
+# 查找并移动,删除,拷贝(rm,cp,mv)文件: -ok 命令 {} \; (固定格式: {}\;) (将找到的每个文件执行一个命令,交互式的)  -exec 命令 {} \; (没有交互)
+# xargs: 将标准输入传给下一个命令,作为其的参数  查找并按大小排序: find -name "*.txt" | xargs ls -Sl
+#        -n: 每行的参数个数
+# 如果文件名包含空格: find -print0 | xargs -0 ls -Sl (-print0: 在标准输出中打印完整的文件名，后面跟一个空字符（而不是 -print 使用的换行符）。这样，包含换行符或其他类型空白的文件名就能被处理find输出的程序正确理解。该选项对应于 xargs 的 -0 选项)

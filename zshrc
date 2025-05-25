@@ -9,7 +9,6 @@
 # macos
 alias b="brew install"
 alias yq="yabai -m query --windows | grep app"
-alias ps -ef
 
 # ddcutil 亮度控制
 alias d+="ddcutil -b 5 setvcp 10 + 5"
@@ -31,13 +30,7 @@ alias gps="git push --set-upstream origin main"
 alias gpl="git pull"
 alias gl="git log"
 alias gp="gam;git push"
-function g {
-  if [ "~" -eq "$2" ]; then
-    git clone --depth 1 git@github.com:etcqez/"$1".git ~/.config/"$1"
-  else
-    git clone --depth 1 git@github.com:etcqez/"$1".git ~/".$1"
-  fi
-}
+
 
 test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
 

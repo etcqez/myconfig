@@ -1,0 +1,5 @@
+* 老韩小技巧
+1. xml文件从第一个非空字符注释
+   editor -> code style -> xml -> code generation选项页 -> line comment at first column
+2. 显示方法之间的分割线
+   appearance -> show method separators
