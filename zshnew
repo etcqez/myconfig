@@ -1,0 +1,159 @@
+############################## 键绑定 ##############################
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+bindkey "^T" transpose-chars
+#
+#
+#
+#
+############################## zinit ##############################
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# unalias zi
+
+ZINIT[DISABLE_AUTO_UPDATE]=1
+# 完全禁用 zinit 的更新功能
+zinit ice wait"0" lucid nocd
+zinit light zdharma-continuum/zinit
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+# 安装 rupa/z
+zinit light rupa/z
+
+# Add in snippets
+# zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+#
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+#
+#
+#
+#
+############################## alias ##############################
+## macos
+alias b="brew install"
+alias yq="yabai -m query --windows | grep app"
+
+## ddcutil 亮度控制
+alias d+="ddcutil -b 5 setvcp 10 + 5"
+alias d-="ddcutil -b 5 setvcp 10 - 5"
+
+## git
+# alias gi="git init -b main"
+alias gi="git init;gam"
+alias gam="git add * .*;git commit -am '更新配置文件'"
+alias gg="git remote get-url origin"
+alias grr="git remote remove origin"
+alias gra="git remote add origin"
+alias gs="git status"
+alias gcl="git clone --depth 1"
+alias ga="git add"
+alias gc="git commit"
+alias gps="git push --set-upstream origin main"
+alias gpl="git pull"
+alias gl="git log"
+alias gp="gam;git push"
+
+#
+#
+#
+#
+############################## linux ##############################
+##  jouralctl
+alias j="journalctl"
+alias jx="journalctl -xe" # xe (x: show explanatory texts e: end)
+alias ju="journalctl -u" # u: unit
+alias jbl="journalctl -u bluetooth"
+#
+#
+#
+#
+############################## 函数 ##############################
+## 用于创建一个目录并立即进入该目录
+function mcd {
+  mkdir $1 && cd $1;
+}
+
+## 用于创建一个文件及其父目录
+function ,touch {
+mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
+## 用于创建一个文件及其父目录（如果父目录不存在），然后切换到该文件的父目录
+function ,take() {
+mkdir -p "$(dirname "$1")" && touch "$1" && take "$(dirname "$1")"
+}
+
+## 调用 Bash 内置的 help 命令来显示帮助信息
+function help(){
+  bash -c "help $@"
+}
+
+#
+#
+#
+#
+############################## python ##############################
+test -f /bin/pipx && eval "$(register-python-argcomplete pipx)"
+
+## pyenv
+[ -e ~/.pyenv/bin/pyenv ] && eval "$(pyenv virtualenv-init -)"
+#
+#
+#
+#
+############################## end ##############################
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
